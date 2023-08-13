@@ -200,6 +200,22 @@ public class LevelManager : MonoBehaviour
                         throw new ArgumentOutOfRangeException(nameof(scenario), scenario, null);
                 }
 
+            case "Level 3":
+                switch (scenario)
+                {
+                    case "Restart":
+                        return LivingAsValeryLineIndex;
+
+                    case "Died":
+                        return ValeryRespawnLineIndex;
+
+                    case "EnemyDied":
+                        return KilledHimLineIndex;
+
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(scenario), scenario, null);
+                }
+
             default:
                 throw new ArgumentOutOfRangeException(nameof(scenario), scenario, null);
         }

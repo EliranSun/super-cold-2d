@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private bool isControllingTime;
     [SerializeField] private GameObject target;
-    [SerializeField] private CollectWeapon _collectWeapon;
+    [SerializeField] private CollectWeapon collectWeapon;
     private TimeController timeController;
 
     private void Start()
@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
         var movementVector = Move();
         ControlTime(movementVector);
         DetectNearWeapon();
+    }
+
+    private void OnDisable()
+    {
+        if (isControllingTime) ControlTime(Vector2.zero);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -57,10 +62,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectNearWeapon()
     {
-        if (!_collectWeapon) return;
+        if (!collectWeapon) return;
 
         var position1 = (Vector2)transform.position;
         var distance = Vector2.Distance(target.transform.position, position1);
-        if (distance <= 4.4f && target) _collectWeapon.Trigger(target.transform);
+        if (distance <= 4.4f && target) collectWeapon.Trigger(target.transform);
     }
 }

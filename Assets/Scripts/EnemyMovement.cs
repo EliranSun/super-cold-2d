@@ -39,6 +39,11 @@ public class EnemyMovement : MonoBehaviour
         MoveToTarget();
     }
 
+    private void OnDisable()
+    {
+        if (isControllingTime) ControlTime(false);
+    }
+
     private void LookAtPlayer()
     {
         if (!playerPosition) return;

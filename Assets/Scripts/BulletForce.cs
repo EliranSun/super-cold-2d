@@ -64,6 +64,7 @@ public class BulletForce : MonoBehaviour
 
     private void ControlVelocity()
     {
+        print($"Velocity: {_rigidbody.velocity}, isTimeSlowed: {_timeController.isTimeSlowed}");
         if (_timeController.isTimeSlowed)
         {
             if (_isBulletSlowed) return;
@@ -76,7 +77,7 @@ public class BulletForce : MonoBehaviour
         {
             if (!_isBulletSlowed) return;
             if (_originalVelocity == Vector2.zero)
-                _rigidbody.AddForce(transform.up * force * _timeController.timeScale);
+                _rigidbody.AddForce(transform.up * (force * _timeController.timeScale));
             else
                 _rigidbody.velocity = _originalVelocity;
             _isBulletSlowed = false;
