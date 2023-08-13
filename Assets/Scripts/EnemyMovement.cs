@@ -15,7 +15,6 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 _targetPosition;
     private TimeController _timeController;
     private float _timeOnTarget;
-    private int count;
     private Vector2 direction;
 
     private void Start()
@@ -23,15 +22,19 @@ public class EnemyMovement : MonoBehaviour
         _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         _collectWeapon = GetComponent<CollectWeapon>();
         _characterController = GetComponent<CharacterController>();
-        _targetPosition = Random.insideUnitCircle * 5;
+        _targetPosition = GetRandomVectorWithinLevelBounds();
 
         direction = _targetPosition - (Vector2)transform.position;
-        if (isControllingTime) StartCoroutine(MoveRoutine());
+        if (isControllingTime) StartCoroutine(ChangeMoveDirection());
     }
 
     private void Update()
     {
-        if (isControllingTime) return;
+        if (isControllingTime)
+        {
+            _characterController.Move(direction.normalized * (Time.deltaTime * speed));
+            return;
+        }
 
         MoveToTarget();
     }
@@ -41,8 +44,8 @@ public class EnemyMovement : MonoBehaviour
         if (!playerPosition) return;
 
         // rotate z axis to look at player
-        var direction = playerPosition.position - transform.position;
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        var newDirection = playerPosition.position - transform.position;
+        var angle = Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 
@@ -81,17 +84,21 @@ public class EnemyMovement : MonoBehaviour
             _characterController.Move(direction.normalized * (Time.deltaTime * speed));
     }
 
-    private IEnumerator MoveRoutine()
+    private Vector2 GetRandomVectorWithinLevelBounds()
+    {
+        return new Vector2(Random.Range(-25f, 25f), Random.Range(-14f, 14f));
+    }
+
+    private IEnumerator ChangeMoveDirection()
     {
         while (true)
         {
-            count++;
-            _characterController.Move(direction.normalized * (Time.deltaTime * speed));
-            ControlTime(true);
-            yield return new WaitForSeconds(Random.Range(1, 4));
-            _characterController.Move(Vector2.zero);
+            direction = Vector2.zero;
             ControlTime(false);
-            direction = Random.insideUnitCircle * 5 - (Vector2)transform.position;
+            yield return new WaitForSeconds(Random.Range(1, 4));
+            ControlTime(true);
+            direction = GetRandomVectorWithinLevelBounds() - (Vector2)transform.position;
+            yield return new WaitForSeconds(Random.Range(1, 4));
         }
     }
 }
