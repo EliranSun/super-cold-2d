@@ -4,41 +4,55 @@ public class CollectWeapon : MonoBehaviour
 {
     public bool isTriggered;
     public bool targetAcquired;
-    private float timeOnTarget;
-    private Transform weaponTarget;
+    private float _timeOnTarget;
+    private Transform _weaponTarget;
 
     private void Update()
     {
         if (!isTriggered)
         {
-            timeOnTarget = 0;
+            _timeOnTarget = 0;
             return;
         }
 
-        timeOnTarget += Time.deltaTime;
+        _timeOnTarget += Time.deltaTime;
 
-        if (timeOnTarget >= 2)
+        if (_timeOnTarget >= 2)
         {
-            Collect();
-            timeOnTarget = 0;
-            targetAcquired = true;
-            isTriggered = false;
+            if (gameObject.name == "Enemy") CollectEnemy();
+            else if (gameObject.name == "Player") CollectPlayer();
         }
     }
 
-    public void Collect()
+    private void CollectPlayer()
     {
-        if (!weaponTarget) return;
+        if (!_weaponTarget) return;
+        _weaponTarget.parent = transform;
+        _weaponTarget.GetComponent<WeaponHandler>().enabled = true;
+        ResetParams();
+    }
 
-        weaponTarget.parent = transform;
-        weaponTarget.rotation = transform.rotation;
-        weaponTarget.position = new Vector2(transform.position.x - 1, transform.position.y);
+    private void CollectEnemy()
+    {
+        if (!_weaponTarget) return;
+
+        _weaponTarget.parent = transform;
+        _weaponTarget.GetComponent<LookAtPlayer>().enabled = true;
         GetComponent<NpcShootBullets>().enabled = true;
+
+        ResetParams();
+    }
+
+    private void ResetParams()
+    {
+        _timeOnTarget = 0;
+        targetAcquired = true;
+        isTriggered = false;
     }
 
     public void Trigger(Transform target)
     {
         isTriggered = true;
-        weaponTarget = target;
+        _weaponTarget = target;
     }
 }

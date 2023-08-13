@@ -4,6 +4,7 @@ public class EvadeBullets : MonoBehaviour
 {
     public Vector2 evadeDirection;
     public bool shouldEvade;
+    [SerializeField] private bool disableEvade;
     private readonly float speed = 10f;
     private CharacterController characterController;
     private Vector2 randomDirection;
@@ -15,17 +16,19 @@ public class EvadeBullets : MonoBehaviour
 
     private void Update()
     {
+        if (disableEvade) return;
         if (shouldEvade && IsWithinLevelBounds()) AvoidBullet();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (disableEvade) return;
+
         var bullet = col.gameObject.GetComponent<BulletForce>();
         if (bullet)
         {
             shouldEvade = true;
             var direction = bullet.GetDirection();
-            print(direction);
             switch (direction)
             {
                 case "right":

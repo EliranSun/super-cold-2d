@@ -3,9 +3,9 @@ using UnityEngine;
 public class BulletForce : MonoBehaviour
 {
     private const int MaxHits = 15;
-    [SerializeField] private float force = 2000f;
-    [SerializeField] private float slowMotionForce = 10f;
     [SerializeField] private LayerMask detectableObjects;
+    private readonly float force = 2000f;
+    private readonly float slowMotionForce = 10f;
     private int _currentHits;
     private bool _isBulletSlowed;
     private Vector2 _originalVelocity = Vector2.zero;
@@ -18,7 +18,7 @@ public class BulletForce : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
 
         _rigidbody.AddForce(transform.up * force * _timeController.timeScale);
-        if (_timeController.isTimeSlowed) _rigidbody.velocity /= slowMotionForce;
+        // if (_timeController.isTimeSlowed) _rigidbody.velocity /= slowMotionForce;
     }
 
     private void Update()
@@ -51,10 +51,10 @@ public class BulletForce : MonoBehaviour
             col.gameObject.transform.parent.GetComponent<ExplodeOnDeath>().TriggerDeath();
             Invoke(nameof(Respawn), 2);
             Destroy(gameObject);
-            return;
         }
 
         Destroy(gameObject);
+        Destroy(col.gameObject);
     }
 
     private void Respawn()
@@ -67,6 +67,7 @@ public class BulletForce : MonoBehaviour
         if (_timeController.isTimeSlowed)
         {
             if (_isBulletSlowed) return;
+
             _originalVelocity = _rigidbody.velocity;
             _rigidbody.velocity /= slowMotionForce;
             _isBulletSlowed = true;
@@ -74,7 +75,10 @@ public class BulletForce : MonoBehaviour
         else
         {
             if (!_isBulletSlowed) return;
-            _rigidbody.velocity = _originalVelocity;
+            if (_originalVelocity == Vector2.zero)
+                _rigidbody.AddForce(transform.up * force * _timeController.timeScale);
+            else
+                _rigidbody.velocity = _originalVelocity;
             _isBulletSlowed = false;
         }
     }

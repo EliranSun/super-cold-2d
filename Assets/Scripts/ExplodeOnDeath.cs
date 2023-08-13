@@ -12,6 +12,11 @@ public class ExplodeOnDeath : MonoBehaviour
     public void TriggerDeath()
     {
         _particleSystem.Play();
-        Destroy(gameObject, 1);
+        Invoke(nameof(SetInactive), 1);
+    }
+
+    private void SetInactive()
+    {
+        gameObject.SetActive(false);
     }
 }
