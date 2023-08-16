@@ -4,8 +4,9 @@ public class BulletForce : MonoBehaviour
 {
     private const int MaxHits = 15;
     [SerializeField] private LayerMask detectableObjects;
-    private readonly float force = 2000f;
-    private readonly float slowMotionForce = 10f;
+    public bool isBouncy = true;
+    private readonly float _force = 2500f;
+    private readonly float _slowMotionForce = 10f;
     private int _currentHits;
     private bool _isBulletSlowed;
     private Vector2 _originalVelocity = Vector2.zero;
@@ -17,7 +18,7 @@ public class BulletForce : MonoBehaviour
         _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         _rigidbody = GetComponent<Rigidbody2D>();
 
-        _rigidbody.AddForce(transform.up * force * _timeController.timeScale);
+        _rigidbody.AddForce(transform.up * _force * _timeController.timeScale);
         // if (_timeController.isTimeSlowed) _rigidbody.velocity /= slowMotionForce;
     }
 
@@ -25,7 +26,7 @@ public class BulletForce : MonoBehaviour
     {
         ControlVelocity();
 
-        // TODO: Combine that with slowmotion ability (where the speed is below ten but we dont want to destroy)
+        // TODO: Combine that with slow motion ability (where the speed is below ten but we dont want to destroy)
         // if (_rigidbody.velocity.magnitude is > 0 and < 10) Destroy(gameObject);
     }
 
@@ -33,6 +34,12 @@ public class BulletForce : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Wall"))
         {
+            if (!isBouncy)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             _currentHits++;
             if (_currentHits >= MaxHits) Destroy(gameObject);
             return;
@@ -64,20 +71,19 @@ public class BulletForce : MonoBehaviour
 
     private void ControlVelocity()
     {
-        print($"Velocity: {_rigidbody.velocity}, isTimeSlowed: {_timeController.isTimeSlowed}");
         if (_timeController.isTimeSlowed)
         {
             if (_isBulletSlowed) return;
 
             _originalVelocity = _rigidbody.velocity;
-            _rigidbody.velocity /= slowMotionForce;
+            _rigidbody.velocity /= _slowMotionForce;
             _isBulletSlowed = true;
         }
         else
         {
             if (!_isBulletSlowed) return;
             if (_originalVelocity == Vector2.zero)
-                _rigidbody.AddForce(transform.up * (force * _timeController.timeScale));
+                _rigidbody.AddForce(transform.up * (_force * _timeController.timeScale));
             else
                 _rigidbody.velocity = _originalVelocity;
             _isBulletSlowed = false;

@@ -7,7 +7,7 @@ public class TimeController : MonoBehaviour
 
     public void SlowTime()
     {
-        timeScale = 0.9f;
+        timeScale = 0.1f;
         isTimeSlowed = true;
     }
 

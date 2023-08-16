@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class CollectWeapon : MonoBehaviour
 {
+    private const int timeToCollect = 3;
     public bool isTriggered;
     public bool targetAcquired;
+    [SerializeField] private TextMeshProUGUI weaponPickupText;
     private float _timeOnTarget;
     private Transform _weaponTarget;
 
@@ -12,12 +15,16 @@ public class CollectWeapon : MonoBehaviour
         if (!isTriggered)
         {
             _timeOnTarget = 0;
+            if (weaponPickupText) weaponPickupText.text = "";
             return;
         }
 
-        _timeOnTarget += Time.deltaTime;
-
-        if (_timeOnTarget >= 2)
+        if (_timeOnTarget <= timeToCollect)
+        {
+            _timeOnTarget += Time.deltaTime;
+            if (weaponPickupText) weaponPickupText.text = $"{timeToCollect - _timeOnTarget}";
+        }
+        else
         {
             if (gameObject.name == "Enemy") CollectEnemy();
             else if (gameObject.name == "Player") CollectPlayer();
@@ -48,6 +55,7 @@ public class CollectWeapon : MonoBehaviour
         _timeOnTarget = 0;
         targetAcquired = true;
         isTriggered = false;
+        if (weaponPickupText) weaponPickupText.text = "";
     }
 
     public void Trigger(Transform target)

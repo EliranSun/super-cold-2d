@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private CollectWeapon collectWeapon;
     private TimeController timeController;
+    private bool triggeredCollectWeapon;
 
     private void Start()
     {
@@ -47,9 +48,18 @@ public class PlayerMovement : MonoBehaviour
         var normalizedSpeed = speed * Time.deltaTime;
         var movementVector = Vector2.zero;
         if (Input.GetKey(KeyCode.W)) movementVector += Vector2.up * normalizedSpeed;
-        if (Input.GetKey(KeyCode.A)) movementVector += Vector2.left * normalizedSpeed;
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.localScale = new Vector3(-8, 8, 1);
+            movementVector += Vector2.left * normalizedSpeed;
+        }
+
         if (Input.GetKey(KeyCode.S)) movementVector += Vector2.down * normalizedSpeed;
-        if (Input.GetKey(KeyCode.D)) movementVector += Vector2.right * normalizedSpeed;
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.localScale = new Vector3(8, 8, 1);
+            movementVector += Vector2.right * normalizedSpeed;
+        }
 
         if (movementVector != Vector2.zero)
         {
@@ -62,10 +72,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectNearWeapon()
     {
-        if (!collectWeapon) return;
+        if (!collectWeapon || triggeredCollectWeapon || !target) return;
 
         var position1 = (Vector2)transform.position;
         var distance = Vector2.Distance(target.transform.position, position1);
-        if (distance <= 4.4f && target) collectWeapon.Trigger(target.transform);
+        if (distance <= 4.4f && target)
+        {
+            collectWeapon.Trigger(target.transform);
+            triggeredCollectWeapon = true;
+        }
     }
 }
