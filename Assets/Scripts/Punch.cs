@@ -9,19 +9,17 @@ public class Punch : MonoBehaviour
     public float punchDistance = 5;
     public float restDistance = 1;
     public float transitionSpeed = 5;
+
+    public bool isRightHandPunchMove;
+    public bool isLeftHandPunchMove;
     private Transform activeHand;
     private bool isPunchingLeft;
     private bool isPunchingRight;
-    private Vector2 originalLeftHandPosition;
-    private Vector3 originalScale;
-
     private int punchCount;
     private float timePunching;
 
     private void Start()
     {
-        originalLeftHandPosition = hands[0].position;
-        originalScale = hands[0].localScale;
     }
 
     // Update is called once per frame
@@ -51,6 +49,11 @@ public class Punch : MonoBehaviour
             targetPosition.x += restDistance;
         }
 
+        if (hands[0].position.x < targetPosition.x)
+            isRightHandPunchMove = true;
+        else
+            isRightHandPunchMove = false;
+
         hands[0].position = Vector2.Lerp(
             hands[0].position,
             targetPosition,
@@ -74,6 +77,11 @@ public class Punch : MonoBehaviour
             targetPosition = transform.position;
             targetPosition.x += restDistance - 2;
         }
+
+        if (hands[1].position.x < targetPosition.x)
+            isLeftHandPunchMove = true;
+        else
+            isLeftHandPunchMove = false;
 
         hands[1].position = Vector2.Lerp(
             hands[1].position,
