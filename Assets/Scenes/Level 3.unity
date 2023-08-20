@@ -6503,19 +6503,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: f180d60a911e6430b8740eead4cc7148, type: 3}
-  - {fileID: 8300000, guid: 44608138731994ae187aef74240f558b, type: 3}
-  - {fileID: 8300000, guid: 8f08a111ada774b8ab27632146268c56, type: 3}
-  - {fileID: 8300000, guid: a8583a75bd6f743debc6510cef966612, type: 3}
-  - {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
-  - {fileID: 8300000, guid: 5ee324489f2aa425cae8940ca56a5d5a, type: 3}
-  - {fileID: 8300000, guid: 82a7592b7edf54fb497f4a2a1ecb3c14, type: 3}
-  - {fileID: 8300000, guid: a10d29dae5ed6468daab5b2b98d38671, type: 3}
-  - {fileID: 8300000, guid: 4713c05eca8c1442aad5d42e41bcb23b, type: 3}
-  - {fileID: 8300000, guid: a670e6d1da8434481836fbdee68b4675, type: 3}
-  - {fileID: 8300000, guid: d3aff648b00394356be151740aa7a003, type: 3}
-  - {fileID: 8300000, guid: 01d4af94b072446afbde43345fe56754, type: 3}
-  - {fileID: 8300000, guid: 6c38edad7b88045efaeb2dc08009d833, type: 3}
   - {fileID: 8300000, guid: 37eabb98ea11c46ce87d08d12c97288e, type: 3}
   - {fileID: 8300000, guid: f60ce4e1bf2954a4b84bf88ee504b31f, type: 3}
   - {fileID: 8300000, guid: 8deec237f8f9f41cd8450eb0c02ea215, type: 3}
@@ -6526,8 +6513,9 @@ MonoBehaviour:
   timeController: {fileID: 853733327}
   weapon: {fileID: 0}
   mainCamera: {fileID: 519420031}
-  lineIndex: 13
   enemy: {fileID: 737549919}
+  manInGreen: {fileID: 0}
+  bgMusic: {fileID: 0}
 --- !u!82 &1897871404
 AudioSource:
   m_ObjectHideFlags: 0

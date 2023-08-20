@@ -6629,6 +6629,8 @@ MonoBehaviour:
   punchDistance: 5
   restDistance: 1
   transitionSpeed: 5
+  isRightHandPunchMove: 0
+  isLeftHandPunchMove: 0
 --- !u!1 &1426058783
 GameObject:
   m_ObjectHideFlags: 0
@@ -7393,38 +7395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: f180d60a911e6430b8740eead4cc7148, type: 3}
-  - {fileID: 8300000, guid: 44608138731994ae187aef74240f558b, type: 3}
-  - {fileID: 8300000, guid: 8f08a111ada774b8ab27632146268c56, type: 3}
-  - {fileID: 8300000, guid: a8583a75bd6f743debc6510cef966612, type: 3}
-  - {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
-  - {fileID: 8300000, guid: 5ee324489f2aa425cae8940ca56a5d5a, type: 3}
-  - {fileID: 8300000, guid: 82a7592b7edf54fb497f4a2a1ecb3c14, type: 3}
-  - {fileID: 8300000, guid: a10d29dae5ed6468daab5b2b98d38671, type: 3}
-  - {fileID: 8300000, guid: 4713c05eca8c1442aad5d42e41bcb23b, type: 3}
-  - {fileID: 8300000, guid: a670e6d1da8434481836fbdee68b4675, type: 3}
-  - {fileID: 8300000, guid: d3aff648b00394356be151740aa7a003, type: 3}
-  - {fileID: 8300000, guid: 01d4af94b072446afbde43345fe56754, type: 3}
-  - {fileID: 8300000, guid: 6c38edad7b88045efaeb2dc08009d833, type: 3}
-  - {fileID: 8300000, guid: 37eabb98ea11c46ce87d08d12c97288e, type: 3}
-  - {fileID: 8300000, guid: f60ce4e1bf2954a4b84bf88ee504b31f, type: 3}
-  - {fileID: 8300000, guid: 8deec237f8f9f41cd8450eb0c02ea215, type: 3}
-  - {fileID: 8300000, guid: 2ad0fa7e019e84d0dacd18e982fada5c, type: 3}
-  - {fileID: 8300000, guid: 768c6bdf64f03493db755627c994e1e8, type: 3}
-  - {fileID: 8300000, guid: 63c2e293c69d3474ebe0f98fa1fb1477, type: 3}
-  - {fileID: 8300000, guid: ab0517060b48a4e91ab798a7cac3c739, type: 3}
-  - {fileID: 8300000, guid: a07bba8dc492747faacfab72fcaa0dcd, type: 3}
-  - {fileID: 8300000, guid: 104139724ae8944ed849dfd2d80f0f3b, type: 3}
-  - {fileID: 8300000, guid: a12a455c8b5274c9dafc059f3b77f861, type: 3}
-  - {fileID: 8300000, guid: 38be772ed4a7f4a3a88c61657324bf6c, type: 3}
-  - {fileID: 8300000, guid: 3005ac888ea2e4078bd63cadc6251da6, type: 3}
-  - {fileID: 8300000, guid: 1b86808410d49473cba49d328268365a, type: 3}
-  - {fileID: 8300000, guid: ba8f203cfc0f0415199f36230afdc2e9, type: 3}
-  - {fileID: 8300000, guid: 8ae1cafd543a54ee1a567dfb0e2f5017, type: 3}
-  - {fileID: 8300000, guid: 862e94412b9ef4ff9b5d1a83f7955235, type: 3}
-  - {fileID: 8300000, guid: d0143f09a6c01480ea9f4fe60e538573, type: 3}
-  - {fileID: 8300000, guid: 5d93dfbe3a433438cbc149b589afad51, type: 3}
-  - {fileID: 8300000, guid: 39a65b2fc45104ac0bd547ca6a6ed993, type: 3}
   - {fileID: 8300000, guid: 3ea16885910ae47a3b47030238408bd4, type: 3}
   - {fileID: 8300000, guid: f9237548c805c47b987cd90288d75e1f, type: 3}
   - {fileID: 8300000, guid: 40585607a3a004d1eb6fac8e7864ac5a, type: 3}
@@ -7434,9 +7404,9 @@ MonoBehaviour:
   timeController: {fileID: 853733327}
   weapon: {fileID: 0}
   mainCamera: {fileID: 519420031}
-  lineIndex: 34
   enemy: {fileID: 731118537}
   manInGreen: {fileID: 1426058783}
+  bgMusic: {fileID: 0}
 --- !u!82 &1897871404
 AudioSource:
   m_ObjectHideFlags: 0
