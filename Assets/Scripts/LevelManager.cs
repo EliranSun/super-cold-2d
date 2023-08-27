@@ -39,16 +39,23 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject manInGreen;
 
     [SerializeField] private AudioSource bgMusic;
+    private int _afraidToCrossTheRoadLineIndex;
+    private bool _afraidToCrossTheRoadSeen;
+    private int _afraidToGetLostLineIndex;
+    private bool _afraidToGetLostSeen;
 
     private AudioSource _audioSource;
     private bool _isDead;
     private bool _isEnemyDead;
     private bool _isPlayerMoved;
-    private int _levelCompleteLineIndex = 1;
-    private int _levelFailedLineIndex = 2;
+    private int _levelCompleteLineIndex;
+    private int _levelFailedLineIndex;
     private Line[] _lines;
     private int _manInGreenAppearsLineIndex;
     private int _manInGreenDisappearsLineIndex;
+    private int _nextLevelIndex;
+    private int _notHisHouseLineIndex;
+    private bool _notHisHouseSeen;
     private int _respawnLineIndex;
     private int _ryanControlsTimeLineIndex;
 
@@ -79,32 +86,46 @@ public class LevelManager : MonoBehaviour
     {
         switch (SceneManager.GetActiveScene().name)
         {
-            case "Level 1":
-                _respawnLineIndex = 2;
-                _levelCompleteLineIndex = 5;
-                _levelFailedLineIndex = 4;
+            case "Level 0":
                 _ryanControlsTimeLineIndex = 1;
+                _notHisHouseLineIndex = 3;
+                _afraidToCrossTheRoadLineIndex = 5;
+                _afraidToGetLostLineIndex = 6;
+
+                _lines = new[]
+                {
+                    new Line("Poor Ryan. He is not in control of his life. \nBut he can control time. Uncontrollably.",
+                        clips[0]),
+                    new("When he moves an inch, times slows down almost to a halt.", clips[1], 0.5f),
+                    new("It is indeed a terrible fate. A fate Ryan had submitted to.", clips[2]),
+                    new("This was not his house and Ryan knew it perfectly well.", clips[3], 0.5f),
+                    new("Soon enough he is going to wish that was the case", clips[4]),
+                    new("Ryan was too afraid to cross the road. Even chickens are not afraid of that", clips[5]),
+                    new(
+                        "Ryan was too afraid to get lost. And besides, his wife is waiting for him. She has something very important to tell him.",
+                        clips[6])
+                };
+                break;
+
+            case "Level 1":
+                _respawnLineIndex = 0;
+                _levelFailedLineIndex = 2;
+                _levelCompleteLineIndex = 3;
 
                 _lines = new[]
                 {
                     new Line(
-                        "Poor Ryan. He is not in control of his life. \nBut he can control time. Uncontrollably. (todo: what is your name)",
-                        clips[0]),
-                    new(
-                        "When he moves an inch, times slows down almost to a halt. \nIt is indeed a terrible fate. " +
-                        "\nMoving, after all, is an essential part of life.\nNothing can exist without moving.",
-                        clips[1], 2),
-                    new("His wife, Valery, hated this. \nShe tried to kill him, because she was too afraid of divorce.",
-                        clips[2], 1),
+                        "His wife, Valery, hated this. \nShe tried to kill him, because she was too afraid of divorce.",
+                        clips[0], 1),
                     new("Ryan was a pacifist though.\nAll He could do is run away from her, or act in self defense.",
-                        clips[3]),
+                        clips[1]),
                     new(
                         "And then he died. \nBut he also had the ability to reverse time, by simply hitting the R button, whatever that means.",
-                        clips[4]),
+                        clips[2]),
                     new("He killed her, but not murdered - and this was an important distinction.", clips[5], 1),
                     new(
                         "The problem with Ryan though, is that he never tried to see things from a different perspective",
-                        clips[6], 1)
+                        clips[3], 1)
                 };
                 break;
 
@@ -285,15 +306,16 @@ public class LevelManager : MonoBehaviour
             _isPlayerMoved = true;
         }
 
-        // if (_lineIndex == _lines.Length - 1)
-        //     NextScene();
+        if (_levelCompleteLineIndex != 0 && _lineIndex == _levelCompleteLineIndex + 1)
+            NextScene();
 
-        if (_lineIndex == _manInGreenAppearsLineIndex) manInGreen.SetActive(true);
-        if (_lineIndex == _manInGreenDisappearsLineIndex) manInGreen.SetActive(false);
+        if (_lineIndex == _manInGreenAppearsLineIndex && manInGreen) manInGreen.SetActive(true);
+        if (_lineIndex == _manInGreenDisappearsLineIndex && manInGreen) manInGreen.SetActive(false);
     }
 
     private void NextScene()
     {
+        _lineIndex = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -338,10 +360,40 @@ public class LevelManager : MonoBehaviour
             // all the information the logic needs:
             // line text, action at the end of the line, delay, what lines to go to next, etc.
             // like the node approach in Yarn Spinner
-            if (_audioSource.isPlaying) yield return new WaitForSeconds(_audioSource.clip.length);
+            if (_audioSource.isPlaying && !force) yield return new WaitForSeconds(_audioSource.clip.length);
             yield return new WaitForSeconds(_lines[_lineIndex - 1].GoToNextIn);
 
             StartCoroutine(ReadNextLine());
         }
+    }
+
+    public void AfraidToCrossTheRoad()
+    {
+        if (_afraidToCrossTheRoadSeen) return;
+
+        _lineIndex = _afraidToCrossTheRoadLineIndex;
+        _afraidToCrossTheRoadSeen = true;
+        StopAllCoroutines();
+        StartCoroutine(ReadNextLine(true));
+    }
+
+    public void AfraidToGetLost()
+    {
+        if (_afraidToGetLostSeen) return;
+
+        _lineIndex = _afraidToGetLostLineIndex;
+        _afraidToGetLostSeen = true;
+        StopAllCoroutines();
+        StartCoroutine(ReadNextLine(true));
+    }
+
+    public void NotHisHouse()
+    {
+        if (_notHisHouseSeen) return;
+
+        _lineIndex = _notHisHouseLineIndex;
+        _notHisHouseSeen = true;
+        StopAllCoroutines();
+        StartCoroutine(ReadNextLine(true));
     }
 }

@@ -6,12 +6,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isControllingTime;
     [SerializeField] private GameObject target;
     [SerializeField] private CollectWeapon collectWeapon;
-    private TimeController timeController;
-    private bool triggeredCollectWeapon;
+    private Vector3 _originalScale;
+    private TimeController _timeController;
+    private bool _triggeredCollectWeapon;
 
     private void Start()
     {
-        timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
+        _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
+        _originalScale = transform.localScale;
     }
 
     private void Update()
@@ -28,18 +30,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Wall")) transform.position = transform.position;
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            transform.position = transform.position;
+
+            if (col.gameObject.name == "GetLostBoundary")
+                GameObject.Find("LevelManager").GetComponent<LevelManager>().AfraidToGetLost();
+
+            if (col.gameObject.name == "CrossTheRoadBoundary")
+                GameObject.Find("LevelManager").GetComponent<LevelManager>().AfraidToCrossTheRoad();
+
+            if (col.gameObject.name == "NotHisHouseBoundary")
+                GameObject.Find("LevelManager").GetComponent<LevelManager>().NotHisHouse();
+        }
     }
 
     private void ControlTime(Vector2 movementVector)
     {
         if (movementVector != Vector2.zero)
         {
-            if (isControllingTime && !timeController.isTimeSlowed) timeController.SlowTime();
+            if (isControllingTime && !_timeController.isTimeSlowed) _timeController.SlowTime();
         }
-        else if (isControllingTime && timeController.isTimeSlowed)
+        else if (isControllingTime && _timeController.isTimeSlowed)
         {
-            timeController.NormalTime();
+            _timeController.NormalTime();
         }
     }
 
@@ -50,20 +64,20 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) movementVector += Vector2.up * normalizedSpeed;
         if (Input.GetKey(KeyCode.A))
         {
-            transform.localScale = new Vector3(-8, 8, 1);
+            transform.localScale = new Vector3(-_originalScale.x, _originalScale.y, _originalScale.z);
             movementVector += Vector2.left * normalizedSpeed;
         }
 
         if (Input.GetKey(KeyCode.S)) movementVector += Vector2.down * normalizedSpeed;
         if (Input.GetKey(KeyCode.D))
         {
-            transform.localScale = new Vector3(8, 8, 1);
+            transform.localScale = _originalScale;
             movementVector += Vector2.right * normalizedSpeed;
         }
 
         if (movementVector != Vector2.zero)
         {
-            if (!isControllingTime && timeController.isTimeSlowed) transform.Translate(movementVector * 0.1f);
+            if (!isControllingTime && _timeController.isTimeSlowed) transform.Translate(movementVector * 0.1f);
             else transform.Translate(movementVector);
         }
 
@@ -72,14 +86,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectNearWeapon()
     {
-        if (!collectWeapon || triggeredCollectWeapon || !target) return;
+        if (!collectWeapon || _triggeredCollectWeapon || !target) return;
 
         var position1 = (Vector2)transform.position;
         var distance = Vector2.Distance(target.transform.position, position1);
         if (distance <= 4.4f && target)
         {
             collectWeapon.Trigger(target.transform);
-            triggeredCollectWeapon = true;
+            _triggeredCollectWeapon = true;
         }
     }
 }

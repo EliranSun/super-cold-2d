@@ -6702,6 +6702,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1303976365}
     m_Modifications:
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.037
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 757115010692735631, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696721066785475610, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839522142086771362, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580416627961616116, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5580416627961616117, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6757,6 +6801,10 @@ PrefabInstance:
     - target: {fileID: 5580416627961616119, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580416627961616119, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5580416627961616119, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
       propertyPath: m_IsActive
