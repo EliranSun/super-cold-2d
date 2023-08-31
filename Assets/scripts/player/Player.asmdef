@@ -1,0 +1,19 @@
+{
+    "name": "Player",
+    "rootNamespace": "",
+    "references": [
+        "Level",
+        "Weapon",
+        "Dialogue",
+        "Enemy"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
