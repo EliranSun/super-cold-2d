@@ -6,26 +6,31 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isControllingTime;
     [SerializeField] private GameObject target;
     [SerializeField] private CollectWeapon collectWeapon;
+    private CharacterController _controller;
     private Vector3 _originalScale;
+    private Rigidbody2D _rigidbody;
     private TimeController _timeController;
     private bool _triggeredCollectWeapon;
 
     private void Start()
     {
+        _controller = GetComponent<CharacterController>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         _originalScale = transform.localScale;
     }
 
     private void Update()
     {
-        var movementVector = Move();
+        var movementVector = MoveRigidbody();
         ControlTime(movementVector);
         DetectNearWeapon();
     }
 
     private void OnDisable()
     {
-        if (isControllingTime) ControlTime(Vector2.zero);
+        if (isControllingTime)
+            ControlTime(Vector2.zero);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -57,7 +62,43 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private Vector2 Move()
+    private Vector2 MoveCharacter()
+    {
+        var normalizedSpeed = speed * Time.deltaTime;
+        var movementVector = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.W)) movementVector += Vector2.up * normalizedSpeed;
+        if (Input.GetKey(KeyCode.A)) movementVector += Vector2.left * normalizedSpeed;
+        if (Input.GetKey(KeyCode.S)) movementVector += Vector2.down * normalizedSpeed;
+        if (Input.GetKey(KeyCode.D)) movementVector += Vector2.right * normalizedSpeed;
+
+        if (movementVector != Vector2.zero)
+        {
+            if (!isControllingTime && _timeController.isTimeSlowed) _controller.Move(movementVector * 0.1f);
+            else _controller.Move(movementVector);
+        }
+
+        return movementVector;
+    }
+
+    private Vector2 MoveRigidbody()
+    {
+        var moveHorizontal = Input.GetAxis("Horizontal");
+        var moveVertical = Input.GetAxis("Vertical");
+
+        if ((moveHorizontal > 0 && transform.localScale.x < 0) || (moveHorizontal < 0 && transform.localScale.x > 0))
+            transform.localScale = new Vector3(
+                -transform.localScale.x,
+                transform.localScale.y,
+                transform.localScale.z
+            );
+
+        var movement = new Vector2(moveHorizontal, moveVertical);
+        _rigidbody.velocity = movement * speed;
+        return movement;
+    }
+
+    private Vector2 MoveTransform()
     {
         var normalizedSpeed = speed * Time.deltaTime;
         var movementVector = Vector2.zero;

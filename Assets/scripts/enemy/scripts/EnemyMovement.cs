@@ -75,7 +75,12 @@ public class EnemyMovement : MonoBehaviour
         if (!playerPosition) return;
 
         var isPlayerToTheLeft = playerPosition.position.x < transform.position.x;
-        transform.localScale = isPlayerToTheLeft ? new Vector3(-8, 8, 1) : new Vector3(8, 8, 1);
+        if ((isPlayerToTheLeft && transform.localScale.x > 0) || (!isPlayerToTheLeft && transform.localScale.x < 0))
+            transform.localScale = new Vector3(
+                -transform.localScale.x,
+                transform.localScale.y,
+                transform.localScale.z
+            );
     }
 
     private void ControlTime(bool isMoving)
