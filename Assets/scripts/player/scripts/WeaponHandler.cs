@@ -8,14 +8,25 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private TimeController timeController;
     [SerializeField] private Camera mainCamera;
-
     private readonly int _radius = 4;
+    private bool _isActive;
 
     private void Update()
     {
+        if (!_isActive) return;
+
         PositionWeapon();
 
         if (Input.GetMouseButtonDown(0))
+            ShootBullet();
+    }
+
+    public void OnNotify(string message)
+    {
+        if (message == WeaponActions.PlayerCollected.ToString())
+            _isActive = true;
+
+        if (message == WeaponActions.EnemyFiredShot.ToString())
             ShootBullet();
     }
 
@@ -60,11 +71,19 @@ public class WeaponHandler : MonoBehaviour
 
     private void ShootBullet()
     {
-        var transform1 = transform;
-        Instantiate(
-            bulletPrefab,
-            (Vector2)transform1.position + Vector2.left * 1.5f,
-            transform1.rotation
-        );
+        // newBullet.GetComponent<BulletForce>().isBouncy = isBulletBouncy;
+
+        var rotation = Quaternion.Euler(0, 0, transform.localEulerAngles.z - 90);
+        // should be in front of the weapon
+        var position = transform.position + transform.right * 2;
+
+
+        Instantiate(bulletPrefab, position, rotation);
+        Invoke(nameof(Foo), 0.1f);
+    }
+
+    private void Foo()
+    {
+        print("bullet fired");
     }
 }

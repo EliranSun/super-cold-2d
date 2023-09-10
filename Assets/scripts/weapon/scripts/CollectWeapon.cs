@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class CollectWeapon : MonoBehaviour
+public class CollectWeapon : ObserverSubject
 {
-    private const int timeToCollect = 3;
+    private const int TimeToCollect = 3;
     public bool isTriggered;
     public bool targetAcquired;
     [SerializeField] private TextMeshProUGUI weaponPickupText;
@@ -19,10 +19,10 @@ public class CollectWeapon : MonoBehaviour
             return;
         }
 
-        if (_timeOnTarget <= timeToCollect)
+        if (_timeOnTarget <= TimeToCollect)
         {
             _timeOnTarget += Time.deltaTime;
-            if (weaponPickupText) weaponPickupText.text = $"{timeToCollect - _timeOnTarget}";
+            if (weaponPickupText) weaponPickupText.text = $"{TimeToCollect - _timeOnTarget}";
         }
         else
         {
@@ -35,8 +35,7 @@ public class CollectWeapon : MonoBehaviour
     {
         if (!_weaponTarget) return;
         _weaponTarget.parent = transform;
-        // FIXME: Weapon cannot point to player due to cyclic dependency
-        // _weaponTarget.GetComponent<WeaponHandler>().enabled = true;
+        NotifyObservers(WeaponActions.PlayerCollected);
         ResetParams();
     }
 
@@ -45,10 +44,7 @@ public class CollectWeapon : MonoBehaviour
         if (!_weaponTarget) return;
 
         _weaponTarget.parent = transform;
-        // FIXME: Weapon cannot point to enemy due to cyclic dependency
-        // _weaponTarget.GetComponent<LookAtPlayer>().enabled = true;
-        // GetComponent<NpcShootBullets>().enabled = true;
-
+        NotifyObservers(WeaponActions.EnemyCollected);
         ResetParams();
     }
 

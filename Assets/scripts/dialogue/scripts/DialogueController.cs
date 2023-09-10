@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioClip[] isDeadSequence;
+    private AudioSource _audioSource;
+
+    private void Awake()
     {
-        
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnNotify(string message)
     {
-        
+        if (message == PlayerActions.IsDead.ToString())
+            Invoke(nameof(IsDeadSequence), 10f);
+    }
+
+    private void IsDeadSequence()
+    {
+        _audioSource.clip = isDeadSequence[0];
+        _audioSource.Play();
     }
 }

@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private CharacterController _characterController;
     private CollectWeapon _collectWeapon;
     private Vector2 _direction;
+    private SpriteRenderer _spriteRenderer;
     private bool _targetAcquired;
     private Vector2 _targetPosition;
     private TimeController _timeController;
@@ -21,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         _collectWeapon = GetComponent<CollectWeapon>();
         _characterController = GetComponent<CharacterController>();
@@ -75,13 +77,10 @@ public class EnemyMovement : MonoBehaviour
         if (!playerPosition) return;
 
         var isPlayerToTheLeft = playerPosition.position.x < transform.position.x;
-        if ((isPlayerToTheLeft && transform.localScale.x > 0) || (!isPlayerToTheLeft && transform.localScale.x < 0))
-            transform.localScale = new Vector3(
-                -transform.localScale.x,
-                transform.localScale.y,
-                transform.localScale.z
-            );
+        if ((isPlayerToTheLeft && !_spriteRenderer.flipX) || (!isPlayerToTheLeft && _spriteRenderer.flipX))
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
     }
+
 
     private void ControlTime(bool isMoving)
     {
@@ -105,7 +104,7 @@ public class EnemyMovement : MonoBehaviour
         _direction = _targetPosition - position1;
         var distance = Vector2.Distance(_targetPosition, position1);
 
-        if (distance <= 4.4f)
+        if (distance <= 6f)
         {
             if (target) _collectWeapon.Trigger(target);
             else _targetPosition = GetRandomVectorWithinLevelBounds();

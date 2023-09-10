@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class BulletForce : MonoBehaviour
+public class BulletForce : ObserverSubject
 {
     private const int MaxHits = 15;
     [SerializeField] private LayerMask detectableObjects;
     public bool isBouncy = true;
-    private readonly float _force = 2500f;
+    private readonly float _force = 3500f;
     private readonly float _slowMotionForce = 10f;
     private int _currentHits;
     private bool _isBulletSlowed;
@@ -17,8 +17,9 @@ public class BulletForce : MonoBehaviour
     {
         _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         _rigidbody = GetComponent<Rigidbody2D>();
-
         _rigidbody.AddForce(transform.up * _force * _timeController.timeScale);
+
+        // observers.AddListener(GameObject.Find("Player").GetComponent<PlayerAnimation>().OnNotify);
         // if (_timeController.isTimeSlowed) _rigidbody.velocity /= slowMotionForce;
     }
 
@@ -47,7 +48,8 @@ public class BulletForce : MonoBehaviour
 
         if (col.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<ExplodeOnDeath>().TriggerDeath();
+            // col.gameObject.GetComponent<ExplodeOnDeath>().TriggerDeath();
+            // NotifyObservers(WeaponActions.PlayerHit);
             Destroy(gameObject);
             return;
         }

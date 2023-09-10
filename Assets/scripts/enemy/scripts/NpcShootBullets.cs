@@ -1,17 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class NpcShootBullets : MonoBehaviour
+public class NpcShootBullets : ObserverSubject
 {
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float shootInterval = 4f;
-    [SerializeField] private Transform weaponTransform; // TODO: Actually get the current weapon transform
     [SerializeField] private GameObject player;
-    [SerializeField] private bool isBulletBouncy = true;
 
-    private void OnEnable()
+    public void OnNotify(string message)
     {
-        Invoke(nameof(ShootBulletsRoutine), 1f);
+        if (message == WeaponActions.EnemyCollected.ToString())
+            Invoke(nameof(ShootBulletsRoutine), 1f);
     }
 
     private void ShootBulletsRoutine()
@@ -29,9 +27,7 @@ public class NpcShootBullets : MonoBehaviour
     {
         while (player != null)
         {
-            var bulletPosition = weaponTransform.position + weaponTransform.up * 5;
-            var newBullet = Instantiate(bulletPrefab, bulletPosition, weaponTransform.rotation);
-            newBullet.GetComponent<BulletForce>().isBouncy = isBulletBouncy;
+            NotifyObservers(WeaponActions.EnemyFiredShot);
             yield return new WaitForSeconds(shootInterval);
         }
     }

@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Enemy
   - LevelManager
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
+  - Furniture
   - 
   - 
   - 

@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : ObserverSubject
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private bool isControllingTime;
     [SerializeField] private GameObject target;
-    [SerializeField] private CollectWeapon collectWeapon;
+    [SerializeField] private bool godMode;
+    private CollectWeapon _collectWeapon;
     private CharacterController _controller;
     private Vector3 _originalScale;
     private Rigidbody2D _rigidbody;
     private TimeController _timeController;
     private bool _triggeredCollectWeapon;
+    private bool isDead;
 
     private void Start()
     {
+        _collectWeapon = GetComponent<CollectWeapon>();
         _controller = GetComponent<CharacterController>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
@@ -22,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isDead)
+            return;
+
         var movementVector = MoveRigidbody();
         ControlTime(movementVector);
         DetectNearWeapon();
@@ -47,6 +53,15 @@ public class PlayerMovement : MonoBehaviour
 
             if (col.gameObject.name == "NotHisHouseBoundary")
                 GameObject.Find("LevelManager").GetComponent<LevelManager>().NotHisHouse();
+        }
+
+        if (col.gameObject.CompareTag("Bullet"))
+        {
+            isDead = true;
+            var directionOfHit = transform.position - col.transform.position;
+            var force = directionOfHit.normalized * 100f;
+            _rigidbody.AddForce(force);
+            NotifyObservers(PlayerActions.IsDead);
         }
     }
 
@@ -127,13 +142,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetectNearWeapon()
     {
-        if (!collectWeapon || _triggeredCollectWeapon || !target) return;
+        if (_triggeredCollectWeapon || !target) return;
 
         var position1 = (Vector2)transform.position;
         var distance = Vector2.Distance(target.transform.position, position1);
-        if (distance <= 4.4f && target)
+        if (distance <= 6f && target)
         {
-            collectWeapon.Trigger(target.transform);
+            _collectWeapon.Trigger(target.transform);
             _triggeredCollectWeapon = true;
         }
     }
