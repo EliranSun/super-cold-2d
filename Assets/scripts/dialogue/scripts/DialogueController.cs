@@ -1,15 +1,17 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DialogueController : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] isDeadSequence;
+    [FormerlySerializedAs("DeathSequence")] [FormerlySerializedAs("isDeadSequence")] [SerializeField]
+    private AudioClip[] deathSequence;
+
     private AudioSource _audioSource;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
     }
-
 
     public void OnNotify(string message)
     {
@@ -19,7 +21,7 @@ public class DialogueController : MonoBehaviour
 
     private void IsDeadSequence()
     {
-        _audioSource.clip = isDeadSequence[0];
+        _audioSource.clip = deathSequence[0];
         _audioSource.Play();
     }
 }

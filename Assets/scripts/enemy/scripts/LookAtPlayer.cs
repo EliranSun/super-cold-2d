@@ -22,7 +22,6 @@ public class LookAtPlayer : MonoBehaviour
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var targetRotation = Quaternion.FromToRotation(Vector3.forward, direction);
 
-        print($"ANGLE: {angle}, TARGET ROTATION: {targetRotation}");
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 

@@ -6878,7 +6878,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6aca39b3c3f4cc287ff407ed790356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDeadSequence: []
+  isDeadSequence:
+  - {fileID: 8300000, guid: 7a0e86e1b30d941ec941dd4c56b57908, type: 3}
+  - {fileID: 8300000, guid: bab7f72f0de964e829937155213c8657, type: 3}
+  - {fileID: 8300000, guid: 7c1fd1178ba5a4f7a9bfb7925ffa755c, type: 3}
+  - {fileID: 8300000, guid: 30bb5b8ae63bf42de80ba8a508d7f13c, type: 3}
+  - {fileID: 8300000, guid: b5c38a01dade94842a23221ffa42fc47, type: 3}
+  - {fileID: 8300000, guid: 36cec55a2ac2a4418b817525e4867aae, type: 3}
+  - {fileID: 8300000, guid: c23482a525b0141be8b45112686cf085, type: 3}
+  - {fileID: 8300000, guid: a670e6d1da8434481836fbdee68b4675, type: 3}
+  - {fileID: 8300000, guid: 5b94d13060d6d401aa77574b14661325, type: 3}
+  - {fileID: 8300000, guid: 6a2b7cb5f993f485b8b7d6c0f4f4e755, type: 3}
+  - {fileID: 8300000, guid: 3b5945d0e2bb344de898b69de681f608, type: 3}
+  - {fileID: 8300000, guid: 3915e1f4fcd0c42398c02a849ebf8f7c, type: 3}
+  - {fileID: 8300000, guid: c14fbc862e61f4edb8850620126dbebf, type: 3}
+  - {fileID: 8300000, guid: bbf2c9d81b4e2416abc64e9d3b4d47e1, type: 3}
+  - {fileID: 8300000, guid: 66a9f0a8c522d44e28b5ca10e4a16d3b, type: 3}
+  - {fileID: 8300000, guid: 2e0d5953799e5470dbbe74579962ac9f, type: 3}
+  - {fileID: 8300000, guid: b2f44ac2d29764bf8aeebe87cf0ba78f, type: 3}
+  - {fileID: 8300000, guid: c4969316913f349eba9e9e5282a73a2f, type: 3}
+  - {fileID: 8300000, guid: 3292056922e40404b8898e4894e06fef, type: 3}
+  - {fileID: 8300000, guid: e336a069113ad4dfa9588a9235de2af7, type: 3}
+  - {fileID: 8300000, guid: f65213b4cc9e74244822fdef0c3c3153, type: 3}
 --- !u!1 &1922998275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5580416627961616119, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
