@@ -5,7 +5,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform playerPosition;
     [SerializeField] public Transform target;
-    [SerializeField] private float speed = 15f;
+    [SerializeField] public float speed = 15f;
     [SerializeField] private float slowedSpeed = 1f;
     [SerializeField] private bool isControllingTime;
     [SerializeField] private TimeController timeController;
@@ -36,13 +36,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (isControllingTime)
         {
-            if (IsOutOfBounds(_direction))
-            {
-                timeController.NormalTime();
-                return;
-            }
-
-            _characterController.Move(_direction.normalized * (Time.deltaTime * speed));
+            if (IsOutOfBounds(_direction)) timeController.NormalTime();
+            else _characterController.Move(_direction.normalized * (Time.deltaTime * speed));
             return;
         }
 
@@ -84,19 +79,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void ControlTime(bool isMoving)
     {
-        if (isMoving)
-        {
-            if (isControllingTime && !timeController.isTimeSlowed) timeController.SlowTime();
-        }
-        else if (isControllingTime && timeController.isTimeSlowed)
-        {
-            timeController.NormalTime();
-        }
+        if (isMoving && isControllingTime && !timeController.isTimeSlowed) timeController.SlowTime();
+        else if (isControllingTime && timeController.isTimeSlowed) timeController.NormalTime();
     }
 
     private void MoveToTarget()
     {
-        if (_collectWeapon.targetAcquired) return;
+        if (target && _collectWeapon.targetAcquired) return;
 
         if (target) _targetPosition = target.position;
 
@@ -115,6 +104,11 @@ public class EnemyMovement : MonoBehaviour
             _characterController.Move(_direction.normalized * (Time.deltaTime * slowedSpeed));
         else
             _characterController.Move(_direction.normalized * (Time.deltaTime * speed));
+    }
+
+    public void OnNotify(string message)
+    {
+        if (message == PlayerActions.IsDead.ToString()) target = null;
     }
 
     private Vector2 GetRandomVectorWithinLevelBounds()

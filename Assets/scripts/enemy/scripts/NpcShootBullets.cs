@@ -4,28 +4,28 @@ using UnityEngine;
 public class NpcShootBullets : ObserverSubject
 {
     [SerializeField] private float shootInterval = 4f;
-    [SerializeField] private GameObject player;
+    private bool _isPlayerDead;
 
     public void OnNotify(string message)
     {
         if (message == WeaponActions.EnemyCollected.ToString())
             Invoke(nameof(ShootBulletsRoutine), 1f);
+
+        if (message == PlayerActions.IsDead.ToString())
+        {
+            StopCoroutine(ShootBullets());
+            _isPlayerDead = true;
+        }
     }
 
     private void ShootBulletsRoutine()
     {
-        if (player == null)
-        {
-            StopCoroutine(ShootBullets());
-            return;
-        }
-
         StartCoroutine(ShootBullets());
     }
 
     private IEnumerator ShootBullets()
     {
-        while (player != null)
+        while (!_isPlayerDead)
         {
             NotifyObservers(WeaponActions.EnemyFiredShot);
             yield return new WaitForSeconds(shootInterval);

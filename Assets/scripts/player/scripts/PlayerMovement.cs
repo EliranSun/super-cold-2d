@@ -8,11 +8,11 @@ public class PlayerMovement : ObserverSubject
     [SerializeField] private bool godMode;
     private CollectWeapon _collectWeapon;
     private CharacterController _controller;
+    private bool _isDead;
     private Vector3 _originalScale;
     private Rigidbody2D _rigidbody;
     private TimeController _timeController;
     private bool _triggeredCollectWeapon;
-    private bool isDead;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class PlayerMovement : ObserverSubject
 
     private void Update()
     {
-        if (isDead)
+        if (_isDead)
             return;
 
         var movementVector = MoveRigidbody();
@@ -57,10 +57,11 @@ public class PlayerMovement : ObserverSubject
 
         if (col.gameObject.CompareTag("Bullet"))
         {
-            isDead = true;
+            _isDead = true;
             var directionOfHit = transform.position - col.transform.position;
             var force = directionOfHit.normalized * 100f;
             _rigidbody.AddForce(force);
+            _timeController.isTimeSlowed = true;
             NotifyObservers(PlayerActions.IsDead);
         }
     }
