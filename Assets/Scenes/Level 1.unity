@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 482732483}
   - component: {fileID: 482732482}
   m_Layer: 0
-  m_Name: binary
+  m_Name: binary-start-explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 1055640667}
   - component: {fileID: 1055640666}
   m_Layer: 0
-  m_Name: supernova-2_0
+  m_Name: supernova-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1489,6 +1489,7 @@ GameObject:
   - component: {fileID: 1138687395}
   - component: {fileID: 1138687397}
   - component: {fileID: 1138687396}
+  - component: {fileID: 1138687398}
   m_Layer: 0
   m_Name: StarsExplosion
   m_TagString: Untagged
@@ -1589,6 +1590,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1138687398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138687394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6d01610f5cb4d8e8451ecc7406f8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stars:
+  - {fileID: 1324742428}
+  - {fileID: 1055640664}
+  - {fileID: 1153827021}
+  - {fileID: 1896229435}
+  - {fileID: 482732481}
+  - {fileID: 1648129229}
 --- !u!1 &1153827021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,7 +1621,7 @@ GameObject:
   - component: {fileID: 1153827024}
   - component: {fileID: 1153827023}
   m_Layer: 0
-  m_Name: sun-explode_0
+  m_Name: sun-explode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1779,7 +1799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251394588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.14, y: -4.56, z: 0}
+  m_LocalPosition: {x: -26.7, y: -1.2, z: 0}
   m_LocalScale: {x: 12, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6737,7 +6757,7 @@ GameObject:
   - component: {fileID: 1324742431}
   - component: {fileID: 1324742430}
   m_Layer: 0
-  m_Name: supernova-3_0
+  m_Name: supernova-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6953,7 +6973,7 @@ GameObject:
   - component: {fileID: 1648129232}
   - component: {fileID: 1648129231}
   m_Layer: 0
-  m_Name: supernova_0
+  m_Name: supernova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7383,7 +7403,7 @@ GameObject:
   - component: {fileID: 1896229438}
   - component: {fileID: 1896229437}
   m_Layer: 0
-  m_Name: quasar-explode_0
+  m_Name: quasar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
