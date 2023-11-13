@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class PlayerMovement : ObserverSubject
 {
+    private static readonly int IsWalkingHorizontal = Animator.StringToHash("IsWalkingHorizontal");
     [SerializeField] private float speed = 10f;
     [SerializeField] private bool isControllingTime;
     [SerializeField] private GameObject target;
-    [SerializeField] private bool godMode;
+    [SerializeField] private TimeController timeController;
     private CollectWeapon _collectWeapon;
     private CharacterController _controller;
     private bool _isDead;
+    private Animator _legsAnimator;
     private Vector3 _originalScale;
     private Rigidbody2D _rigidbody;
-    private TimeController _timeController;
     private bool _triggeredCollectWeapon;
 
     private void Start()
     {
+        _legsAnimator = GameObject.Find("Legs").GetComponent<Animator>();
         _collectWeapon = GetComponent<CollectWeapon>();
         _controller = GetComponent<CharacterController>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _timeController = GameObject.Find("TimeController").GetComponent<TimeController>();
         _originalScale = transform.localScale;
     }
 
@@ -61,7 +62,7 @@ public class PlayerMovement : ObserverSubject
             var directionOfHit = transform.position - col.transform.position;
             var force = directionOfHit.normalized * 100f;
             _rigidbody.AddForce(force);
-            _timeController.isTimeSlowed = true;
+            timeController.isTimeSlowed = true;
             NotifyObservers(PlayerActions.IsDead);
         }
     }
@@ -70,11 +71,11 @@ public class PlayerMovement : ObserverSubject
     {
         if (movementVector != Vector2.zero)
         {
-            if (isControllingTime && !_timeController.isTimeSlowed) _timeController.SlowTime();
+            if (isControllingTime && !timeController.isTimeSlowed) timeController.SlowTime();
         }
-        else if (isControllingTime && _timeController.isTimeSlowed)
+        else if (isControllingTime && timeController.isTimeSlowed)
         {
-            _timeController.NormalTime();
+            timeController.NormalTime();
         }
     }
 
@@ -90,7 +91,7 @@ public class PlayerMovement : ObserverSubject
 
         if (movementVector != Vector2.zero)
         {
-            if (!isControllingTime && _timeController.isTimeSlowed) _controller.Move(movementVector * 0.1f);
+            if (!isControllingTime && timeController.isTimeSlowed) _controller.Move(movementVector * 0.1f);
             else _controller.Move(movementVector);
         }
 
@@ -103,14 +104,15 @@ public class PlayerMovement : ObserverSubject
         var moveVertical = Input.GetAxis("Vertical");
 
         if ((moveHorizontal > 0 && transform.localScale.x < 0) || (moveHorizontal < 0 && transform.localScale.x > 0))
-            transform.localScale = new Vector3(
-                -transform.localScale.x,
-                transform.localScale.y,
-                transform.localScale.z
-            );
+        {
+            var localScale = transform.localScale;
+            transform.localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
+        }
 
         var movement = new Vector2(moveHorizontal, moveVertical);
         _rigidbody.velocity = movement * speed;
+        _legsAnimator.SetBool(IsWalkingHorizontal, moveHorizontal != 0 || moveVertical != 0);
+
         return movement;
     }
 
@@ -134,7 +136,7 @@ public class PlayerMovement : ObserverSubject
 
         if (movementVector != Vector2.zero)
         {
-            if (!isControllingTime && _timeController.isTimeSlowed) transform.Translate(movementVector * 0.1f);
+            if (!isControllingTime && timeController.isTimeSlowed) transform.Translate(movementVector * 0.1f);
             else transform.Translate(movementVector);
         }
 

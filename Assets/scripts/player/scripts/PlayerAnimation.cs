@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private static readonly int IsDead = Animator.StringToHash("isDead");
+    private static readonly int IsDead = Animator.StringToHash("IsDead");
     private Animator _animator;
 
     public void Awake()
