@@ -16,12 +16,15 @@ public class ManInGreenAttacks : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         // player bullets
-        if (col.gameObject.CompareTag("Bullet")) TeleportToRandomPoint();
+        if (col.gameObject.CompareTag("Bullet"))
+        {
+            TeleportToRandomPoint();
+            Attack();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        // the green energy orbs
         if (col.gameObject.CompareTag("Bullet")) TeleportToRandomPoint();
     }
 
@@ -51,8 +54,6 @@ public class ManInGreenAttacks : MonoBehaviour
         var randomIndex = Random.Range(0, positionPoints.Length - 1);
         var randomPosition = positionPoints[randomIndex].position;
         transform.position = randomPosition;
-
-        Attack();
     }
 
     private void EmanateFire(int radius, int fireballCount, float rotationSpeed = 60f)
