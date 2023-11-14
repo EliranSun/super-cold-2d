@@ -8,35 +8,44 @@ internal class Dialogue
     [FormerlySerializedAs("Audio")] public AudioClip audio;
     [FormerlySerializedAs("Text")] public string text;
     public float waitInMs;
-    public int nextDialogueId;
     public DialogueTrigger trigger;
+    public Guid ID = Guid.NewGuid();
 
-    public Dialogue(string text, AudioClip audio, float waitInMs = 0)
+    public Dialogue(string text, AudioClip audio, DialogueTrigger trigger, float waitInMs = 0)
     {
         this.text = text;
         this.audio = audio;
         this.waitInMs = waitInMs;
-    }
-
-    public Dialogue(string text, AudioClip audio, int nextDialogueId, DialogueTrigger trigger, float waitInMs = 0)
-    {
-        this.text = text;
-        this.audio = audio;
-        this.waitInMs = waitInMs;
-        this.nextDialogueId = nextDialogueId;
         this.trigger = trigger;
     }
 }
 
+public enum BaseDialogueTrigger
+{
+}
+
 public enum DialogueTrigger
 {
-    ShotGreenManForTheFirstTime
+    None,
+    LevelRestart,
+    LevelStart,
+    PlayerDies,
+    EnemyDies,
+    RestartedAnyway,
+    ShotGreenManForTheFirstTime,
+    GreenManKilled
 }
 
 public class DialogueConfig : MonoBehaviour
 {
     [SerializeField] private int startDialogueId;
     [SerializeField] private Dialogue[] dialogues;
+    [SerializeField] private int activeDialogueIndex;
+
+    private void Awake()
+    {
+        activeDialogueIndex = startDialogueId;
+    }
 
     public void OnNotify(DialogueTrigger trigger)
     {
