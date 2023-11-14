@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class RotateAndFireProjectiles : MonoBehaviour
 {
-    [SerializeField] private float speed = 60f;
-    [SerializeField] private int rotationCount = 1;
+    private const float Force = 30f;
+    private const int RotationCount = 1;
     private bool _areProjectilesLaunched;
     private Transform[] _children;
     private float _totalRotation;
+    private float speed = 60f;
 
     private void Update()
     {
@@ -15,9 +16,7 @@ public class RotateAndFireProjectiles : MonoBehaviour
 
     private void RotateAndIncreaseSpeed()
     {
-        print(_totalRotation);
-
-        if (_totalRotation >= rotationCount * 360)
+        if (_totalRotation >= RotationCount * 360)
         {
             if (!_areProjectilesLaunched)
             {
@@ -37,7 +36,10 @@ public class RotateAndFireProjectiles : MonoBehaviour
     private void LaunchProjectiles()
     {
         foreach (Transform child in transform)
-            child.GetComponent<Rigidbody2D>().velocity = child.up * 10f;
+        {
+            child.gameObject.AddComponent<TimeControlledObject>();
+            child.GetComponent<Rigidbody2D>().AddForce(child.up * Force, ForceMode2D.Impulse);
+        }
     }
 
     public void SetSpeed(float newSpeed)

@@ -4,16 +4,17 @@ public class WeaponHandler : MonoBehaviour
 {
     private const float SlowedDownSpeed = 0.3f;
     private const float NormalSpeed = 1f;
+    private const int Radius = 4;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private TimeController timeController;
     [SerializeField] private Camera mainCamera;
-    private readonly int _radius = 4;
-    private bool _isActive;
+    [SerializeField] private bool isActive;
+    [SerializeField] private bool isHandledByPlayer;
 
     private void Update()
     {
-        if (!_isActive) return;
+        if (!isActive) return;
 
         PositionWeapon();
 
@@ -24,7 +25,7 @@ public class WeaponHandler : MonoBehaviour
     public void OnNotify(string message)
     {
         if (message == WeaponActions.PlayerCollected.ToString())
-            _isActive = true;
+            isActive = true;
 
         if (message == WeaponActions.EnemyFiredShot.ToString())
             ShootBullet();
@@ -41,7 +42,7 @@ public class WeaponHandler : MonoBehaviour
     {
         var playerPosition = playerTransform.position;
         var toMouse = (mousePosition - playerPosition).normalized;
-        var targetPosition = playerPosition + toMouse * _radius;
+        var targetPosition = playerPosition + toMouse * Radius;
 
         var speed = timeController.isTimeSlowed ? SlowedDownSpeed : NormalSpeed;
         var step = speed * Time.deltaTime;
@@ -60,13 +61,17 @@ public class WeaponHandler : MonoBehaviour
     {
         var direction = mousePosition - transform.position;
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        var targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        var targetRotation = Quaternion.Euler(0f, 0f, angle);
 
-        var rotationSpeed =
-            timeController.isTimeSlowed ? SlowedDownSpeed : NormalSpeed; // Change the rotation speed as needed
-        var step = rotationSpeed * Time.deltaTime;
+        var timeControlledSpeed = timeController.isTimeSlowed
+            ? SlowedDownSpeed
+            : NormalSpeed;
+        var step = timeControlledSpeed * Time.deltaTime;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
+        transform.rotation =
+            isHandledByPlayer
+                ? targetRotation
+                : Quaternion.Slerp(transform.rotation, targetRotation, step);
     }
 
     private void ShootBullet()
