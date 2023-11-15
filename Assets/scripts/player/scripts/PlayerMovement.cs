@@ -11,6 +11,7 @@ public class PlayerMovement : ObserverSubject
     private bool _isWalking;
     private Rigidbody2D _rigidbody;
     private bool _triggeredCollectWeapon;
+    private int _deathCount;
 
     private void Start()
     {

@@ -64,6 +64,11 @@ public class DialogueConfig : MonoBehaviour
     public void OnNotify(DialogueTrigger trigger)
     {
         print($"DialogueConfig OnNotify (DialogueTrigger) {trigger}");
+        TriggerLine(trigger);
+    }
+
+    private void TriggerLine(DialogueTrigger trigger)
+    {
         foreach (var dialogue in dialogues)
             if (dialogue.trigger == trigger)
             {

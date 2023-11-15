@@ -16,6 +16,7 @@ public class ObserverSubject : MonoBehaviour
     {
         print($"NOTIFY OBSERVERS {message}; Observers: {observers}");
         observers?.Invoke(message.ToString());
+        dialogueObservers?.Invoke((DialogueTrigger)message);
     }
 
     protected void NotifyObservers(DialogueTrigger message)
