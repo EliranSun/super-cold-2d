@@ -8,5 +8,10 @@ public enum DialogueTrigger
     EnemyDies,
     RestartedAnyway,
     ShotGreenManForTheFirstTime,
-    GreenManKilled
+    GreenManKilled,
+    PlayerDiesFirstTime,
+    PlayerDiesSecondTime,
+    PlayerDiesThirdTime,
+    OneLastChanceOfDying,
+    PlayerDiesTooManyTimes
 }

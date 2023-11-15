@@ -1,11 +1,12 @@
 using System.Linq;
 using UnityEngine;
 
-public class ManInGreenAttacks : MonoBehaviour
+public class ManInGreenAttacks : ObserverSubject
 {
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform[] positionPoints;
     [SerializeField] private GameObject firePrefab;
+    private bool isShotForTheFirstTime;
 
     private void Update()
     {
@@ -18,6 +19,13 @@ public class ManInGreenAttacks : MonoBehaviour
         // player bullets
         if (col.gameObject.CompareTag("Bullet"))
         {
+            if (!isShotForTheFirstTime)
+            {
+                print("ManInGreenAttacks NotifyObservers");
+                NotifyObservers(DialogueTrigger.ShotGreenManForTheFirstTime);
+                isShotForTheFirstTime = true;
+            }
+
             TeleportToRandomPoint();
             Attack();
         }

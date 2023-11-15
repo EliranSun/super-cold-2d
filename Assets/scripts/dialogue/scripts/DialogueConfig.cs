@@ -45,7 +45,6 @@ public class DialogueConfig : MonoBehaviour
         if (_timeToReadCurrentLine == 0)
             return;
 
-        print($"COUNT TIME FOR DIALOGUE {time}/{_timeToReadCurrentLine}");
         time += Time.deltaTime;
 
         if (time >= _timeToReadCurrentLine)

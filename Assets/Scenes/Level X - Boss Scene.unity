@@ -9969,6 +9969,32 @@ MonoBehaviour:
     text: Freedom.
     waitInMs: 0
     trigger: 0
+  - audio: {fileID: 0}
+    text: Listen to me. I know what you are going to do next. The same thing you
+      did over and over again. Do not reverse time. Take control for once in your
+      sorry life. OK?
+    waitInMs: 0
+    trigger: 9
+  - audio: {fileID: 0}
+    text: Well I mean, what did I expect? You are going to do that again, are you
+      not? Perhaps the next time, I'll just intervene... this lock me in as well,
+      after all
+    waitInMs: 0
+    trigger: 10
+  - audio: {fileID: 0}
+    text: ...
+    waitInMs: 0
+    trigger: 11
+  - audio: {fileID: 0}
+    text: Ok. Enough is enough. No more restarts for you. I mean it. The next time
+      you die - it is game over for you. I will intervene, and you will get stuck.
+      OK?
+    waitInMs: 0
+    trigger: 12
+  - audio: {fileID: 0}
+    text: Sorry. I've had fun, but this is goodbye. Enjoy eternity.
+    waitInMs: 0
+    trigger: 13
 --- !u!1001 &724214231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17387,6 +17413,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33de17fb2ac2401d8469221e7c1cd93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueObservers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 724199982}
+        m_TargetAssemblyTypeName: DialogueConfig, Dialogue
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerTransform: {fileID: 484848308}
   positionPoints:
   - {fileID: 195556572}
