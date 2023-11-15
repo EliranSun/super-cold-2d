@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveRigidBodyParts : MonoBehaviour
+public class MoveRigidBodyParts : ObserverSubject
 {
     private static readonly int IsWalkingHorizontal = Animator.StringToHash("IsWalkingHorizontal");
     [SerializeField] private float speed = 60f;
@@ -8,6 +8,7 @@ public class MoveRigidBodyParts : MonoBehaviour
     [SerializeField] private Animator[] bodyPartsAnimators;
     private bool _isWalking;
     private Rigidbody2D _rigidbody;
+    private bool notifiedObservers;
 
     private void Start()
     {
@@ -27,8 +28,9 @@ public class MoveRigidBodyParts : MonoBehaviour
 
         foreach (var bodyPartSpriteRenderer in bodyPartsSpriteRenderers)
         {
-            var isChangingDirectionToRight = moveHorizontal > 0 && bodyPartSpriteRenderer.flipX;
-            var isChangingDirectionToLeft = moveHorizontal < 0 && !bodyPartSpriteRenderer.flipX;
+            var flipX = bodyPartSpriteRenderer.flipX;
+            var isChangingDirectionToRight = moveHorizontal > 0 && flipX;
+            var isChangingDirectionToLeft = moveHorizontal < 0 && !flipX;
 
             if (isChangingDirectionToRight || isChangingDirectionToLeft)
                 bodyPartSpriteRenderer.flipX = !bodyPartSpriteRenderer.flipX;
@@ -40,5 +42,11 @@ public class MoveRigidBodyParts : MonoBehaviour
 
         var movement = new Vector2(moveHorizontal, moveVertical);
         _rigidbody.velocity = movement * speed;
+
+        if (_isWalking && !notifiedObservers)
+        {
+            NotifyObservers(DialogueTrigger.PlayerMoved);
+            notifiedObservers = true;
+        }
     }
 }

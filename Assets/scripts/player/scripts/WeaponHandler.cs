@@ -24,6 +24,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void OnNotify(string message)
     {
+        print($"WeaponHandler OnNotify {message}");
         if (message == WeaponActions.PlayerCollected.ToString())
             isActive = true;
 

@@ -1,20 +1,21 @@
 {
-  "name": "Player",
-  "rootNamespace": "",
-  "references": [
-    "Level",
-    "Weapon",
-    "Dialogue",
-    "Enemy",
-    "Observer"
-  ],
-  "includePlatforms": [],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": true,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+    "name": "Player",
+    "rootNamespace": "",
+    "references": [
+        "Level",
+        "Weapon",
+        "Dialogue",
+        "Enemy",
+        "Observer",
+        "A"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -1,3 +1,16 @@
 {
-	"name": "Observer"
+    "name": "Observer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:49f3921de20534047a1bc0f78ab618e3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,41 +21,67 @@ internal class Dialogue
     }
 }
 
-public enum BaseDialogueTrigger
-{
-}
-
-public enum DialogueTrigger
-{
-    None,
-    LevelRestart,
-    LevelStart,
-    PlayerDies,
-    EnemyDies,
-    RestartedAnyway,
-    ShotGreenManForTheFirstTime,
-    GreenManKilled
-}
 
 public class DialogueConfig : MonoBehaviour
 {
-    [SerializeField] private int startDialogueId;
-    [SerializeField] private Dialogue[] dialogues;
+    [SerializeField] private int averageWordsPerMinute = 300;
+    [SerializeField] private TextMeshProUGUI dialogueLineContainer;
+    [SerializeField] private int startDialogueIndex;
     [SerializeField] private int activeDialogueIndex;
+    [SerializeField] private Dialogue[] dialogues;
+    private float _timeToReadCurrentLine;
+    private float time;
 
     private void Awake()
     {
-        activeDialogueIndex = startDialogueId;
+        activeDialogueIndex = startDialogueIndex;
+
+        if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
+            ReadLine(dialogues[activeDialogueIndex]);
+    }
+
+    private void Update()
+    {
+        if (_timeToReadCurrentLine == 0)
+            return;
+
+        print($"COUNT TIME FOR DIALOGUE {time}/{_timeToReadCurrentLine}");
+        time += Time.deltaTime;
+
+        if (time >= _timeToReadCurrentLine)
+        {
+            time = 0;
+            _timeToReadCurrentLine = 0;
+
+            if (activeDialogueIndex >= dialogues.Length) return;
+
+            if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
+                ReadLine(dialogues[activeDialogueIndex]);
+            else
+                ClearLine();
+        }
     }
 
     public void OnNotify(DialogueTrigger trigger)
     {
+        print($"DialogueConfig OnNotify (DialogueTrigger) {trigger}");
         foreach (var dialogue in dialogues)
             if (dialogue.trigger == trigger)
+            {
+                activeDialogueIndex = Array.IndexOf(dialogues, dialogue);
                 ReadLine(dialogue);
+            }
+    }
+
+    private void ClearLine()
+    {
+        dialogueLineContainer.text = "";
     }
 
     private void ReadLine(Dialogue line)
     {
+        dialogueLineContainer.text = line.text;
+        _timeToReadCurrentLine = (float)line.text.Length / averageWordsPerMinute * 60;
+        activeDialogueIndex++;
     }
 }
