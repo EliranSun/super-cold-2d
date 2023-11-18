@@ -3,12 +3,13 @@ using UnityEngine;
 public class MoveRigidBodyParts : ObserverSubject
 {
     private static readonly int IsWalkingHorizontal = Animator.StringToHash("IsWalkingHorizontal");
+    private static readonly int IsDead = Animator.StringToHash("IsDead");
     [SerializeField] private float speed = 60f;
     [SerializeField] private SpriteRenderer[] bodyPartsSpriteRenderers;
     [SerializeField] private Animator[] bodyPartsAnimators;
     private bool _isWalking;
+    private bool _notifiedObservers;
     private Rigidbody2D _rigidbody;
-    private bool notifiedObservers;
 
     private void Start()
     {
@@ -18,6 +19,12 @@ public class MoveRigidBodyParts : ObserverSubject
     private void Update()
     {
         Move();
+    }
+
+    private void OnDisable()
+    {
+        foreach (var bodyPartSpriteRenderer in bodyPartsSpriteRenderers)
+            bodyPartSpriteRenderer.enabled = false;
     }
 
     private void Move()
@@ -43,10 +50,10 @@ public class MoveRigidBodyParts : ObserverSubject
         var movement = new Vector2(moveHorizontal, moveVertical);
         _rigidbody.velocity = movement * speed;
 
-        if (_isWalking && !notifiedObservers)
+        if (_isWalking && !_notifiedObservers)
         {
             NotifyObservers(DialogueTrigger.PlayerMoved);
-            notifiedObservers = true;
+            _notifiedObservers = true;
         }
     }
 }

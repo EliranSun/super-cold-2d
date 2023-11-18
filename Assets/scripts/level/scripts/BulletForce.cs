@@ -33,6 +33,12 @@ public class BulletForce : ObserverSubject
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        if (col.gameObject.CompareTag("ManInGreen"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if (col.gameObject.CompareTag("Wall"))
         {
             if (!isBouncy)

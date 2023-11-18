@@ -13,6 +13,22 @@ public class PlayerAnimation : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Bullet"))
-            _animator.SetBool(IsDead, true);
+            InvokeDeath();
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Bullet"))
+            InvokeDeath();
+    }
+
+    private void InvokeDeath()
+    {
+        Invoke(nameof(Death), 0.1f);
+    }
+
+    private void Death()
+    {
+        _animator.SetBool(IsDead, true);
     }
 }

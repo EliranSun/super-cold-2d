@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - LevelManager
   - Bullet
+  - ManInGreen
   layers:
   - Default
   - TransparentFX

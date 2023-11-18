@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : ObserverSubject
 {
@@ -6,12 +7,13 @@ public class PlayerMovement : ObserverSubject
     [SerializeField] private GameObject target;
     [SerializeField] private TimeController timeController;
     [SerializeField] private bool isGodMode;
+    [SerializeField] private bool _isDead;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     private CollectWeapon _collectWeapon;
-    private bool _isDead;
+    private int _deathCount;
     private bool _isWalking;
     private Rigidbody2D _rigidbody;
     private bool _triggeredCollectWeapon;
-    private int _deathCount;
 
     private void Start()
     {
@@ -21,6 +23,9 @@ public class PlayerMovement : ObserverSubject
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         if (_isDead)
             return;
 
@@ -66,11 +71,13 @@ public class PlayerMovement : ObserverSubject
 
     private void DeclareDeath(Collider2D collision)
     {
+        _spriteRenderer.enabled = true;
         _isDead = true;
         var directionOfHit = transform.position - collision.transform.position;
         var force = directionOfHit.normalized * 100f;
         _rigidbody.AddForce(force);
         timeController.isTimeSlowed = true;
+        GetComponent<MoveRigidBodyParts>().enabled = false;
         NotifyObservers(PlayerActions.IsDead);
     }
 

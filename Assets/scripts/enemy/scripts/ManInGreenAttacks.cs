@@ -6,24 +6,18 @@ public class ManInGreenAttacks : ObserverSubject
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform[] positionPoints;
     [SerializeField] private GameObject firePrefab;
-    private bool isShotForTheFirstTime;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Attack();
-    }
+    private bool _isShotForTheFirstTime;
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         // player bullets
         if (col.gameObject.CompareTag("Bullet"))
         {
-            if (!isShotForTheFirstTime)
+            if (!_isShotForTheFirstTime)
             {
                 print("ManInGreenAttacks NotifyObservers");
                 NotifyObservers(DialogueTrigger.ShotGreenManForTheFirstTime);
-                isShotForTheFirstTime = true;
+                _isShotForTheFirstTime = true;
             }
 
             TeleportToRandomPoint();

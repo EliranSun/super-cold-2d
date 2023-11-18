@@ -29,8 +29,8 @@ public class DialogueConfig : MonoBehaviour
     [SerializeField] private int startDialogueIndex;
     [SerializeField] private int activeDialogueIndex;
     [SerializeField] private Dialogue[] dialogues;
+    private float _time;
     private float _timeToReadCurrentLine;
-    private float time;
 
     private void Awake()
     {
@@ -45,11 +45,11 @@ public class DialogueConfig : MonoBehaviour
         if (_timeToReadCurrentLine == 0)
             return;
 
-        time += Time.deltaTime;
+        _time += Time.deltaTime;
 
-        if (time >= _timeToReadCurrentLine)
+        if (_time >= _timeToReadCurrentLine)
         {
-            time = 0;
+            _time = 0;
             _timeToReadCurrentLine = 0;
 
             if (activeDialogueIndex >= dialogues.Length) return;
