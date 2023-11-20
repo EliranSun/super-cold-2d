@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerAnimation : MonoBehaviour
+public class PlayerDeath : MonoBehaviour
 {
     private static readonly int IsDead = Animator.StringToHash("IsDead");
     private Animator _animator;
@@ -29,6 +30,20 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Death()
     {
+        if (GetComponent<CollectWeapon>().targetAcquired)
+        {
+            var pistolWrapper = GameObject.Find("Pistol");
+            var pistol = GameObject.Find("Pistol/PistolWrapper");
+            pistolWrapper.transform.parent = null;
+            pistol.AddComponent<SpinFast>();
+        }
+
         _animator.SetBool(IsDead, true);
+        Invoke(nameof(RestartScene), 2f);
+    }
+
+    private void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class ManInGreenAttacks : ObserverSubject
             {
                 print("ManInGreenAttacks NotifyObservers");
                 NotifyObservers(DialogueTrigger.ShotGreenManForTheFirstTime);
+                StartCoroutine(AttackRoutine());
                 _isShotForTheFirstTime = true;
             }
 
@@ -27,7 +29,9 @@ public class ManInGreenAttacks : ObserverSubject
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Bullet")) TeleportToRandomPoint();
+        // green energy orbs
+        if (col.gameObject.CompareTag("Bullet"))
+            TeleportToRandomPoint();
     }
 
     private void Attack()
@@ -81,6 +85,15 @@ public class ManInGreenAttacks : ObserverSubject
             // Rotate firePrefab to face outward from the circle
             fire.transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
             fire.transform.SetParent(fireParent.transform);
+        }
+    }
+
+    private IEnumerator AttackRoutine()
+    {
+        while (playerTransform)
+        {
+            yield return new WaitForSeconds(5);
+            Attack();
         }
     }
 }
