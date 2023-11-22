@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 [Serializable]
 internal class Dialogue
@@ -12,9 +11,9 @@ internal class Dialogue
     [FormerlySerializedAs("Text")] public string text;
     public float waitInMs;
     public DialogueTrigger trigger;
-    public string[] options;
+    public GameObject[] options;
 
-    public Dialogue(string text, AudioClip audio, DialogueTrigger trigger, string[] options, float waitInMs = 0)
+    public Dialogue(string text, AudioClip audio, DialogueTrigger trigger, GameObject[] options, float waitInMs = 0)
     {
         this.text = text;
         this.audio = audio;
@@ -27,24 +26,17 @@ internal class Dialogue
 
 public class DialogueConfig : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueOptionButtonPrefab;
-    [SerializeField] private Transform dialogueOptionsContainer;
     [SerializeField] private int averageWordsPerMinute = 300;
     [SerializeField] private TextMeshProUGUI dialogueLineContainer;
     [SerializeField] private int startDialogueIndex;
     [SerializeField] private int activeDialogueIndex;
     [SerializeField] private Dialogue[] dialogues;
-    [SerializeField] private GameObject nameSelectionPanel;
-    [SerializeField] private GameObject genderSelectionPanel;
     private AudioSource _audioSource;
     private float _time;
     private float _timeToReadCurrentLine;
 
     private void Awake()
     {
-        nameSelectionPanel.SetActive(false);
-        genderSelectionPanel.SetActive(false);
-
         activeDialogueIndex = startDialogueIndex;
         _audioSource = GetComponent<AudioSource>();
 
@@ -92,7 +84,14 @@ public class DialogueConfig : MonoBehaviour
 
     private void TriggerLine(int index)
     {
-        ReadLine(dialogues[index]);
+        try
+        {
+            ReadLine(dialogues[index]);
+        }
+        catch (Exception e)
+        {
+            print("No more dialogues to read");
+        }
     }
 
     private void ClearLine()
@@ -107,8 +106,16 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
-        dialogueLineContainer.text = line.text;
         _timeToReadCurrentLine = (float)line.text.Length / averageWordsPerMinute * 60;
+
+        var isPlayerNameAtEndOfLine = line.text.Contains("{playerName}");
+        var playerName = PlayerPrefs.GetString("PlayerName");
+
+        if (isPlayerNameAtEndOfLine)
+            dialogueLineContainer.text = line.text.Replace("{playerName}", playerName);
+        else
+            dialogueLineContainer.text = line.text;
+
         if (_audioSource)
         {
             _audioSource.clip = line.audio;
@@ -116,33 +123,20 @@ public class DialogueConfig : MonoBehaviour
         }
 
         yield return new WaitForSeconds(_timeToReadCurrentLine);
+        if (isPlayerNameAtEndOfLine)
+        {
+            _timeToReadCurrentLine = ElevenLabsVoiceAPI.PlayerNameAudioClip.length;
+            _audioSource.clip = ElevenLabsVoiceAPI.PlayerNameAudioClip;
+            _audioSource.Play();
+        }
+
+        yield return new WaitForSeconds(_timeToReadCurrentLine);
 
         if (line.options.Length > 0)
-            for (var i = 0; i < line.options.Length; i++)
-            {
-                var buttonObject = Instantiate(dialogueOptionButtonPrefab, dialogueOptionsContainer);
-                buttonObject.transform.position = new Vector3(
-                    buttonObject.transform.position.x,
-                    buttonObject.transform.position.y - i * 50,
-                    buttonObject.transform.position.z
-                );
-                buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = line.options[i];
-                var button = buttonObject.GetComponent<Button>();
-                button.onClick.AddListener(() =>
-                {
-                    SetPlayerOption(line.options[i]);
-                    TriggerNextLine();
-                });
-            }
+            foreach (var optionGameObject in line.options)
+                optionGameObject.SetActive(true);
         else
             activeDialogueIndex++;
-    }
-
-    private void SetPlayerOption(string option)
-    {
-        print($"Player selected option: {option}");
-        if (option == "MALE" || option == "FEMALE")
-            PlayerPrefs.SetString("PlayerGender", option);
     }
 
     public void TriggerNextLine()

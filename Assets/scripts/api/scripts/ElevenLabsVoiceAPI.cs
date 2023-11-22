@@ -5,31 +5,29 @@ using UnityEngine.Networking;
 
 public class ElevenLabsVoiceAPI : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
+    private static bool _isVoiceRequestSent;
+    public static AudioClip PlayerNameAudioClip { get; private set; }
 
-    private void Start()
+    public static IEnumerator VoiceGetRequest(string playerName)
     {
-        StartCoroutine(VoiceGetRequest());
-    }
+        if (_isVoiceRequestSent)
+            yield break;
 
-    private IEnumerator VoiceGetRequest()
-    {
         var uri = "https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM";
         var webRequest = UnityWebRequestMultimedia.GetAudioClip(uri, AudioType.MPEG);
         webRequest.SetRequestHeader("xi-api-key", "3fa9af49ce49fb0e324cce37f59ae4f2");
 
-        // Create JSON body
-        var jsonBody = @"
-        {
-            ""text"": ""Nofar hated this... but she did not have any choice but to play this game - and like it"",
+        var jsonBody = $@"
+        {{
+            ""text"": ""{playerName}"",
             ""model_id"": ""eleven_monolingual_v1"",
-            ""voice_settings"": {
+            ""voice_settings"": {{
                 ""stability"": 0,
                 ""similarity_boost"": 0,
                 ""style"": 0,
                 ""use_speaker_boost"": true
-            }
-        }";
+            }}
+        }}";
         var bodyRaw = Encoding.UTF8.GetBytes(jsonBody);
 
         // Create UnityWebRequest
@@ -47,13 +45,14 @@ public class ElevenLabsVoiceAPI : MonoBehaviour
 
         if (www.result != UnityWebRequest.Result.Success)
         {
-            print(www.error);
+            Debug.Log(www.error);
         }
         else
         {
             var audioClip = DownloadHandlerAudioClip.GetContent(www);
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            PlayerNameAudioClip = audioClip;
         }
+
+        _isVoiceRequestSent = true;
     }
 }
