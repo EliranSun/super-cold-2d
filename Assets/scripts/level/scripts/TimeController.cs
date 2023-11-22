@@ -11,13 +11,13 @@ public class TimeController : MonoBehaviour
     {
         timeScale = 0.1f;
         isTimeSlowed = true;
-        timeScaleText.text = "0.1";
+        if (timeScaleText) timeScaleText.text = "0.1";
     }
 
     public void NormalTime()
     {
         timeScale = 1f;
         isTimeSlowed = false;
-        timeScaleText.text = "1";
+        if (timeScaleText) timeScaleText.text = "1";
     }
 }

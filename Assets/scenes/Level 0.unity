@@ -1334,6 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4f1288552f4c78bd317ae6abc4ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScaleText: {fileID: 0}
   timeScale: 1
   isTimeSlowed: 0
 --- !u!4 &853733328
@@ -1712,10 +1713,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e61072459a1b4c62a1b2487149027b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueObservers:
+    m_PersistentCalls:
+      m_Calls: []
   isControllingTime: 1
   target: {fileID: 0}
-  collectWeapon: {fileID: 0}
+  timeController: {fileID: 853733327}
+  isGodMode: 0
+  _isDead: 0
+  _spriteRenderer: {fileID: 0}
 --- !u!114 &1251394594
 MonoBehaviour:
   m_ObjectHideFlags: 0
