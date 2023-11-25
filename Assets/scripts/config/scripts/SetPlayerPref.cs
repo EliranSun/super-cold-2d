@@ -9,47 +9,32 @@ public class SetPlayerPref : MonoBehaviour
     [SerializeField] private float endTime = 0.79f; // she is so cold
     [SerializeField] private AudioSource fooSource;
     [SerializeField] private TextMeshProUGUI titleCard;
+    [SerializeField] private AudioClip clip;
     private string _filePath;
 
     private void Start()
     {
-        try
-        {
-            _filePath = Application.persistentDataPath + "/playerNameAudioClip.wav";
-            var loadedClip = AudioClipUtility.LoadAudioClip(_filePath);
-            if (loadedClip == null)
-                throw new Exception("clip not found");
-
-            fooSource.clip = loadedClip;
-            print($"loadedClip, {_filePath}");
-        }
-        catch (Exception e)
-        {
-            print("clip not found, fetching");
-            StartCoroutine(ElevenLabsVoiceAPI.VoiceGetRequest("Eliran", OnFetchComplete));
-        }
+        var playerName = GetPlayerName();
+        if (playerName != null)
+            TextToSpeechPlayerName(playerName);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Semicolon))
-        {
-            print("playing");
-            PlaySource(fooSource.clip);
-        }
+            PlayPlayerName();
     }
 
     private void OnFetchComplete(AudioClip audioClip)
     {
         print("audioClip: " + audioClip);
-        audioClip.name = "playerNameAudioClip";
-        PlaySource(audioClip);
+        audioClip.name = GetPlayerName();
+        fooSource.clip = audioClip;
         AudioClipUtility.SaveAudioClip(audioClip, _filePath);
     }
 
-    private void PlaySource(AudioClip clip)
+    public void PlayPlayerName()
     {
-        fooSource.clip = clip;
         fooSource.time = startTime;
         fooSource.Play();
         Invoke(nameof(StopSource), endTime - startTime);
@@ -60,11 +45,37 @@ public class SetPlayerPref : MonoBehaviour
         fooSource.Stop();
     }
 
+    private void TextToSpeechPlayerName(string playerName)
+    {
+        try
+        {
+            _filePath = Application.persistentDataPath + $"/{playerName}.wav";
+            var loadedClip = AudioClipUtility.LoadAudioClip(_filePath);
+            if (loadedClip == null)
+                throw new Exception("clip not found");
+
+            fooSource.clip = loadedClip;
+            print($"loadedClip, {_filePath}");
+            OnFetchComplete(loadedClip);
+        }
+        catch (Exception e)
+        {
+            print("clip not found, fetching");
+            var upperCasePlayerName = $"{char.ToUpper(playerName[0])}{playerName.Substring(1)}";
+            StartCoroutine(ElevenLabsVoiceAPI.VoiceGetRequest(upperCasePlayerName, OnFetchComplete));
+        }
+    }
+
     public void SetPlayerName(string playerName)
     {
+        if (string.IsNullOrEmpty(playerName))
+            return;
+
         PlayerPrefs.SetString("PlayerName", playerName);
-        if (titleCard) titleCard.text = $"{playerName.ToUpper().Trim()} IS COLD";
-        // StartCoroutine(ElevenLabsVoiceAPI.VoiceGetRequest(playerName));
+        if (titleCard)
+            titleCard.text = $"{playerName.ToUpper().Trim()} IS COLD";
+
+        TextToSpeechPlayerName(playerName);
     }
 
     public void SetPlayerGender(string gender)

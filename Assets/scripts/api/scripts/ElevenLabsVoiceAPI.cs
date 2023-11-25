@@ -27,7 +27,7 @@ public class ElevenLabsVoiceAPI : MonoBehaviour
         var jsonBody = $@"
         {{
             ""model_id"": ""eleven_monolingual_v1"",
-            ""text"": ""Poor {char.ToUpper(playerName[0]) + playerName.Substring(1)}... she is so cold."",
+            ""text"": ""Poor {char.ToUpper(playerName[0])}{playerName.Substring(1)}... she is so cold."",
             ""voice_settings"": {{
                 ""stability"": 0.71,
                 ""similarity_boost"": 0.52,
@@ -35,7 +35,8 @@ public class ElevenLabsVoiceAPI : MonoBehaviour
                 ""use_speaker_boost"": true
             }}
         }}";
-        Debug.Log(jsonBody);
+
+        print(jsonBody);
         var bodyRaw = Encoding.UTF8.GetBytes(jsonBody);
 
         // Create UnityWebRequest

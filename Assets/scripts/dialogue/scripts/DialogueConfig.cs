@@ -31,6 +31,7 @@ public class DialogueConfig : MonoBehaviour
     [SerializeField] private int startDialogueIndex;
     [SerializeField] private int activeDialogueIndex;
     [SerializeField] private Dialogue[] dialogues;
+    [SerializeField] private SetPlayerPref playerPref;
     private AudioSource _audioSource;
     private float _time;
     private float _timeToReadCurrentLine;
@@ -123,12 +124,14 @@ public class DialogueConfig : MonoBehaviour
         }
 
         yield return new WaitForSeconds(_timeToReadCurrentLine);
+
+        // if (isPlayerNameAtEndOfLine)
+
         if (isPlayerNameAtEndOfLine)
-        {
-            _timeToReadCurrentLine = ElevenLabsVoiceAPI.PlayerNameAudioClip.length;
-            _audioSource.clip = ElevenLabsVoiceAPI.PlayerNameAudioClip;
-            _audioSource.Play();
-        }
+            // _timeToReadCurrentLine = ElevenLabsVoiceAPI.PlayerNameAudioClip.length;
+            // _audioSource.clip = ElevenLabsVoiceAPI.PlayerNameAudioClip;
+            // _audioSource.Play();
+            playerPref.PlayPlayerName();
 
         yield return new WaitForSeconds(_timeToReadCurrentLine);
 
