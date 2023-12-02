@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using config.scripts;
+using enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,62 +11,58 @@ internal class Dialogue
 {
     [FormerlySerializedAs("Audio")] public AudioClip audio;
     [FormerlySerializedAs("Text")] public string text;
-    public float waitInMs;
+    [FormerlySerializedAs("waitInMs")] public float waitInSeconds;
     public DialogueTrigger trigger;
     public GameObject[] options;
+    public bool includesPlayerName;
 
-    public Dialogue(string text, AudioClip audio, DialogueTrigger trigger, GameObject[] options, float waitInMs = 0)
+    public Dialogue(string text, AudioClip audio, DialogueTrigger trigger, GameObject[] options,
+        bool includesPlayerName, float waitInSeconds = 0.5f)
     {
         this.text = text;
         this.audio = audio;
-        this.waitInMs = waitInMs;
+        this.waitInSeconds = waitInSeconds;
         this.trigger = trigger;
         this.options = options;
+        this.includesPlayerName = includesPlayerName;
     }
 }
 
 
 public class DialogueConfig : MonoBehaviour
 {
-    [SerializeField] private int averageWordsPerMinute = 300;
+    [SerializeField] private int allPlayerInfoDialogueIndex;
+    [SerializeField] private int noPlayerInfoDialogueIndex;
+    [SerializeField] private int noPlayerGenderDialogueIndex;
     [SerializeField] private TextMeshProUGUI dialogueLineContainer;
-    [SerializeField] private int startDialogueIndex;
     [SerializeField] private int activeDialogueIndex;
     [SerializeField] private Dialogue[] dialogues;
-    [SerializeField] private SetPlayerPref playerPref;
     private AudioSource _audioSource;
+
+    private PlayerGender _playerGender;
+    private string _playerName;
     private float _time;
     private float _timeToReadCurrentLine;
 
     private void Awake()
     {
-        activeDialogueIndex = startDialogueIndex;
         _audioSource = GetComponent<AudioSource>();
+        _playerGender = PlayerInfo.GetPlayerGender();
+        _playerName = PlayerInfo.GetPlayerName();
+        activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(_playerName, _playerGender);
 
         if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
             ReadLine(dialogues[activeDialogueIndex]);
     }
 
-    private void Update()
+    private int GetDialogueIndexBasedOnNameAndGender(string playerName, PlayerGender gender)
     {
-        if (_timeToReadCurrentLine == 0)
-            return;
+        int lineIndex;
+        if (playerName == "" && gender == PlayerGender.None) lineIndex = noPlayerInfoDialogueIndex;
+        else if (playerName != "" && gender == PlayerGender.None) lineIndex = noPlayerGenderDialogueIndex;
+        else lineIndex = allPlayerInfoDialogueIndex;
 
-        _time += Time.deltaTime;
-
-        if (_time >= _timeToReadCurrentLine)
-        {
-            _time = 0;
-            _timeToReadCurrentLine = 0;
-
-            if (activeDialogueIndex >= dialogues.Length) return;
-
-            if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None &&
-                dialogues[activeDialogueIndex].options.Length == 0)
-                ReadLine(dialogues[activeDialogueIndex]);
-            else
-                ClearLine();
-        }
+        return lineIndex;
     }
 
     public void OnNotify(DialogueTrigger trigger)
@@ -89,7 +87,7 @@ public class DialogueConfig : MonoBehaviour
         {
             ReadLine(dialogues[index]);
         }
-        catch (Exception e)
+        catch
         {
             print("No more dialogues to read");
         }
@@ -107,39 +105,50 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
-        _timeToReadCurrentLine = (float)line.text.Length / averageWordsPerMinute * 60;
+        dialogueLineContainer.text = line.includesPlayerName
+            ? line.text.Replace("{playerName}", _playerName)
+            : line.text;
 
-        var isPlayerNameAtEndOfLine = line.text.Contains("{playerName}");
-        var playerName = PlayerPrefs.GetString("PlayerName");
 
-        if (isPlayerNameAtEndOfLine)
-            dialogueLineContainer.text = line.text.Replace("{playerName}", playerName);
-        else
-            dialogueLineContainer.text = line.text;
-
-        if (_audioSource)
+        if (line.includesPlayerName)
         {
-            _audioSource.clip = line.audio;
-            _audioSource.Play();
+            var formattedPlayerName = $"{char.ToUpper(_playerName[0])}{_playerName.Substring(1)}";
+            var lineWithPlayerName = line.text.Replace("{playerName}", formattedPlayerName);
+
+            dialogueLineContainer.text = lineWithPlayerName;
+
+            var textToSpeechComponent = GetComponent<TextToSpeech>();
+            textToSpeechComponent.ConvertAndWait(lineWithPlayerName, _playerGender, audioClip =>
+            {
+                _audioSource.clip = audioClip;
+                _audioSource.Play();
+
+                if (line.options.Length > 0)
+                    foreach (var optionGameObject in line.options)
+                        optionGameObject.SetActive(true);
+                else
+                    Invoke(nameof(TriggerNextLine), line.waitInSeconds);
+            });
         }
-
-        yield return new WaitForSeconds(_timeToReadCurrentLine);
-
-        // if (isPlayerNameAtEndOfLine)
-
-        if (isPlayerNameAtEndOfLine)
-            // _timeToReadCurrentLine = ElevenLabsVoiceAPI.PlayerNameAudioClip.length;
-            // _audioSource.clip = ElevenLabsVoiceAPI.PlayerNameAudioClip;
-            // _audioSource.Play();
-            playerPref.PlayPlayerName();
-
-        yield return new WaitForSeconds(_timeToReadCurrentLine);
-
-        if (line.options.Length > 0)
-            foreach (var optionGameObject in line.options)
-                optionGameObject.SetActive(true);
         else
-            activeDialogueIndex++;
+        {
+            if (line.audio != null)
+            {
+                _audioSource.clip = line.audio;
+                _audioSource.Play();
+                yield return new WaitForSeconds(_audioSource.clip.length);
+            }
+            else
+            {
+                yield return new WaitForSeconds(_timeToReadCurrentLine);
+            }
+
+            if (line.options.Length > 0)
+                foreach (var optionGameObject in line.options)
+                    optionGameObject.SetActive(true);
+            else
+                Invoke(nameof(TriggerNextLine), line.waitInSeconds);
+        }
     }
 
     public void TriggerNextLine()
