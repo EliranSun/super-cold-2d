@@ -7,25 +7,37 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [Serializable]
+internal class AudioGender
+{
+    [SerializeField] public AudioClip male;
+    [SerializeField] public AudioClip female;
+    [SerializeField] public AudioClip none;
+}
+
+[Serializable]
 internal class Dialogue
 {
-    [FormerlySerializedAs("Audio")] public AudioClip audio;
     [FormerlySerializedAs("Text")] public string text;
     [FormerlySerializedAs("waitInMs")] public float waitInSeconds;
     public DialogueTrigger trigger;
     public GameObject[] options;
     public bool includesPlayerName;
+    [SerializeField] public AudioGender audio;
 
-    public Dialogue(string text, AudioClip audio, DialogueTrigger trigger, GameObject[] options,
-        bool includesPlayerName, float waitInSeconds = 0.5f)
-    {
-        this.text = text;
-        this.audio = audio;
-        this.waitInSeconds = waitInSeconds;
-        this.trigger = trigger;
-        this.options = options;
-        this.includesPlayerName = includesPlayerName;
-    }
+    // public Dialogue(string text, AudioClip audioMale, AudioClip audioFemale, AudioClip audioNone,
+    //     DialogueTrigger trigger,
+    //     GameObject[] options,
+    //     bool includesPlayerName, float waitInSeconds = 0.5f)
+    // {
+    //     this.text = text;
+    //     this.waitInSeconds = waitInSeconds;
+    //     this.trigger = trigger;
+    //     this.options = options;
+    //     this.includesPlayerName = includesPlayerName;
+    //     Audio[Gender.Male.ToString()] = audioMale;
+    //     Audio[Gender.Female.ToString()] = audioFemale;
+    //     Audio[Gender.Unknown.ToString()] = audioNone;
+    // }
 }
 
 
@@ -127,14 +139,22 @@ public class DialogueConfig : MonoBehaviour
                     foreach (var optionGameObject in line.options)
                         optionGameObject.SetActive(true);
                 else
-                    Invoke(nameof(TriggerNextLine), line.waitInSeconds);
+                    Invoke(nameof(TriggerNextLine), _audioSource.clip.length + line.waitInSeconds);
             });
         }
         else
         {
-            if (line.audio != null)
+            var audio = _playerGender switch
             {
-                _audioSource.clip = line.audio;
+                PlayerGender.Male => line.audio.male,
+                PlayerGender.Female => line.audio.female,
+                PlayerGender.None => line.audio.none,
+                _ => null
+            };
+
+            if (audio != null)
+            {
+                _audioSource.clip = audio;
                 _audioSource.Play();
                 yield return new WaitForSeconds(_audioSource.clip.length);
             }
