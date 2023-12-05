@@ -14,11 +14,12 @@ public class ElevenLabsVoiceAPI : MonoBehaviour
 
     public static IEnumerator VoiceGetRequest(string text, PlayerGender gender, Action<AudioClip> callback)
     {
-        if (_isVoiceRequestSent)
-        {
-            print("VoiceGetRequest already sent");
-            yield break;
-        }
+        // TODO: Apply this, but for different audio clips instead of all
+        // if (_isVoiceRequestSent)
+        // {
+        //     print("VoiceGetRequest already sent");
+        //     yield break;
+        // }
 
 
         var voiceId = gender == PlayerGender.Male ? AdamVoiceId : DorothyVoiceId;
@@ -66,7 +67,5 @@ public class ElevenLabsVoiceAPI : MonoBehaviour
             print("PlayerNameAudioClip: " + PlayerNameAudioClip);
             callback?.Invoke(audioClip);
         }
-
-        _isVoiceRequestSent = true;
     }
 }

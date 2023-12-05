@@ -329,7 +329,7 @@ RectTransform:
   - {fileID: 384757465}
   - {fileID: 1899174349}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -801,7 +801,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &572583402
 GameObject:
@@ -1545,7 +1545,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1143955019
 GameObject:
@@ -1717,6 +1717,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dialogueObservers:
+    m_PersistentCalls:
+      m_Calls: []
+  playerInfoObservers:
     m_PersistentCalls:
       m_Calls: []
   isControllingTime: 1
@@ -6996,9 +6999,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 495157740ecd343a292983a57b970ea9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4fe52f1eb4770457e9bb8a825d6156dc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.222
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7095,7 +7098,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1698479301
 MonoBehaviour:
@@ -7109,6 +7112,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adb025230843469982d5a3ad7e6e597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1723356236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723356238}
+  - component: {fileID: 1723356237}
+  m_Layer: 0
+  m_Name: PlayerPrefrences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1723356237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723356236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aead8abc5d126940b3204030cc259e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleCard: {fileID: 1899174350}
+--- !u!4 &1723356238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723356236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 395.19595, y: 228.96251, z: -0.44891858}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752764112
 GameObject:
   m_ObjectHideFlags: 0
@@ -7169,7 +7217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752764112}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7296,7 +7344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1897871402
 Transform:
   m_ObjectHideFlags: 0
@@ -7448,7 +7496,7 @@ GameObject:
   - component: {fileID: 1899174351}
   - component: {fileID: 1899174350}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TitleCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7494,7 +7542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RYAN IS COLD
+  m_text: COLD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7571,6 +7619,237 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899174348}
   m_CullTransparentMesh: 1
+--- !u!1 &1929471013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929471017}
+  - component: {fileID: 1929471016}
+  - component: {fileID: 1929471015}
+  - component: {fileID: 1929471014}
+  m_Layer: 0
+  m_Name: Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1929471014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929471013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572658aca0834355af84a987e22d9260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1929471015
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929471013}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1929471016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929471013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPlayerInfoDialogueIndex: 0
+  noPlayerInfoDialogueIndex: 0
+  noPlayerGenderDialogueIndex: 0
+  dialogueLineContainer: {fileID: 384757466}
+  activeDialogueIndex: 0
+  dialogues:
+  - text: Poor {playerName}... He is not in control of his life... But he can control
+      time -in a somewhat uncontrollable way
+    femaleText: Poor {playerName}... She is not in control of her life... But she
+      can control time -in a somewhat uncontrollable way
+    waitInSeconds: 0.5
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 1
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: When he moves an inch, time slows down almost to a halt.
+    femaleText: When she moves an inch, time slows down almost to a halt.
+    waitInSeconds: 0.5
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 8300000, guid: 4a26e79c050174db892e6063abb3c3fe, type: 3}
+      female: {fileID: 8300000, guid: 61ab1087435af1b4fa00c70edbbc175f, type: 3}
+      none: {fileID: 0}
+  - text: It is indeed a terrible fate. A fate he had submitted to.
+    femaleText: It is indeed a terrible fate. A fate she had submitted to.
+    waitInSeconds: 0.5
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 8300000, guid: 71b4fc35417d0794bbf047ad41a69a52, type: 3}
+      female: {fileID: 8300000, guid: fe74c9ed3fff0eb4e93b77d16faa01e9, type: 3}
+      none: {fileID: 0}
+  - text: This was not his house and {playerName} knew it perfectly well.
+    femaleText: This was not her house and {playerName} knew it perfectly well.
+    waitInSeconds: 0.5
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 1
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: '{playerName} was too afraid to cross the road. Even chickens are not afraid
+      of that'
+    femaleText: 
+    waitInSeconds: 0.5
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 1
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: '{playerName} was too afraid to get lost. And besides, his wife is waiting
+      for him. She has something very important to tell him.'
+    femaleText: '{playerName} was too afraid to get lost. And besides, her husband
+      is waiting for her. He has something very important to tell her.'
+    waitInSeconds: 0.5
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 1
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+--- !u!4 &1929471017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929471013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1943451724
 GameObject:
   m_ObjectHideFlags: 0

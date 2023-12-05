@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using action_triggers.scripts;
 using config.scripts;
 using enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 [Serializable]
@@ -18,26 +20,13 @@ internal class AudioGender
 internal class Dialogue
 {
     [FormerlySerializedAs("Text")] public string text;
-    [FormerlySerializedAs("waitInMs")] public float waitInSeconds;
+    public string femaleText;
+    public float waitInSeconds = 0.5f;
     public DialogueTrigger trigger;
+    public DialogueAction action;
     public GameObject[] options;
     public bool includesPlayerName;
     [SerializeField] public AudioGender audio;
-
-    // public Dialogue(string text, AudioClip audioMale, AudioClip audioFemale, AudioClip audioNone,
-    //     DialogueTrigger trigger,
-    //     GameObject[] options,
-    //     bool includesPlayerName, float waitInSeconds = 0.5f)
-    // {
-    //     this.text = text;
-    //     this.waitInSeconds = waitInSeconds;
-    //     this.trigger = trigger;
-    //     this.options = options;
-    //     this.includesPlayerName = includesPlayerName;
-    //     Audio[Gender.Male.ToString()] = audioMale;
-    //     Audio[Gender.Female.ToString()] = audioFemale;
-    //     Audio[Gender.Unknown.ToString()] = audioNone;
-    // }
 }
 
 
@@ -51,17 +40,16 @@ public class DialogueConfig : MonoBehaviour
     [SerializeField] private Dialogue[] dialogues;
     private AudioSource _audioSource;
 
-    private PlayerGender _playerGender;
-    private string _playerName;
     private float _time;
     private float _timeToReadCurrentLine;
 
     private void Awake()
     {
+        // PlayerPrefs.DeleteAll();
         _audioSource = GetComponent<AudioSource>();
-        _playerGender = PlayerInfo.GetPlayerGender();
-        _playerName = PlayerInfo.GetPlayerName();
-        activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(_playerName, _playerGender);
+        PlayerGender playerGender = PlayerInfo.GetPlayerGender();
+        string playerName = PlayerInfo.GetPlayerName();
+        activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(playerName, playerGender);
 
         if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
             ReadLine(dialogues[activeDialogueIndex]);
@@ -117,20 +105,26 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
-        dialogueLineContainer.text = line.includesPlayerName
-            ? line.text.Replace("{playerName}", _playerName)
-            : line.text;
-
+        string playerName = PlayerInfo.GetPlayerName();
+        PlayerGender playerGender = PlayerInfo.GetPlayerGender();
+        
+        var lineText = playerGender switch
+        {
+            PlayerGender.Male => line.text,
+            PlayerGender.Female => line.femaleText == "" ? line.text : line.femaleText,
+            PlayerGender.None => line.text,
+            _ => ""
+        };
 
         if (line.includesPlayerName)
         {
-            var formattedPlayerName = $"{char.ToUpper(_playerName[0])}{_playerName.Substring(1)}";
-            var lineWithPlayerName = line.text.Replace("{playerName}", formattedPlayerName);
+            var formattedPlayerName = $"{char.ToUpper(playerName[0])}{playerName.Substring(1)}";
+            var lineWithPlayerName = lineText.Replace("{playerName}", formattedPlayerName);
 
             dialogueLineContainer.text = lineWithPlayerName;
 
             var textToSpeechComponent = GetComponent<TextToSpeech>();
-            textToSpeechComponent.ConvertAndWait(lineWithPlayerName, _playerGender, audioClip =>
+            textToSpeechComponent.ConvertText(lineWithPlayerName, playerGender, audioClip =>
             {
                 _audioSource.clip = audioClip;
                 _audioSource.Play();
@@ -144,13 +138,17 @@ public class DialogueConfig : MonoBehaviour
         }
         else
         {
-            var audio = _playerGender switch
+            var audio = playerGender switch
             {
                 PlayerGender.Male => line.audio.male,
                 PlayerGender.Female => line.audio.female,
                 PlayerGender.None => line.audio.none,
                 _ => null
             };
+            
+            dialogueLineContainer.text = line.includesPlayerName
+                ? lineText.Replace("{playerName}", playerName)
+                : lineText;
 
             if (audio != null)
             {
@@ -168,6 +166,23 @@ public class DialogueConfig : MonoBehaviour
                     optionGameObject.SetActive(true);
             else
                 Invoke(nameof(TriggerNextLine), line.waitInSeconds);
+        }
+        
+        InvokeAction(line);
+    }
+
+    private void InvokeAction(Dialogue line)
+    {
+        switch (line.action)
+        {
+            default:
+            case DialogueAction.None:
+                break;
+            
+            case DialogueAction.NextScene:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                break;
+
         }
     }
 

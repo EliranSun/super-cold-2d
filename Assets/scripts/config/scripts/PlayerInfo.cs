@@ -1,10 +1,20 @@
+using System;
 using enums;
 using TMPro;
 using UnityEngine;
 
-public class PlayerInfo : ObserverSubject
+public class PlayerInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleCard;
+
+    private void Start()
+    {
+        var playerName = GetPlayerName();
+        if (titleCard && playerName != "")
+        {
+            titleCard.text = $"{playerName.ToUpper()} IS COLD";
+        }
+    }
 
     public void SetPlayerName(string playerName)
     {

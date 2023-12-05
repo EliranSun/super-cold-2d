@@ -3431,6 +3431,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerInfoObservers:
+    m_PersistentCalls:
+      m_Calls: []
   isControllingTime: 1
   target: {fileID: 544343530}
   timeController: {fileID: 1603389631}
@@ -3488,6 +3491,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerInfoObservers:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 40
   bodyPartsSpriteRenderers:
   - {fileID: 105885455}
@@ -3523,6 +3529,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   dialogueObservers:
+    m_PersistentCalls:
+      m_Calls: []
+  playerInfoObservers:
     m_PersistentCalls:
       m_Calls: []
   isTriggered: 0
@@ -5293,158 +5302,319 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  averageWordsPerMinute: 400
+  allPlayerInfoDialogueIndex: 0
+  noPlayerInfoDialogueIndex: 0
+  noPlayerGenderDialogueIndex: 0
   dialogueLineContainer: {fileID: 392655354}
-  startDialogueIndex: 0
   activeDialogueIndex: 0
   dialogues:
-  - audio: {fileID: 0}
-    text: You did it. Congragulations. You win.
-    waitInMs: 0
+  - text: You did it. Congragulations. You win.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Surprised? Expected something else? Well, I am sorry to disappoint, dear,
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Surprised? Expected something else? Well, I am sorry to disappoint, dear,
       poor Ryan. But I was using you, all along.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 2
-  - audio: {fileID: 0}
-    text: Do you really think you can hit me, that simple?
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Do you really think you can hit me, that simple?
+    waitInSeconds: 0
     trigger: 7
-  - audio: {fileID: 0}
-    text: No. That would be FAR too easy for the likes of you...
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: No. That would be FAR too easy for the likes of you...
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: You see - I can control time, just like you. In fact - way better than
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: You see - I can control time, just like you. In fact - way better than
       you.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: But that's about it. I cannot do anything but control time. I can not even
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: But that's about it. I cannot do anything but control time. I can not even
       move on my own, as you can see...
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: How ironic. The man who can control nothing but time, vs. the man who is
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: How ironic. The man who can control nothing but time, vs. the man who is
       controlled by time. Is it fate?
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: You see now how futile your efforts are. I control you, dear Ryan.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: You see now how futile your efforts are. I control you, dear Ryan.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Really now, you ASTOUND me, Ryan. How stupid are you? How... how -
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Really now, you ASTOUND me, Ryan. How stupid are you? How... how -
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: But I get it. I think I get it. You wanted this. You wanted to believe
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: But I get it. I think I get it. You wanted this. You wanted to believe
       that there is some redemption for you.
-    waitInMs: 1000
+    waitInSeconds: 1000
     trigger: 0
-  - audio: {fileID: 0}
-    text: You wanted to believe someone finally understood you.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: You wanted to believe someone finally understood you.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: This illness of yours. This inablity to control time... to control your
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: This illness of yours. This inablity to control time... to control your
       life...
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: It started when you married her, isn't it so?
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: It started when you married her, isn't it so?
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: But you ignored it. Like the good little lamb that you are... look where
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: But you ignored it. Like the good little lamb that you are... look where
       it got you.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: I'll let you have it, Ryan. I'll let you have control, for the first time
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: I'll let you have it, Ryan. I'll let you have control, for the first time
       in a long while.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: I'll tell you a secret - there's only one way you could defeat me. I guess
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: I'll tell you a secret - there's only one way you could defeat me. I guess
       you figured it out right now that you cannot hit me. Not physically
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: That's right. I am TIME INCARNATED. I do not really have any spacial properties
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: That's right. I am TIME INCARNATED. I do not really have any spacial properties
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: So the only way - the only way you could do this... is simply to wear me
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: So the only way - the only way you could do this... is simply to wear me
       out. I'll run out of juice eventually.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: But seeing you... there's just no way you can do this. Look at you.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: But seeing you... there's just no way you can do this. Look at you.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: No matter how many times you'll try again... You will not win.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: No matter how many times you'll try again... You will not win.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Even if you will make progress... what make you think I won't decide to
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Even if you will make progress... what make you think I won't decide to
       cancel out your reverse ability? Yeah, I can do that. Kinda.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: So this is the gift I give you. Control.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: So this is the gift I give you. Control.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: The next time I kill you - which will be very soon...
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: The next time I kill you - which will be very soon...
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Just do yourself a favor and just... let it go. Do not reverse time. Take
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Just do yourself a favor and just... let it go. Do not reverse time. Take
       control for once in your sorry life. OK?
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Ha. I knew you wouldn't do it.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Ha. I knew you wouldn't do it.
+    waitInSeconds: 0
     trigger: 5
-  - audio: {fileID: 0}
-    text: Yes. It is me. And you... well. You released me. Soon. I will get what
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Yes. It is me. And you... well. You released me. Soon. I will get what
       I dreamed on for EONS now.
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Freedom.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Freedom.
+    waitInSeconds: 0
     trigger: 0
-  - audio: {fileID: 0}
-    text: Listen to me. I know what you are going to do next. The same thing you
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Listen to me. I know what you are going to do next. The same thing you
       did over and over again. Do not reverse time. Take control for once in your
       sorry life. OK?
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 9
-  - audio: {fileID: 0}
-    text: Well I mean, what did I expect? You are going to do that again, are you
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Well I mean, what did I expect? You are going to do that again, are you
       not? Perhaps the next time, I'll just intervene... this lock me in as well,
       after all
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 10
-  - audio: {fileID: 0}
-    text: ...
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: ...
+    waitInSeconds: 0
     trigger: 11
-  - audio: {fileID: 0}
-    text: Ok. Enough is enough. No more restarts for you. I mean it. The next time
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Ok. Enough is enough. No more restarts for you. I mean it. The next time
       you die - it is game over for you. I will intervene, and you will get stuck.
       OK?
-    waitInMs: 0
+    waitInSeconds: 0
     trigger: 12
-  - audio: {fileID: 0}
-    text: Sorry. I've had fun, but this is goodbye. Enjoy eternity.
-    waitInMs: 0
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
+  - text: Sorry. I've had fun, but this is goodbye. Enjoy eternity.
+    waitInSeconds: 0
     trigger: 13
+    options: []
+    includesPlayerName: 0
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
 --- !u!1001 &724214231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8428,7 +8598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6297b022d89af4a5297e9b45e9612ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1247717521}
 --- !u!4 &1247717523
 Transform:
   m_ObjectHideFlags: 0
@@ -13033,6 +13202,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerInfoObservers:
+    m_PersistentCalls:
+      m_Calls: []
   playerTransform: {fileID: 484848308}
   positionPoints:
   - {fileID: 195556572}

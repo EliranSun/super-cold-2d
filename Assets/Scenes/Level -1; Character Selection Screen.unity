@@ -4117,27 +4117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aead8abc5d126940b3204030cc259e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  observers:
-    m_PersistentCalls:
-      m_Calls: []
-  dialogueObservers:
-    m_PersistentCalls:
-      m_Calls: []
-  playerInfoObservers:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1867948477}
-        m_TargetAssemblyTypeName: DialogueConfig, Dialogue
-        m_MethodName: OnNotify
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   titleCard: {fileID: 807201496}
 --- !u!4 &1803680868
 Transform:
@@ -4301,8 +4280,10 @@ MonoBehaviour:
   activeDialogueIndex: 0
   dialogues:
   - text: Hi, how are you today? Long time no see :)
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options:
     - {fileID: 1547784994}
     - {fileID: 2012440965}
@@ -4312,8 +4293,10 @@ MonoBehaviour:
       female: {fileID: 0}
       none: {fileID: 8300000, guid: 8cf97ec4d38384e6a9eeb870b1af89c5, type: 3}
   - text: For this to be way more friendly, please tell me your name. Is that OK?
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options:
     - {fileID: 410138092}
     - {fileID: 827233856}
@@ -4323,8 +4306,10 @@ MonoBehaviour:
       female: {fileID: 0}
       none: {fileID: 8300000, guid: 848de9b9d79c641379e5115ab92a24d4, type: 3}
   - text: (select name)
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options:
     - {fileID: 1113012416}
     - {fileID: 1670796356}
@@ -4335,8 +4320,10 @@ MonoBehaviour:
       female: {fileID: 0}
       none: {fileID: 0}
   - text: What is your your gender? Is that OK?
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options:
     - {fileID: 568643412}
     - {fileID: 315818269}
@@ -4346,8 +4333,10 @@ MonoBehaviour:
       female: {fileID: 0}
       none: {fileID: 8300000, guid: 9f246337562344b43b5248222a767d80, type: 3}
   - text: (select gender)
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options:
     - {fileID: 1722924711}
     - {fileID: 579112780}
@@ -4358,17 +4347,21 @@ MonoBehaviour:
       female: {fileID: 0}
       none: {fileID: 0}
   - text: Thank you. Now let me change some things based on your input. Please hold.
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 0
     audio:
       male: {fileID: 0}
       female: {fileID: 0}
       none: {fileID: 8300000, guid: de6aad3fe90ba4f64a67a9757a4823a5, type: 3}
-  - text: ...There we go! this is so much better. Don't you think, {playerName}?
+  - text: ...There we go... this is so much better. Don't you think, {playerName}?
+    femaleText: ...There we go... this is so much better. Don't you think, {playerName}?
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 1
     audio:
@@ -4376,8 +4369,10 @@ MonoBehaviour:
       female: {fileID: 0}
       none: {fileID: 0}
   - text: Much, much better.
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 0
     audio:
@@ -4386,8 +4381,10 @@ MonoBehaviour:
       none: {fileID: 0}
   - text: "Now, let me tell you where you are and what this is. You signed up for
       a program called \u201CCharacter Selection\u201D."
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 0
     audio:
@@ -4396,8 +4393,10 @@ MonoBehaviour:
       none: {fileID: 0}
   - text: In this program, we will run you through different scenarios, based on
       what you previously told us and based on what we think best fits you.
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 0
     audio:
@@ -4405,8 +4404,10 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 6641ef65000514237b0f269e48775782, type: 3}
       none: {fileID: 0}
   - text: This, is one scenario out of many we are going to play out for you.
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 0
     audio:
@@ -4415,8 +4416,10 @@ MonoBehaviour:
       none: {fileID: 0}
   - text: 'You will be watched, measured and evaluated, all to better help you deal
       with situations you find troubling in your own life. '
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options: []
     includesPlayerName: 0
     audio:
@@ -4424,8 +4427,10 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 6e8c541cb9ff946fc8137c86ea0af60c, type: 3}
       none: {fileID: 0}
   - text: Is that OK?
+    femaleText: 
     waitInSeconds: 0.5
     trigger: 0
+    action: 0
     options:
     - {fileID: 1682209623}
     - {fileID: 574908192}
@@ -4435,8 +4440,10 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 5b23c56aa89014951bfce7501ae599ce, type: 3}
       none: {fileID: 0}
   - text: "Well then. Let\u2019s begin, shall we?"
+    femaleText: 
     waitInSeconds: 3
     trigger: 0
+    action: 1
     options: []
     includesPlayerName: 0
     audio:
