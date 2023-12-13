@@ -13,6 +13,7 @@ namespace player.scripts
         [SerializeField] private GameObject target;
         [SerializeField] private TimeController timeController;
         [SerializeField] private bool isGodMode;
+        [SerializeField] private LevelManager levelManager;
 
         [FormerlySerializedAs("_isDead")] [SerializeField]
         private bool isDead;
@@ -56,18 +57,18 @@ namespace player.scripts
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.CompareTag("Wall"))
+            if (col.gameObject.CompareTag("Wall") && levelManager)
             {
                 transform.position = transform.position;
 
                 if (col.gameObject.name == "GetLostBoundary")
-                    GameObject.Find("LevelManager").GetComponent<LevelManager>().AfraidToGetLost();
+                    levelManager.AfraidToGetLost();
 
                 if (col.gameObject.name == "CrossTheRoadBoundary")
-                    GameObject.Find("LevelManager").GetComponent<LevelManager>().AfraidToCrossTheRoad();
+                    levelManager.AfraidToCrossTheRoad();
 
                 if (col.gameObject.name == "NotHisHouseBoundary")
-                    GameObject.Find("LevelManager").GetComponent<LevelManager>().NotHisHouse();
+                    levelManager.NotHisHouse();
             }
 
             if (col.gameObject.CompareTag("Bullet") && !isGodMode)
