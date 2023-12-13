@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
+    private static readonly int IsDead = Animator.StringToHash("IsDead");
     [SerializeField] private Transform destination;
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private float speed = 10f;
@@ -46,6 +47,15 @@ public class CarMovement : MonoBehaviour
 
             if (destination.position.y > transform.position.y) ScaleDownCar();
             else ScaleUpCar();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            col.gameObject.GetComponent<Animator>().SetBool(IsDead, true);
+            col.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         }
     }
 
