@@ -9,6 +9,7 @@ TagManager:
   - LevelManager
   - Bullet
   - ManInGreen
+  - Car
   layers:
   - Default
   - TransparentFX

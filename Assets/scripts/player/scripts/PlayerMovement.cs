@@ -9,6 +9,7 @@ namespace player.scripts
         private static readonly int IsWalking = Animator.StringToHash("isWalking");
         private static readonly int IsVertical = Animator.StringToHash("isVertical");
         private static readonly int IsTurningBack = Animator.StringToHash("isTurningBack");
+        private static readonly int IsDead = Animator.StringToHash("IsDead");
         [SerializeField] private bool isControllingTime;
         [SerializeField] private GameObject target;
         [SerializeField] private TimeController timeController;
@@ -27,11 +28,14 @@ namespace player.scripts
         private CollectWeapon _collectWeapon;
         private int _deathCount;
         private bool _isWalking;
+
+        private PolygonCollider2D _polygonCollider2D;
         private Rigidbody2D _rigidbody;
         private bool _triggeredCollectWeapon;
 
         private void Start()
         {
+            _polygonCollider2D = GetComponent<PolygonCollider2D>();
             _collectWeapon = GetComponent<CollectWeapon>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
@@ -57,21 +61,9 @@ namespace player.scripts
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.CompareTag("Wall") && levelManager)
-            {
-                transform.position = transform.position;
+            var hitByDeadlyObject = col.gameObject.CompareTag("Bullet") || col.gameObject.CompareTag("Car");
 
-                if (col.gameObject.name == "GetLostBoundary")
-                    levelManager.AfraidToGetLost();
-
-                if (col.gameObject.name == "CrossTheRoadBoundary")
-                    levelManager.AfraidToCrossTheRoad();
-
-                if (col.gameObject.name == "NotHisHouseBoundary")
-                    levelManager.NotHisHouse();
-            }
-
-            if (col.gameObject.CompareTag("Bullet") && !isGodMode)
+            if (hitByDeadlyObject && !isGodMode)
                 DeclareDeath(col.collider);
         }
 
@@ -111,14 +103,19 @@ namespace player.scripts
 
         private void DeclareDeath(Collider2D collision)
         {
-            spriteRenderer.enabled = true;
             isDead = true;
-            var directionOfHit = transform.position - collision.transform.position;
-            var force = directionOfHit.normalized * 100f;
-            _rigidbody.AddForce(force);
+            _polygonCollider2D.enabled = false;
             timeController.isTimeSlowed = true;
-            GetComponent<MoveRigidBodyParts>().enabled = false;
+
+            _animator.SetBool(IsDead, true);
+
+            var directionOfHit = transform.position - collision.transform.position;
+            var force = directionOfHit.normalized * 10f;
+            _rigidbody.AddForce(force);
+
+
             NotifyObservers(PlayerActions.IsDead);
+            NotifyObservers(DialogueTrigger.PlayerDied);
         }
 
         private void ControlTime()

@@ -21,12 +21,12 @@ internal class Dialogue
 {
     [FormerlySerializedAs("Text")] public string text;
     public string femaleText;
+    [SerializeField] public AudioGender audio;
     public float waitInSeconds = 0.5f;
     public DialogueTrigger trigger;
     public DialogueAction action;
     public GameObject[] options;
     public bool includesPlayerName;
-    [SerializeField] public AudioGender audio;
 }
 
 
@@ -39,6 +39,7 @@ public class DialogueConfig : MonoBehaviour
     [SerializeField] private int activeDialogueIndex;
     [SerializeField] private Dialogue[] dialogues;
     private AudioSource _audioSource;
+    private DialogueTrigger _queuedTrigger;
 
     private float _time;
     private float _timeToReadCurrentLine;
@@ -47,8 +48,8 @@ public class DialogueConfig : MonoBehaviour
     {
         // PlayerPrefs.DeleteAll();
         _audioSource = GetComponent<AudioSource>();
-        PlayerGender playerGender = PlayerInfo.GetPlayerGender();
-        string playerName = PlayerInfo.GetPlayerName();
+        var playerGender = PlayerInfo.GetPlayerGender();
+        var playerName = PlayerInfo.GetPlayerName();
         activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(playerName, playerGender);
 
         if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
@@ -68,6 +69,16 @@ public class DialogueConfig : MonoBehaviour
     public void OnNotify(DialogueTrigger trigger)
     {
         print($"DialogueConfig OnNotify (DialogueTrigger) {trigger}");
+
+        var isImportantLine = trigger == DialogueTrigger.PlayerDied;
+
+        var isLinePlaying = _audioSource.isPlaying;
+        if (isLinePlaying && !isImportantLine)
+        {
+            _queuedTrigger = trigger;
+            return;
+        }
+
         TriggerLine(trigger);
     }
 
@@ -96,6 +107,8 @@ public class DialogueConfig : MonoBehaviour
     private void ClearLine()
     {
         dialogueLineContainer.text = "";
+        _audioSource.Stop();
+        _audioSource.clip = null;
     }
 
     private void ReadLine(Dialogue line)
@@ -105,9 +118,9 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
-        string playerName = PlayerInfo.GetPlayerName();
-        PlayerGender playerGender = PlayerInfo.GetPlayerGender();
-        
+        var playerName = PlayerInfo.GetPlayerName();
+        var playerGender = PlayerInfo.GetPlayerGender();
+
         var lineText = playerGender switch
         {
             PlayerGender.Male => line.text,
@@ -145,7 +158,7 @@ public class DialogueConfig : MonoBehaviour
                 PlayerGender.None => line.audio.none,
                 _ => null
             };
-            
+
             dialogueLineContainer.text = line.includesPlayerName
                 ? lineText.Replace("{playerName}", playerName)
                 : lineText;
@@ -167,7 +180,7 @@ public class DialogueConfig : MonoBehaviour
             else
                 Invoke(nameof(TriggerNextLine), line.waitInSeconds);
         }
-        
+
         InvokeAction(line);
     }
 
@@ -178,17 +191,33 @@ public class DialogueConfig : MonoBehaviour
             default:
             case DialogueAction.None:
                 break;
-            
+
             case DialogueAction.NextScene:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
-
         }
     }
 
     public void TriggerNextLine()
     {
         activeDialogueIndex++;
-        TriggerLine(activeDialogueIndex);
+
+        if (dialogues.Length <= activeDialogueIndex)
+        {
+            print("No more dialogues to trigger");
+            return;
+        }
+
+        if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
+        {
+            TriggerLine(activeDialogueIndex);
+        }
+        else if (_queuedTrigger != DialogueTrigger.None)
+        {
+            TriggerLine(_queuedTrigger);
+            _queuedTrigger = DialogueTrigger.None;
+        }
+
+        ClearLine();
     }
 }

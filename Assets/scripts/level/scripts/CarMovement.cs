@@ -1,24 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class CarMovement : MonoBehaviour
+public class CarMovement : ObserverSubject
 {
     private static readonly int IsDead = Animator.StringToHash("IsDead");
     [SerializeField] private Transform destination;
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float scaleFactor;
     [SerializeField] private TimeController timeController;
     private readonly int _slowDownFactor = 20;
     private bool _isRespawning;
-    private Vector3 _originalScale;
 
-    private void Start()
-    {
-        _originalScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-    }
-
-    // Update is called once per frame
     private void Update()
     {
         if (_isRespawning) return;
@@ -28,7 +20,6 @@ public class CarMovement : MonoBehaviour
         if (isAtDestination && !_isRespawning)
         {
             _isRespawning = true;
-            // Invoke(nameof(RespawnCar), Random.Range(1f, 3f));
             StartCoroutine(RespawnCar());
             return;
         }
@@ -36,45 +27,21 @@ public class CarMovement : MonoBehaviour
         if (destination)
         {
             var motion = (destination.position - transform.position).normalized;
+            var randomSpeed = Random.Range(0.5f, 1f) * speed;
 
             if (timeController.isTimeSlowed)
             {
-                transform.position += motion * (speed / _slowDownFactor * Time.deltaTime);
+                transform.position += motion * (randomSpeed / _slowDownFactor * Time.deltaTime);
                 return;
             }
 
-            transform.position += motion * (speed * Time.deltaTime);
-
-            if (destination.position.y > transform.position.y) ScaleDownCar();
-            else ScaleUpCar();
+            transform.position += motion * (randomSpeed * Time.deltaTime);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            col.gameObject.GetComponent<Animator>().SetBool(IsDead, true);
-            col.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        }
-    }
-
-    private void ScaleDownCar()
-    {
-        transform.localScale *= scaleFactor;
-    }
-
-    private void ScaleUpCar()
-    {
-        transform.localScale /= scaleFactor;
     }
 
     private IEnumerator RespawnCar()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
-
-        print($"OS: {_originalScale}");
-        transform.localScale = _originalScale;
+        yield return new WaitForSeconds(Random.Range(1f, 8f));
         transform.position = respawnPoint.position;
         _isRespawning = false;
     }

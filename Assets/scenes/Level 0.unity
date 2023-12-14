@@ -329,7 +329,7 @@ RectTransform:
   - {fileID: 384757465}
   - {fileID: 1899174349}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -367,7 +367,7 @@ Transform:
   - {fileID: 683901567}
   - {fileID: 2086681508}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202637092
 GameObject:
@@ -550,9 +550,10 @@ GameObject:
   - component: {fileID: 278174387}
   - component: {fileID: 278174389}
   - component: {fileID: 278174390}
+  - component: {fileID: 278174391}
   m_Layer: 0
   m_Name: UpCar
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,8 +618,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278174386}
   m_LocalRotation: {x: 0, y: 0, z: -0.010733539, w: 0.9999424}
-  m_LocalPosition: {x: 46.3, y: 40.5, z: 0.008927947}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 45.62, y: 19.29, z: 0.008927947}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1681720948}
@@ -636,10 +637,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86c76468cf04693bea839d9ab2c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueObservers:
+    m_PersistentCalls:
+      m_Calls: []
+  playerInfoObservers:
+    m_PersistentCalls:
+      m_Calls: []
   destination: {fileID: 258339853}
   respawnPoint: {fileID: 1143955020}
   speed: 20
-  scaleFactor: 0.9989
   timeController: {fileID: 853733327}
 --- !u!61 &278174390
 BoxCollider2D:
@@ -667,6 +676,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.65, y: 2.09}
   m_EdgeRadius: 0
+--- !u!114 &278174391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278174386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a6522640613bc429cff8bf21a0bdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 45
+  sensitivity: 50
 --- !u!1 &321415921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1246,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &645977001
 MonoBehaviour:
@@ -2477,6 +2500,7 @@ GameObject:
   - component: {fileID: 1251394598}
   - component: {fileID: 1251394599}
   - component: {fileID: 1251394600}
+  - component: {fileID: 1251394601}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2551,7 +2575,7 @@ Transform:
   - {fileID: 519420032}
   - {fileID: 543726634}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1251394593
 MonoBehaviour:
@@ -2570,7 +2594,19 @@ MonoBehaviour:
       m_Calls: []
   dialogueObservers:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1929471016}
+        m_TargetAssemblyTypeName: DialogueConfig, Dialogue
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerInfoObservers:
     m_PersistentCalls:
       m_Calls: []
@@ -7469,6 +7505,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 45
   sensitivity: 200
+--- !u!114 &1251394601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251394588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40c03018b95c74438da227749d1a370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueObservers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1929471016}
+        m_TargetAssemblyTypeName: DialogueConfig, Dialogue
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  playerInfoObservers:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1401894186
 GameObject:
   m_ObjectHideFlags: 0
@@ -7921,7 +7990,7 @@ Transform:
   - {fileID: 321415922}
   - {fileID: 1240518703}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1698479298
 GameObject:
@@ -8175,7 +8244,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839824169
 GameObject:
@@ -8420,9 +8489,10 @@ GameObject:
   - component: {fileID: 1848433363}
   - component: {fileID: 1848433362}
   - component: {fileID: 1848433364}
+  - component: {fileID: 1848433365}
   m_Layer: 0
   m_Name: DownCar
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8435,8 +8505,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848433359}
   m_LocalRotation: {x: 0, y: 0, z: 0.005323218, w: 0.9999859}
-  m_LocalPosition: {x: 51.8, y: -30.1, z: 0.008927947}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 53, y: -45.2, z: 0.008927947}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1681720948}
@@ -8454,10 +8524,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e86c76468cf04693bea839d9ab2c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueObservers:
+    m_PersistentCalls:
+      m_Calls: []
+  playerInfoObservers:
+    m_PersistentCalls:
+      m_Calls: []
   destination: {fileID: 321415922}
   respawnPoint: {fileID: 1240518703}
   speed: 15
-  scaleFactor: 0.999
   timeController: {fileID: 853733327}
 --- !u!212 &1848433363
 SpriteRenderer:
@@ -8537,6 +8615,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.65, y: 2.09}
   m_EdgeRadius: 0
+--- !u!114 &1848433365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848433359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a6522640613bc429cff8bf21a0bdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 45
+  sensitivity: 50
 --- !u!1 &1897871401
 GameObject:
   m_ObjectHideFlags: 0
@@ -8861,7 +8953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1929471014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8992,73 +9084,86 @@ MonoBehaviour:
       time -in a somewhat uncontrollable way
     femaleText: Poor {playerName}... She is not in control of her life... But she
       can control time -in a somewhat uncontrollable way
+    audio:
+      male: {fileID: 0}
+      female: {fileID: 0}
+      none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 0
     action: 0
     options: []
     includesPlayerName: 1
-    audio:
-      male: {fileID: 0}
-      female: {fileID: 0}
-      none: {fileID: 0}
   - text: When he moves an inch, time slows down almost to a halt.
     femaleText: When she moves an inch, time slows down almost to a halt.
-    waitInSeconds: 0.5
-    trigger: 0
-    action: 0
-    options: []
-    includesPlayerName: 0
     audio:
       male: {fileID: 8300000, guid: 4a26e79c050174db892e6063abb3c3fe, type: 3}
       female: {fileID: 8300000, guid: 61ab1087435af1b4fa00c70edbbc175f, type: 3}
       none: {fileID: 0}
+    waitInSeconds: 0.5
+    trigger: 1
+    action: 0
+    options: []
+    includesPlayerName: 0
   - text: It is indeed a terrible fate. A fate he had submitted to.
     femaleText: It is indeed a terrible fate. A fate she had submitted to.
+    audio:
+      male: {fileID: 8300000, guid: 71b4fc35417d0794bbf047ad41a69a52, type: 3}
+      female: {fileID: 8300000, guid: fe74c9ed3fff0eb4e93b77d16faa01e9, type: 3}
+      none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 0
     action: 0
     options: []
     includesPlayerName: 0
-    audio:
-      male: {fileID: 8300000, guid: 71b4fc35417d0794bbf047ad41a69a52, type: 3}
-      female: {fileID: 8300000, guid: fe74c9ed3fff0eb4e93b77d16faa01e9, type: 3}
-      none: {fileID: 0}
   - text: This was not his house and {playerName} knew it perfectly well.
     femaleText: This was not her house and {playerName} knew it perfectly well.
-    waitInSeconds: 0.5
-    trigger: 0
-    action: 0
-    options: []
-    includesPlayerName: 1
     audio:
       male: {fileID: 0}
       female: {fileID: 0}
       none: {fileID: 0}
+    waitInSeconds: 0.5
+    trigger: 2
+    action: 0
+    options: []
+    includesPlayerName: 1
   - text: '{playerName} was too afraid to cross the road. Even chickens are not afraid
       of that'
     femaleText: 
-    waitInSeconds: 0.5
-    trigger: 0
-    action: 0
-    options: []
-    includesPlayerName: 1
     audio:
       male: {fileID: 0}
       female: {fileID: 0}
       none: {fileID: 0}
+    waitInSeconds: 0.5
+    trigger: 3
+    action: 0
+    options: []
+    includesPlayerName: 1
   - text: '{playerName} was too afraid to get lost. And besides, his wife is waiting
       for him. She has something very important to tell him.'
     femaleText: '{playerName} was too afraid to get lost. And besides, her husband
       is waiting for her. He has something very important to tell her.'
-    waitInSeconds: 0.5
-    trigger: 0
-    action: 0
-    options: []
-    includesPlayerName: 1
     audio:
       male: {fileID: 0}
       female: {fileID: 0}
       none: {fileID: 0}
+    waitInSeconds: 0.5
+    trigger: 4
+    action: 0
+    options: []
+    includesPlayerName: 1
+  - text: And then he died. But he also had the ability to reverse time, by simply
+      hitting the R button, whatever that means.
+    femaleText: And then she died. But she also had the ability to reverse time,
+      by simply hitting the R button, whatever that means.
+    audio:
+      male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
+      female: {fileID: 8300000, guid: 6155be9f74b94d245a248610c6321536, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0.5
+    trigger: 2
+    action: 0
+    options: []
+    includesPlayerName: 0
 --- !u!4 &1929471017
 Transform:
   m_ObjectHideFlags: 0
@@ -9072,7 +9177,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1943451724
 GameObject:
@@ -9166,7 +9271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2014865827
 GameObject:
@@ -9252,7 +9357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2014865830
 MonoBehaviour:
@@ -9453,7 +9558,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2131562468
 MonoBehaviour:
