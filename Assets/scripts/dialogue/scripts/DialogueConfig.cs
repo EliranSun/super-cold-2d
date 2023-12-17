@@ -174,6 +174,8 @@ public class DialogueConfig : MonoBehaviour
                 yield return new WaitForSeconds(_timeToReadCurrentLine);
             }
 
+            ClearLine();
+
             if (line.options.Length > 0)
                 foreach (var optionGameObject in line.options)
                     optionGameObject.SetActive(true);
@@ -200,24 +202,23 @@ public class DialogueConfig : MonoBehaviour
 
     public void TriggerNextLine()
     {
-        activeDialogueIndex++;
-
-        if (dialogues.Length <= activeDialogueIndex)
-        {
-            print("No more dialogues to trigger");
-            return;
-        }
-
-        if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
-        {
-            TriggerLine(activeDialogueIndex);
-        }
-        else if (_queuedTrigger != DialogueTrigger.None)
+        if (_queuedTrigger != DialogueTrigger.None)
         {
             TriggerLine(_queuedTrigger);
             _queuedTrigger = DialogueTrigger.None;
         }
+        else
+        {
+            activeDialogueIndex++;
 
-        ClearLine();
+            if (dialogues.Length <= activeDialogueIndex ||
+                dialogues[activeDialogueIndex].trigger != DialogueTrigger.None)
+            {
+                print("No more dialogues to trigger");
+                return;
+            }
+
+            TriggerLine(activeDialogueIndex);
+        }
     }
 }
