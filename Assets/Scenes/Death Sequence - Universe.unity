@@ -5633,8 +5633,8 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 35709127}
   activeDialogueIndex: 0
   dialogues:
-  - text: 'Every death of every planet in the solar system. Every violent explosion, '
-    femaleText: 'Every death of every planet in the solar system. Every violent explosion, '
+  - femaleText: 'Every death of every planet in the solar system. Every violent explosion, '
+    text: 'Every death of every planet in the solar system. Every violent explosion, '
     audio:
       female: {fileID: 8300000, guid: 469993d9d50cdbc4c9fdc55975050eea, type: 3}
       male: {fileID: 8300000, guid: 651b693cc4bbac741bbe20733de2b561, type: 3}
@@ -5644,10 +5644,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: light years, far, far away from the place {playerName} used to call home...
-      and yet - it was all around her
-    femaleText: light years, far, far away from the place {playerName} used to call
+  - femaleText: light years, far, far away from the place {playerName} used to call
       home... and yet - it was all around her
+    text: light years, far, far away from the place {playerName} used to call home...
+      and yet - it was all around her
     audio:
       female: {fileID: 0}
       male: {fileID: 0}
@@ -5657,8 +5657,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - text: The decay of the entire galaxy.
-    femaleText: The decay of the entire galaxy.
+  - femaleText: The decay of the entire galaxy.
+    text: The decay of the entire galaxy.
     audio:
       female: {fileID: 8300000, guid: b5e6dfcdc5e444d498664cecf639ad7f, type: 3}
       male: {fileID: 8300000, guid: 3eeb5e56432fd8f4db5bbf97d351064b, type: 3}
@@ -5668,10 +5668,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: And it does not stop. Accelerating, more and more. Soulless, like a machine.
-      All the galaxies in the entire universe come to a halt.
-    femaleText: And it does not stop. Accelerating, more and more. Soulless, like
+  - femaleText: And it does not stop. Accelerating, more and more. Soulless, like
       a machine. All the galaxies in the entire universe come to a halt.
+    text: And it does not stop. Accelerating, more and more. Soulless, like a machine.
+      All the galaxies in the entire universe come to a halt.
     audio:
       female: {fileID: 8300000, guid: f16365427e5d4d14fb600b5c55c6354e, type: 3}
       male: {fileID: 8300000, guid: 17601422d28c6b94b8d56c7f0d1adbe1, type: 3}
@@ -5681,10 +5681,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: Blackness... even the most black of holes are now gone from existence.
+  - femaleText: Blackness... even the most black of holes are now gone from existence.
       Blackness... for the longest of time, even though time is progressing at unfathomable
       speed now.
-    femaleText: Blackness... even the most black of holes are now gone from existence.
+    text: Blackness... even the most black of holes are now gone from existence.
       Blackness... for the longest of time, even though time is progressing at unfathomable
       speed now.
     audio:
@@ -5696,10 +5696,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: "Time continues, until every single particle, atom, subatom and matter
+  - femaleText: "Time continues, until every single particle, atom, subatom and matter
       itself stop existing. Until every single unit of energy ceased to exist. The
       great, cold universe itself\u2026 stops. "
-    femaleText: "Time continues, until every single particle, atom, subatom and matter
+    text: "Time continues, until every single particle, atom, subatom and matter
       itself stop existing. Until every single unit of energy ceased to exist. The
       great, cold universe itself\u2026 stops. "
     audio:
@@ -5711,10 +5711,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: Time itself stops at this point. Nothing matters anymore. Everything is
-      over. The game itself is over.
-    femaleText: Time itself stops at this point. Nothing matters anymore. Everything
+  - femaleText: Time itself stops at this point. Nothing matters anymore. Everything
       is over. The game itself is over.
+    text: Time itself stops at this point. Nothing matters anymore. Everything is
+      over. The game itself is over.
     audio:
       female: {fileID: 8300000, guid: 57eac6a909c9b7944b74216079619d12, type: 3}
       male: {fileID: 8300000, guid: e8fa92e1a75e1d7498d64cfb164b7386, type: 3}
@@ -5724,10 +5724,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: "Suddenly, whiteness. Rapid expansion, expanding time itself\u2026 in the
-      opposite direction."
-    femaleText: "Suddenly, whiteness. Rapid expansion, expanding time itself\u2026
+  - femaleText: "Suddenly, whiteness. Rapid expansion, expanding time itself\u2026
       in the opposite direction."
+    text: "Suddenly, whiteness. Rapid expansion, expanding time itself\u2026 in the
+      opposite direction."
     audio:
       female: {fileID: 0}
       male: {fileID: 8300000, guid: ac0baa19df4cf7d49a78f609b38b12aa, type: 3}
@@ -5737,8 +5737,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: ...a loop?
-    femaleText: ...a loop?
+  - femaleText: ...a loop?
+    text: ...a loop?
     audio:
       female: {fileID: 8300000, guid: 71861ae242d51674b994de10f710c0ad, type: 3}
       male: {fileID: 8300000, guid: 572444134206aa94eac865b51d415729, type: 3}
@@ -5748,8 +5748,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: 
-    femaleText: 
+  - femaleText: 
+    text: 
     audio:
       female: {fileID: 0}
       male: {fileID: 0}
@@ -5759,10 +5759,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: "Energy, matter, subatoms, atoms, molecules, particles, chemistry, physics,
-      stars, planets, galaxies\u2026"
-    femaleText: "Energy, matter, subatoms, atoms, molecules, particles, chemistry,
+  - femaleText: "Energy, matter, subatoms, atoms, molecules, particles, chemistry,
       physics, stars, planets, galaxies\u2026"
+    text: "Energy, matter, subatoms, atoms, molecules, particles, chemistry, physics,
+      stars, planets, galaxies\u2026"
     audio:
       female: {fileID: 8300000, guid: 2e00264bf47336b49b0db756db1ae5fb, type: 3}
       male: {fileID: 8300000, guid: b8d6bc754863c294899631c49980e3e6, type: 3}
@@ -5772,8 +5772,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: 'The rapid reversion of time starts to slow down. '
-    femaleText: 'The rapid reversion of time starts to slow down. '
+  - femaleText: 'The rapid reversion of time starts to slow down. '
+    text: 'The rapid reversion of time starts to slow down. '
     audio:
       female: {fileID: 8300000, guid: d98e02bc4cb586340b6251c4efda191a, type: 3}
       male: {fileID: 8300000, guid: aee2c1359a448f0498234bf9e53902ce, type: 3}
@@ -5783,8 +5783,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: "{playerName}\u2019s own sun emerges."
-    femaleText: "{playerName}\u2019s own sun emerges."
+  - femaleText: "{playerName}\u2019s own sun emerges."
+    text: "{playerName}\u2019s own sun emerges."
     audio:
       female: {fileID: 0}
       male: {fileID: 0}
@@ -5794,10 +5794,10 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - text: "Birthing the earth. Birthing oceans, land, life, creatures, mammals, human
-      beings. Civilizations, cities, neighborhoods, streets, buildings\u2026 "
-    femaleText: "Birthing the earth. Birthing oceans, land, life, creatures, mammals,
+  - femaleText: "Birthing the earth. Birthing oceans, land, life, creatures, mammals,
       human beings. Civilizations, cities, neighborhoods, streets, buildings\u2026 "
+    text: "Birthing the earth. Birthing oceans, land, life, creatures, mammals, human
+      beings. Civilizations, cities, neighborhoods, streets, buildings\u2026 "
     audio:
       female: {fileID: 8300000, guid: 2ba98f69ea00af348a48801c935cb980, type: 3}
       male: {fileID: 8300000, guid: 1ef440bd469962d4caffe255afefb95e, type: 3}
@@ -5807,9 +5807,9 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: "{playerName}\u2019s apartment. {playerName}\u2019s wife, {playerPartner},
+  - femaleText: "{playerName}\u2019s apartment. {playerName}\u2019s husband, {playerPartner},
       moves in."
-    femaleText: "{playerName}\u2019s apartment. {playerName}\u2019s husband, {playerPartner},
+    text: "{playerName}\u2019s apartment. {playerName}\u2019s wife, {playerPartner},
       moves in."
     audio:
       female: {fileID: 0}
@@ -5820,8 +5820,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - text: 'She shot him, but this time in reverse. '
-    femaleText: 'He shot her, but this time in reverse. '
+  - femaleText: 'He shot her, but this time in reverse. '
+    text: 'She shot him, but this time in reverse. '
     audio:
       female: {fileID: 8300000, guid: 0a955c08e90b12347bb7941e16b9b146, type: 3}
       male: {fileID: 8300000, guid: 4c6edcffccb791949bea3aecc781e8d4, type: 3}
@@ -5831,8 +5831,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - text: "The bullet comes out of {playerName}\u2019s bloody body."
-    femaleText: "The bullet comes out of {playerName}\u2019s bloody body."
+  - femaleText: "The bullet comes out of {playerName}\u2019s bloody body."
+    text: "The bullet comes out of {playerName}\u2019s bloody body."
     audio:
       female: {fileID: 0}
       male: {fileID: 0}
@@ -5842,20 +5842,21 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - text: Reviving him in the process. The bullet returns to the pistol it came from.
-    femaleText: Reviving her in the process. The bullet returns to the pistol it
+  - femaleText: Reviving her in the process. The bullet returns to the pistol it
       came from.
+    text: Reviving him in the process. The bullet returns to the pistol it came from.
     audio:
-      female: {fileID: 8300000, guid: aa3c8e9be4580954a816ee72cb9bd06c, type: 3}
-      male: {fileID: 8300000, guid: 5f8af723ec539804da3400d6c1044875, type: 3}
+      female: {fileID: 8300000, guid: 5f9b5d151335c12429f8a88efce0089c, type: 3}
+      male: {fileID: 8300000, guid: aa3c8e9be4580954a816ee72cb9bd06c, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
     action: 0
     options: []
     includesPlayerName: 0
-  - text: 
-    femaleText: 
+  - femaleText: Moments before {playerPartner} shots again - {playerName} can now
+      move.
+    text: Moments before {playerPartner} shots again - {playerName} can now move.
     audio:
       female: {fileID: 0}
       male: {fileID: 0}
@@ -5864,12 +5865,23 @@ MonoBehaviour:
     trigger: 0
     action: 0
     options: []
-    includesPlayerName: 0
-  - text: 
-    femaleText: 
+    includesPlayerName: 1
+  - femaleText: 'Completely unaware of the magnificent journey his body just experienced. '
+    text: 'Completely unaware of the magnificent journey his body just experienced. '
     audio:
-      female: {fileID: 0}
-      male: {fileID: 0}
+      female: {fileID: 8300000, guid: f38b848b49cdca84d986019d49b21bdd, type: 3}
+      male: {fileID: 8300000, guid: 20677646d48208e4fa4ed4eb69a70be4, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 0
+    action: 0
+    options: []
+    includesPlayerName: 0
+  - femaleText: 'A once in a lifetime experience, that is for sure. '
+    text: 'A once in a lifetime experience, that is for sure. '
+    audio:
+      female: {fileID: 8300000, guid: 0aa2dd5f81715ce41826c09787df383b, type: 3}
+      male: {fileID: 8300000, guid: f126bf888c334d241bad84a7aa99d33b, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0

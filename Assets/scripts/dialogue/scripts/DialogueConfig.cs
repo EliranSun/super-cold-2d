@@ -19,8 +19,8 @@ internal class AudioGender
 [Serializable]
 internal class Dialogue
 {
-    [FormerlySerializedAs("Text")] public string text;
     public string femaleText;
+    [FormerlySerializedAs("Text")] public string text;
     [SerializeField] public AudioGender audio;
     public float waitInSeconds = 0.5f;
     public DialogueTrigger trigger;
