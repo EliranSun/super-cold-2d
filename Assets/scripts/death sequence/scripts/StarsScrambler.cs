@@ -4,32 +4,40 @@ using UnityEngine;
 public class StarsScrambler : MonoBehaviour
 {
     [SerializeField] private GameObject[] stars;
+    private int _activeStarIndex;
+    private float _currentClipLength;
 
     private void Start()
     {
-        foreach (var star in stars)
-            StartCoroutine(ChangeStarPosition(star));
+        StartCoroutine(ChangeStarPosition());
     }
 
-    private IEnumerator ChangeStarPosition(GameObject star)
+    private IEnumerator ChangeStarPosition()
     {
         while (true)
         {
-            star.SetActive(false);
-            star.transform.position = new Vector2(Random.Range(-30, 30), Random.Range(-15, 15));
-            star.SetActive(true);
-
-            var clips = star.GetComponent<Animator>().runtimeAnimatorController.animationClips;
-            var currentClipLength = 0f;
-
-            foreach (var clip in clips)
+            if (_activeStarIndex == stars.Length)
             {
-                print($"CLIP NAME {clip.name} STAR NAME {star.name}");
-                if (clip.name == star.name)
-                    currentClipLength = clip.length;
+                stars[_activeStarIndex - 1].SetActive(false);
+                _activeStarIndex = 0;
             }
 
-            yield return new WaitForSeconds(currentClipLength);
+            var star = stars[_activeStarIndex];
+            var clips = star.GetComponent<Animator>().runtimeAnimatorController.animationClips;
+
+
+            clips[0].name = star.name;
+            _currentClipLength = clips[0].length;
+
+            if (_activeStarIndex > 0)
+                stars[_activeStarIndex - 1].SetActive(false);
+
+            star.SetActive(true);
+
+            _activeStarIndex++;
+
+
+            yield return new WaitForSeconds(_currentClipLength);
         }
     }
 }

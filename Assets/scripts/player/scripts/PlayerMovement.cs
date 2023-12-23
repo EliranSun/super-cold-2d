@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace player.scripts
 {
@@ -15,20 +14,14 @@ namespace player.scripts
         [SerializeField] private TimeController timeController;
         [SerializeField] private bool isGodMode;
         [SerializeField] private LevelManager levelManager;
-
-        [FormerlySerializedAs("_isDead")] [SerializeField]
-        private bool isDead;
-
-        [FormerlySerializedAs("_spriteRenderer")] [SerializeField]
-        private SpriteRenderer spriteRenderer;
-
+        [SerializeField] private bool isDead;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private float speed = 5f;
         private Animator _animator;
         private bool _areObserversNotified;
         private CollectWeapon _collectWeapon;
         private int _deathCount;
         private bool _isWalking;
-
         private PolygonCollider2D _polygonCollider2D;
         private Rigidbody2D _rigidbody;
         private bool _triggeredCollectWeapon;
@@ -39,6 +32,8 @@ namespace player.scripts
             _collectWeapon = GetComponent<CollectWeapon>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+
+            if (isDead) DeclareDeath(null);
         }
 
         private void Update()
@@ -105,14 +100,16 @@ namespace player.scripts
         {
             isDead = true;
             _polygonCollider2D.enabled = false;
-            timeController.isTimeSlowed = true;
+            if (timeController) timeController.isTimeSlowed = true;
 
             _animator.SetBool(IsDead, true);
 
-            var directionOfHit = transform.position - collision.transform.position;
-            var force = directionOfHit.normalized * 10f;
-            _rigidbody.AddForce(force);
-
+            if (collision)
+            {
+                var directionOfHit = transform.position - collision.transform.position;
+                var force = directionOfHit.normalized * 10f;
+                _rigidbody.AddForce(force);
+            }
 
             NotifyObservers(PlayerActions.IsDead);
             NotifyObservers(DialogueTrigger.PlayerDied);
@@ -120,6 +117,9 @@ namespace player.scripts
 
         private void ControlTime()
         {
+            if (!timeController)
+                return;
+
             if (_isWalking)
             {
                 if (isControllingTime && !timeController.isTimeSlowed)

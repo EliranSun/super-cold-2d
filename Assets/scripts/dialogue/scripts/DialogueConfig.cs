@@ -11,8 +11,8 @@ using UnityEngine.Serialization;
 [Serializable]
 internal class AudioGender
 {
-    [SerializeField] public AudioClip male;
     [SerializeField] public AudioClip female;
+    [SerializeField] public AudioClip male;
     [SerializeField] public AudioClip none;
 }
 
