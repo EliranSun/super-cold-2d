@@ -1,4 +1,3 @@
-using System;
 using enums;
 using TMPro;
 using UnityEngine;
@@ -10,10 +9,7 @@ public class PlayerInfo : MonoBehaviour
     private void Start()
     {
         var playerName = GetPlayerName();
-        if (titleCard && playerName != "")
-        {
-            titleCard.text = $"{playerName.ToUpper()} IS COLD";
-        }
+        if (titleCard && playerName != "") titleCard.text = $"{playerName.ToUpper()} IS COLD";
     }
 
     public void SetPlayerName(string playerName)
@@ -49,5 +45,15 @@ public class PlayerInfo : MonoBehaviour
             default:
                 return PlayerGender.None;
         }
+    }
+
+    public static void SetPlayerPartner(string partner)
+    {
+        PlayerPrefs.SetString("PlayerPartner", partner.ToUpper().Trim());
+    }
+
+    public static string GetPlayerPartner()
+    {
+        return PlayerPrefs.GetString("PlayerPartner");
     }
 }

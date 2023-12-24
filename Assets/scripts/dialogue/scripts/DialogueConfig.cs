@@ -40,6 +40,7 @@ public class DialogueConfig : MonoBehaviour
     [SerializeField] private Dialogue[] dialogues;
     private AudioSource _audioSource;
     private DialogueTrigger _queuedTrigger;
+    private TextToSpeech _textToSpeechComponent;
 
     private float _time;
     private float _timeToReadCurrentLine;
@@ -47,10 +48,15 @@ public class DialogueConfig : MonoBehaviour
     private void Awake()
     {
         // PlayerPrefs.DeleteAll();
+
         _audioSource = GetComponent<AudioSource>();
+        _textToSpeechComponent = GetComponent<TextToSpeech>();
+
         var playerGender = PlayerInfo.GetPlayerGender();
         var playerName = PlayerInfo.GetPlayerName();
-        activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(playerName, playerGender);
+
+        if (activeDialogueIndex == 0)
+            activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(playerName, playerGender);
 
         if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
             ReadLine(dialogues[activeDialogueIndex]);
@@ -92,10 +98,11 @@ public class DialogueConfig : MonoBehaviour
             }
     }
 
-    private void TriggerLine(int index)
+    public void TriggerLine(int index)
     {
         try
         {
+            activeDialogueIndex = index;
             ReadLine(dialogues[index]);
         }
         catch
@@ -118,55 +125,37 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
+        var partnerName = PlayerInfo.GetPlayerPartner();
         var playerName = PlayerInfo.GetPlayerName();
         var playerGender = PlayerInfo.GetPlayerGender();
 
-        var lineText = playerGender switch
-        {
-            PlayerGender.Male => line.text,
-            PlayerGender.Female => line.femaleText == "" ? line.text : line.femaleText,
-            PlayerGender.None => line.text,
-            _ => ""
-        };
+        var lineText = GetGenderLineText(line);
 
         if (line.includesPlayerName)
         {
+            var formattedPartnerName = $"{char.ToUpper(partnerName[0])}{partnerName.Substring(1)}";
             var formattedPlayerName = $"{char.ToUpper(playerName[0])}{playerName.Substring(1)}";
             var lineWithPlayerName = lineText.Replace("{playerName}", formattedPlayerName);
+            lineWithPlayerName = lineWithPlayerName.Replace("{playerPartner}", formattedPartnerName);
 
             dialogueLineContainer.text = lineWithPlayerName;
 
-            var textToSpeechComponent = GetComponent<TextToSpeech>();
-            textToSpeechComponent.ConvertText(lineWithPlayerName, playerGender, audioClip =>
+            // TODO: Parse all {playerName} and {playerPartner} lines at the start of a scene, as fetching data
+            // takes couple of seconds
+            _textToSpeechComponent.ConvertText(lineWithPlayerName, playerGender, audioClip =>
             {
-                _audioSource.clip = audioClip;
-                _audioSource.Play();
-
-                if (line.options.Length > 0)
-                    foreach (var optionGameObject in line.options)
-                        optionGameObject.SetActive(true);
-                else
-                    Invoke(nameof(TriggerNextLine), _audioSource.clip.length + line.waitInSeconds);
+                PlayAudioSourceClip(audioClip);
+                AfterLineActions(line);
             });
         }
         else
         {
-            var audio = playerGender switch
-            {
-                PlayerGender.Male => line.audio.male,
-                PlayerGender.Female => line.audio.female,
-                PlayerGender.None => line.audio.none,
-                _ => null
-            };
+            var lineAudio = GetLineAudio(line);
+            dialogueLineContainer.text = lineText;
 
-            dialogueLineContainer.text = line.includesPlayerName
-                ? lineText.Replace("{playerName}", playerName)
-                : lineText;
-
-            if (audio != null)
+            if (lineAudio != null)
             {
-                _audioSource.clip = audio;
-                _audioSource.Play();
+                PlayAudioSourceClip(lineAudio);
                 yield return new WaitForSeconds(_audioSource.clip.length);
             }
             else
@@ -175,15 +164,49 @@ public class DialogueConfig : MonoBehaviour
             }
 
             ClearLine();
-
-            if (line.options.Length > 0)
-                foreach (var optionGameObject in line.options)
-                    optionGameObject.SetActive(true);
-            else
-                Invoke(nameof(TriggerNextLine), line.waitInSeconds);
+            AfterLineActions(line);
         }
 
         InvokeAction(line);
+    }
+
+    private string GetGenderLineText(Dialogue line)
+    {
+        var playerGender = PlayerInfo.GetPlayerGender();
+        return playerGender switch
+        {
+            PlayerGender.Male => line.text,
+            PlayerGender.Female => line.femaleText == "" ? line.text : line.femaleText,
+            PlayerGender.None => line.text,
+            _ => ""
+        };
+    }
+
+    private AudioClip GetLineAudio(Dialogue line)
+    {
+        var playerGender = PlayerInfo.GetPlayerGender();
+        return playerGender switch
+        {
+            PlayerGender.Male => line.audio.male,
+            PlayerGender.Female => line.audio.female,
+            PlayerGender.None => line.audio.none,
+            _ => null
+        };
+    }
+
+    private void PlayAudioSourceClip(AudioClip audioClip)
+    {
+        _audioSource.clip = audioClip;
+        _audioSource.Play();
+    }
+
+    private void AfterLineActions(Dialogue line)
+    {
+        if (line.options.Length > 0)
+            foreach (var optionGameObject in line.options)
+                optionGameObject.SetActive(true);
+        else
+            Invoke(nameof(TriggerNextLine), line.waitInSeconds);
     }
 
     private void InvokeAction(Dialogue line)
@@ -196,6 +219,9 @@ public class DialogueConfig : MonoBehaviour
 
             case DialogueAction.NextScene:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                break;
+
+            case DialogueAction.GameObjectActivation:
                 break;
         }
     }

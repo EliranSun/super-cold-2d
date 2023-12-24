@@ -9415,84 +9415,85 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 384757466}
   activeDialogueIndex: 0
   dialogues:
-  - text: Poor {playerName}... He is not in control of his life... But he can control
-      time -in a somewhat uncontrollable way
-    femaleText: Poor {playerName}... She is not in control of her life... But she
+  - femaleText: Poor {playerName}... She is not in control of her life... But she
       can control time -in a somewhat uncontrollable way
+    text: Poor {playerName}... He is not in control of his life... But he can control
+      time -in a somewhat uncontrollable way
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 0
     action: 0
     options: []
     includesPlayerName: 1
-  - text: When he moves an inch, time slows down almost to a halt.
-    femaleText: When she moves an inch, time slows down almost to a halt.
+  - femaleText: When she moves an inch, time slows down almost to a halt.
+    text: When he moves an inch, time slows down almost to a halt.
     audio:
-      male: {fileID: 8300000, guid: 4a26e79c050174db892e6063abb3c3fe, type: 3}
       female: {fileID: 8300000, guid: 61ab1087435af1b4fa00c70edbbc175f, type: 3}
+      male: {fileID: 8300000, guid: 4a26e79c050174db892e6063abb3c3fe, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 1
     action: 0
     options: []
     includesPlayerName: 0
-  - text: It is indeed a terrible fate. A fate he had submitted to.
-    femaleText: It is indeed a terrible fate. A fate she had submitted to.
+  - femaleText: It is indeed a terrible fate. A fate she had submitted to.
+    text: It is indeed a terrible fate. A fate he had submitted to.
     audio:
-      male: {fileID: 8300000, guid: 71b4fc35417d0794bbf047ad41a69a52, type: 3}
       female: {fileID: 8300000, guid: fe74c9ed3fff0eb4e93b77d16faa01e9, type: 3}
+      male: {fileID: 8300000, guid: 71b4fc35417d0794bbf047ad41a69a52, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 0
     action: 0
     options: []
     includesPlayerName: 0
-  - text: This was not his house and {playerName} knew it perfectly well.
-    femaleText: This was not her house and {playerName} knew it perfectly well.
+  - femaleText: This was not her house and {playerName} knew it perfectly well.
+    text: This was not his house and {playerName} knew it perfectly well.
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 3
     action: 0
     options: []
     includesPlayerName: 1
-  - text: '{playerName} was too afraid to cross the road. Even chickens are not afraid
+  - femaleText: 
+    text: '{playerName} was too afraid to cross the road. Even chickens are not afraid
       of that'
-    femaleText: 
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 4
     action: 0
     options: []
     includesPlayerName: 1
-  - text: '{playerName} was too afraid to get lost. And besides, his wife is waiting
-      for him. She has something very important to tell him.'
-    femaleText: '{playerName} was too afraid to get lost. And besides, her husband
-      is waiting for her. He has something very important to tell her.'
+  - femaleText: '{playerName} was too afraid to get lost. And besides, her husband,
+      {playerPartner} is waiting for her. He has something very important to tell
+      her.'
+    text: '{playerName} was too afraid to get lost. And besides, his wife {playerPartner}
+      is waiting for him. She has something very important to tell him.'
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 5
     action: 0
     options: []
     includesPlayerName: 1
-  - text: And then he died. But he also had the ability to reverse time, by simply
-      hitting the R button, whatever that means.
-    femaleText: And then she died. But she also had the ability to reverse time,
+  - femaleText: And then she died. But she also had the ability to reverse time,
       by simply hitting the R button, whatever that means.
+    text: And then he died. But he also had the ability to reverse time, by simply
+      hitting the R button, whatever that means.
     audio:
-      male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
       female: {fileID: 8300000, guid: 6155be9f74b94d245a248610c6321536, type: 3}
+      male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0.5
     trigger: 2

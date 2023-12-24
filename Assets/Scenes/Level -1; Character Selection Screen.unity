@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 110278402}
   - component: {fileID: 110278401}
   m_Layer: 5
-  m_Name: Your Name
+  m_Name: Partner Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,8 +522,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1803680867}
-        m_TargetAssemblyTypeName: SetPlayerPref, Assembly-CSharp
-        m_MethodName: SetPlayerName
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -989,6 +989,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1803680867}
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Morgan
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &180880391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1158,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1803680867}
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Jayden
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &199285802
@@ -1440,6 +1464,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1803680867}
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Zeke
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &225470950
@@ -1755,6 +1791,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1803680867}
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Valery
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &261662570
@@ -3333,12 +3381,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1867948477}
         m_TargetAssemblyTypeName: DialogueConfig, Dialogue
-        m_MethodName: TriggerNextLine
-        m_Mode: 1
+        m_MethodName: TriggerLine
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 17
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5618,12 +5666,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1867948477}
         m_TargetAssemblyTypeName: DialogueConfig, Dialogue
-        m_MethodName: TriggerNextLine
-        m_Mode: 1
+        m_MethodName: TriggerLine
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 16
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6993,6 +7041,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1803680867}
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Stacy
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1736406332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7197,6 +7257,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1803680867}
+        m_TargetAssemblyTypeName: PlayerInfo, ConfigAssemblyDefinition
+        m_MethodName: SetPlayerPartner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ryan
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1846072356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7381,7 +7453,7 @@ MonoBehaviour:
   noPlayerInfoDialogueIndex: 0
   noPlayerGenderDialogueIndex: 3
   dialogueLineContainer: {fileID: 568989956}
-  activeDialogueIndex: 0
+  activeDialogueIndex: 14
   dialogues:
   - femaleText: 
     text: Hi, how are you today? Long time no see :)
@@ -7550,12 +7622,12 @@ MonoBehaviour:
     text: Great! One final question, if that is OK. This one is really important,
       so make sure you answer it truthfully and honestly
     audio:
-      female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
-      male: {fileID: 8300000, guid: 89604317dc3e8411a9a6362142bd8b32, type: 3}
+      female: {fileID: 8300000, guid: 4ab248fadde78dc4b9136e0ba0b9b8b2, type: 3}
+      male: {fileID: 8300000, guid: 598aa37f0b2e30b419abe07537818219, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 3
+    waitInSeconds: 0.5
     trigger: 0
-    action: 1
+    action: 0
     options: []
     includesPlayerName: 0
   - femaleText: Think of that one other person you care about. One that you even
@@ -7565,15 +7637,13 @@ MonoBehaviour:
       Or cherish. Or just want to be with A LOT. What is their name? I am asking
       about a romantic relationship, just to be clear.
     audio:
-      female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
-      male: {fileID: 8300000, guid: 89604317dc3e8411a9a6362142bd8b32, type: 3}
+      female: {fileID: 8300000, guid: ef64d13fbe7a14941b78db3e8e4bdb8a, type: 3}
+      male: {fileID: 8300000, guid: a0b5941561c5bef4da78edffe5edc112, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 3
+    waitInSeconds: 0.5
     trigger: 0
-    action: 1
-    options:
-    - {fileID: 0}
-    - {fileID: 0}
+    action: 0
+    options: []
     includesPlayerName: 0
   - femaleText: (Write down someone you love)
     text: (Write down someone you love)
@@ -7581,9 +7651,9 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
       male: {fileID: 8300000, guid: 89604317dc3e8411a9a6362142bd8b32, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 3
+    waitInSeconds: 0.5
     trigger: 0
-    action: 1
+    action: 0
     options:
     - {fileID: 1437218010}
     - {fileID: 110278399}
@@ -7595,34 +7665,37 @@ MonoBehaviour:
     text: Lonely! Are we not? Ok so - imagine you HAD someone you truly love. What
       was their name?
     audio:
-      female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
-      male: {fileID: 8300000, guid: 89604317dc3e8411a9a6362142bd8b32, type: 3}
+      female: {fileID: 8300000, guid: ddd19c301b886054ab579ca48e288c35, type: 3}
+      male: {fileID: 8300000, guid: 7e72c082043d11b41aecca5f702268df, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 3
+    waitInSeconds: 0.5
     trigger: 0
-    action: 1
+    action: 0
     options:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 2071956351}
+    - {fileID: 1846072352}
+    - {fileID: 1736406328}
+    - {fileID: 225470946}
+    - {fileID: 180880387}
+    - {fileID: 261662566}
+    - {fileID: 199285798}
     includesPlayerName: 0
   - femaleText: Thank you for your input.
     text: Thank you for your input.
     audio:
-      female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
-      male: {fileID: 8300000, guid: 89604317dc3e8411a9a6362142bd8b32, type: 3}
+      female: {fileID: 8300000, guid: 657daeecde45f5a418699f796850a8cd, type: 3}
+      male: {fileID: 8300000, guid: 75efd5a98783d404294411ac6cb935d8, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 3
+    waitInSeconds: 0.5
     trigger: 0
-    action: 1
-    options:
-    - {fileID: 0}
-    - {fileID: 0}
+    action: 0
+    options: []
     includesPlayerName: 0
   - femaleText: "Well then. Let\u2019s begin, shall we?"
     text: "Well then. Let\u2019s begin, shall we?"
     audio:
-      female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
-      male: {fileID: 8300000, guid: 89604317dc3e8411a9a6362142bd8b32, type: 3}
+      female: {fileID: 8300000, guid: 31ca3c8282715004e92ed714c26bb396, type: 3}
+      male: {fileID: 8300000, guid: 83250decf92554644ab1335134f10bfb, type: 3}
       none: {fileID: 0}
     waitInSeconds: 3
     trigger: 0

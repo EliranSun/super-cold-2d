@@ -8,6 +8,11 @@ namespace config.scripts
     {
         private string _filePath;
 
+        private void Start()
+        {
+            print(Application.persistentDataPath);
+        }
+
         public float ConvertText(string text, PlayerGender gender, Action<AudioClip> onConvertComplete)
         {
             try
@@ -17,8 +22,9 @@ namespace config.scripts
                     .Replace(".", "")
                     .Replace(",", "")
                     .Replace("?", "");
-                _filePath = Application.persistentDataPath + $"/{formattedText.Substring(0,20)}-{gender}.wav";
+                _filePath = Application.persistentDataPath + $"/{formattedText.Substring(0, 20)}-{gender}.wav";
                 print($"file path {_filePath}");
+
                 var loadedClip = AudioClipUtility.LoadAudioClip(_filePath);
 
                 if (loadedClip == null)
