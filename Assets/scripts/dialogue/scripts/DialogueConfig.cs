@@ -19,22 +19,32 @@ internal class AudioGender
 [Serializable]
 internal class Dialogue
 {
+    public string id = Guid.NewGuid().ToString();
     public string femaleText;
     [FormerlySerializedAs("Text")] public string text;
     [SerializeField] public AudioGender audio;
     public float waitInSeconds = 0.5f;
     public DialogueTrigger trigger;
-    public DialogueAction action;
-    public GameObject[] options;
+    public DialogueActions[] actions;
+    [FormerlySerializedAs("options")] public GameObject[] characterSelectionOptions;
     public bool includesPlayerName;
+}
+
+[Serializable]
+internal class DialogueActions
+{
+    public DialogueAction action;
+    public GameObject[] gameObjects;
 }
 
 
 public class DialogueConfig : MonoBehaviour
 {
-    [SerializeField] private int allPlayerInfoDialogueIndex;
-    [SerializeField] private int noPlayerInfoDialogueIndex;
-    [SerializeField] private int noPlayerGenderDialogueIndex;
+    private static readonly int Reverse = Animator.StringToHash("Reverse");
+    [SerializeField] private string noPlayerInfoDialogueId;
+    [SerializeField] private string noPlayerGenderDialogueId;
+    [SerializeField] private string noPlayerPartnerDialogueId;
+    [SerializeField] private string allPlayerInfoDialogueId;
     [SerializeField] private TextMeshProUGUI dialogueLineContainer;
     [SerializeField] private int activeDialogueIndex;
     [SerializeField] private Dialogue[] dialogues;
@@ -47,29 +57,36 @@ public class DialogueConfig : MonoBehaviour
 
     private void Awake()
     {
-        // PlayerPrefs.DeleteAll();
+        // PlayerPrefs.DeleteAll();¬
 
         _audioSource = GetComponent<AudioSource>();
         _textToSpeechComponent = GetComponent<TextToSpeech>();
 
         var playerGender = PlayerInfo.GetPlayerGender();
         var playerName = PlayerInfo.GetPlayerName();
+        var playerPartner = PlayerInfo.GetPlayerPartner();
 
         if (activeDialogueIndex == 0)
-            activeDialogueIndex = GetDialogueIndexBasedOnNameAndGender(playerName, playerGender);
+        {
+            var dialogueLineId = GetDialogueLineIdBasedOnNameAndGender(playerName, playerGender, playerPartner);
+            var index = Array.FindIndex(dialogues, dialogue => dialogue.id == dialogueLineId);
+            if (index != -1) activeDialogueIndex = index;
+        }
 
         if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
             ReadLine(dialogues[activeDialogueIndex]);
     }
 
-    private int GetDialogueIndexBasedOnNameAndGender(string playerName, PlayerGender gender)
+    private string GetDialogueLineIdBasedOnNameAndGender(string playerName, PlayerGender gender, string playerPartner)
     {
-        int lineIndex;
-        if (playerName == "" && gender == PlayerGender.None) lineIndex = noPlayerInfoDialogueIndex;
-        else if (playerName != "" && gender == PlayerGender.None) lineIndex = noPlayerGenderDialogueIndex;
-        else lineIndex = allPlayerInfoDialogueIndex;
+        string lineId;
 
-        return lineIndex;
+        if (playerName == "") lineId = noPlayerInfoDialogueId;
+        else if (gender == PlayerGender.None) lineId = noPlayerGenderDialogueId;
+        else if (playerPartner == "") lineId = noPlayerPartnerDialogueId;
+        else lineId = allPlayerInfoDialogueId;
+
+        return lineId;
     }
 
     public void OnNotify(DialogueTrigger trigger)
@@ -125,6 +142,8 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
+        InvokeAction(line);
+
         var partnerName = PlayerInfo.GetPlayerPartner();
         var playerName = PlayerInfo.GetPlayerName();
         var playerGender = PlayerInfo.GetPlayerGender();
@@ -145,7 +164,7 @@ public class DialogueConfig : MonoBehaviour
             _textToSpeechComponent.ConvertText(lineWithPlayerName, playerGender, audioClip =>
             {
                 PlayAudioSourceClip(audioClip);
-                AfterLineActions(line);
+                AfterLineActions(line, _audioSource.clip.length);
             });
         }
         else
@@ -166,8 +185,6 @@ public class DialogueConfig : MonoBehaviour
             ClearLine();
             AfterLineActions(line);
         }
-
-        InvokeAction(line);
     }
 
     private string GetGenderLineText(Dialogue line)
@@ -200,30 +217,43 @@ public class DialogueConfig : MonoBehaviour
         _audioSource.Play();
     }
 
-    private void AfterLineActions(Dialogue line)
+    private void AfterLineActions(Dialogue line, float currentClipLength = 0)
     {
-        if (line.options.Length > 0)
-            foreach (var optionGameObject in line.options)
+        if (line.characterSelectionOptions.Length > 0)
+            foreach (var optionGameObject in line.characterSelectionOptions)
                 optionGameObject.SetActive(true);
         else
-            Invoke(nameof(TriggerNextLine), line.waitInSeconds);
+            Invoke(nameof(TriggerNextLine), currentClipLength + line.waitInSeconds);
     }
 
     private void InvokeAction(Dialogue line)
     {
-        switch (line.action)
-        {
-            default:
-            case DialogueAction.None:
-                break;
+        foreach (var dialogueAction in line.actions)
+            switch (dialogueAction.action)
+            {
+                default:
+                case DialogueAction.None:
+                    break;
 
-            case DialogueAction.NextScene:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                break;
+                case DialogueAction.NextScene:
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    break;
 
-            case DialogueAction.GameObjectActivation:
-                break;
-        }
+                case DialogueAction.GameObjectsDisable:
+                    foreach (var lineOptionGameObject in dialogueAction.gameObjects)
+                        lineOptionGameObject.SetActive(false);
+                    break;
+
+                case DialogueAction.GameObjectsEnable:
+                    foreach (var lineOptionGameObject in dialogueAction.gameObjects)
+                        lineOptionGameObject.SetActive(true);
+                    break;
+
+                case DialogueAction.ReverseAnimation:
+                    foreach (var dialogueActionGameObject in dialogueAction.gameObjects)
+                        dialogueActionGameObject.GetComponent<Animator>().SetBool(Reverse, true);
+                    break;
+            }
     }
 
     public void TriggerNextLine()

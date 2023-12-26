@@ -7449,13 +7449,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPlayerInfoDialogueIndex: 6
-  noPlayerInfoDialogueIndex: 0
-  noPlayerGenderDialogueIndex: 3
+  noPlayerInfoDialogueId: 51a78281-33be-4ab9-998b-3c4dc890665b
+  noPlayerGenderDialogueId: e6fbd298-43fa-46ff-aeba-595698cd9827
+  noPlayerPartnerDialogueId: 8d22ca0f-0e9d-46aa-851b-66c37aaeff94
+  allPlayerInfoDialogueId: 6712e92f-e418-4eba-90a7-7bd6a679cf4e
   dialogueLineContainer: {fileID: 568989956}
-  activeDialogueIndex: 14
+  activeDialogueIndex: 0
   dialogues:
-  - femaleText: 
+  - id: 51a78281-33be-4ab9-998b-3c4dc890665b
+    femaleText: 
     text: Hi, how are you today? Long time no see :)
     audio:
       female: {fileID: 0}
@@ -7468,7 +7470,8 @@ MonoBehaviour:
     - {fileID: 1547784994}
     - {fileID: 2012440965}
     includesPlayerName: 0
-  - femaleText: 
+  - id: 9b9dc707-4ba5-43d0-b21e-ab1243e4d9c0
+    femaleText: 
     text: For this to be way more friendly, please tell me your name. Is that OK?
     audio:
       female: {fileID: 0}
@@ -7481,7 +7484,8 @@ MonoBehaviour:
     - {fileID: 410138092}
     - {fileID: 827233856}
     includesPlayerName: 0
-  - femaleText: 
+  - id: 71d245db-3383-4cc4-af49-6b1645337b27
+    femaleText: 
     text: (select name)
     audio:
       female: {fileID: 0}
@@ -7495,7 +7499,8 @@ MonoBehaviour:
     - {fileID: 1670796356}
     - {fileID: 1443807944}
     includesPlayerName: 0
-  - femaleText: 
+  - id: e6fbd298-43fa-46ff-aeba-595698cd9827
+    femaleText: 
     text: What is your your gender? Is that OK?
     audio:
       female: {fileID: 0}
@@ -7508,7 +7513,8 @@ MonoBehaviour:
     - {fileID: 568643412}
     - {fileID: 315818269}
     includesPlayerName: 0
-  - femaleText: 
+  - id: 09d5d639-4396-44dd-84a8-d3896439c7f9
+    femaleText: 
     text: (select gender)
     audio:
       female: {fileID: 0}
@@ -7522,7 +7528,8 @@ MonoBehaviour:
     - {fileID: 579112780}
     - {fileID: 435825398}
     includesPlayerName: 0
-  - femaleText: 
+  - id: ffaef634-188b-4692-84c7-0b863c4e4555
+    femaleText: 
     text: Thank you. Now let me change some things based on your input. Please hold.
     audio:
       female: {fileID: 0}
@@ -7533,7 +7540,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: ...There we go... this is so much better. Don't you think, {playerName}?
+  - id: e6148913-cc27-4c0d-a514-c1ce21d3113d
+    femaleText: ...There we go... this is so much better. Don't you think, {playerName}?
     text: ...There we go... this is so much better. Don't you think, {playerName}?
     audio:
       female: {fileID: 0}
@@ -7544,7 +7552,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - femaleText: Much, much better.
+  - id: 4291e504-545f-4852-98b6-0dae2a14ea7c
+    femaleText: Much, much better.
     text: Much, much better.
     audio:
       female: {fileID: 8300000, guid: 1e70bf1c3c430404e988ebb489419e20, type: 3}
@@ -7555,7 +7564,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: "Now, let me tell you where you are and what this is. You signed
+  - id: d5a7716e-9f38-4e0b-a91f-b299c63e8a27
+    femaleText: "Now, let me tell you where you are and what this is. You signed
       up for a program called \u201CCharacter Selection\u201D."
     text: "Now, let me tell you where you are and what this is. You signed up for
       a program called \u201CCharacter Selection\u201D."
@@ -7568,7 +7578,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: 
+  - id: eca8738b-531f-414c-b971-777b1798aabc
+    femaleText: 
     text: In this program, we will run you through different scenarios, based on
       what you previously told us and based on what we think best fits you.
     audio:
@@ -7580,7 +7591,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: This, is one scenario out of many we are going to play out for you.
+  - id: 59b1194e-4208-4341-82df-31d1b8b2bc39
+    femaleText: This, is one scenario out of many we are going to play out for you.
     text: This, is one scenario out of many we are going to play out for you.
     audio:
       female: {fileID: 8300000, guid: de5335e54a010480eb9cf72742887a8f, type: 3}
@@ -7591,7 +7603,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: 'You will be watched, measured and evaluated, all to better help
+  - id: a0f005dd-eef9-4494-b6e0-9174e44c6d8e
+    femaleText: 'You will be watched, measured and evaluated, all to better help
       you deal with situations you find troubling in your own life. '
     text: 'You will be watched, measured and evaluated, all to better help you deal
       with situations you find troubling in your own life. '
@@ -7604,7 +7617,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: Is that OK?
+  - id: 43dd9591-7522-4092-a2eb-fcd623a513df
+    femaleText: Is that OK?
     text: Is that OK?
     audio:
       female: {fileID: 8300000, guid: 5b23c56aa89014951bfce7501ae599ce, type: 3}
@@ -7617,7 +7631,8 @@ MonoBehaviour:
     - {fileID: 1682209623}
     - {fileID: 574908192}
     includesPlayerName: 0
-  - femaleText: Great! One final question, if that is OK. This one is really important,
+  - id: f3f9455d-2a4d-473c-b6bd-94c080b03030
+    femaleText: Great! One final question, if that is OK. This one is really important,
       so make sure you answer it truthfully and honestly
     text: Great! One final question, if that is OK. This one is really important,
       so make sure you answer it truthfully and honestly
@@ -7630,7 +7645,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: Think of that one other person you care about. One that you even
+  - id: 8d22ca0f-0e9d-46aa-851b-66c37aaeff94
+    femaleText: Think of that one other person you care about. One that you even
       love. Or cherish. Or just want to be with A LOT. What is their name? I am asking
       about a romantic relationship, just to be clear.
     text: Think of that one other person you care about. One that you even love.
@@ -7645,7 +7661,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: (Write down someone you love)
+  - id: b257623a-251f-459b-aa83-6f630ffd2906
+    femaleText: (Write down someone you love)
     text: (Write down someone you love)
     audio:
       female: {fileID: 8300000, guid: bc327954b9d1147aa9dc30bc3967966a, type: 3}
@@ -7660,7 +7677,8 @@ MonoBehaviour:
     - {fileID: 629619911}
     - {fileID: 1384033026}
     includesPlayerName: 0
-  - femaleText: Lonely! Are we not? Ok so - imagine you HAD someone you truly love.
+  - id: 0f407fff-a4a1-4888-8bf3-ea7b0a385312
+    femaleText: Lonely! Are we not? Ok so - imagine you HAD someone you truly love.
       What was their name?
     text: Lonely! Are we not? Ok so - imagine you HAD someone you truly love. What
       was their name?
@@ -7680,7 +7698,8 @@ MonoBehaviour:
     - {fileID: 261662566}
     - {fileID: 199285798}
     includesPlayerName: 0
-  - femaleText: Thank you for your input.
+  - id: 6712e92f-e418-4eba-90a7-7bd6a679cf4e
+    femaleText: Thank you for your input.
     text: Thank you for your input.
     audio:
       female: {fileID: 8300000, guid: 657daeecde45f5a418699f796850a8cd, type: 3}
@@ -7691,7 +7710,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: "Well then. Let\u2019s begin, shall we?"
+  - id: b559f0c9-2674-4c32-9d48-53bd64dd650d
+    femaleText: "Well then. Let\u2019s begin, shall we?"
     text: "Well then. Let\u2019s begin, shall we?"
     audio:
       female: {fileID: 8300000, guid: 31ca3c8282715004e92ed714c26bb396, type: 3}

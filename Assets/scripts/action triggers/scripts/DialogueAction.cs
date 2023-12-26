@@ -4,6 +4,8 @@ namespace action_triggers.scripts
     {
         None,
         NextScene,
-        GameObjectActivation
+        GameObjectsEnable,
+        GameObjectsDisable,
+        ReverseAnimation
     }
 }

@@ -1670,7 +1670,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.856961, y: 0.9926727}
+  m_Offset: {x: 2.5873618, y: 0.81294}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1681,7 +1681,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.1067443, y: 1.3934231}
+  m_Size: {x: 2.5675461, y: 1.0339577}
   m_EdgeRadius: 0
 --- !u!1 &749187462
 GameObject:
@@ -8344,7 +8344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1698479299
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8355,7 +8355,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0bcb1d2d84c47a9478b00665d4e94719, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ffc476ce5ea9c6c43a132f1f55c058ec, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.222
   m_Pitch: 1
@@ -9409,13 +9409,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPlayerInfoDialogueIndex: 0
-  noPlayerInfoDialogueIndex: 0
-  noPlayerGenderDialogueIndex: 0
+  noPlayerInfoDialogueId: 
+  noPlayerGenderDialogueId: 
+  noPlayerPartnerDialogueId: 
+  allPlayerInfoDialogueId: 
   dialogueLineContainer: {fileID: 384757466}
   activeDialogueIndex: 0
   dialogues:
-  - femaleText: Poor {playerName}... She is not in control of her life... But she
+  - id: 8eb91c75-13db-4a5c-9eb2-3afa653438f3
+    femaleText: Poor {playerName}... She is not in control of her life... But she
       can control time -in a somewhat uncontrollable way
     text: Poor {playerName}... He is not in control of his life... But he can control
       time -in a somewhat uncontrollable way
@@ -9428,7 +9430,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - femaleText: When she moves an inch, time slows down almost to a halt.
+  - id: fe587ce6-00e9-4c57-a2ad-e586a17b7741
+    femaleText: When she moves an inch, time slows down almost to a halt.
     text: When he moves an inch, time slows down almost to a halt.
     audio:
       female: {fileID: 8300000, guid: 61ab1087435af1b4fa00c70edbbc175f, type: 3}
@@ -9439,7 +9442,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: It is indeed a terrible fate. A fate she had submitted to.
+  - id: ab00ed14-c98a-46b4-8b94-0a36c5c009ac
+    femaleText: It is indeed a terrible fate. A fate she had submitted to.
     text: It is indeed a terrible fate. A fate he had submitted to.
     audio:
       female: {fileID: 8300000, guid: fe74c9ed3fff0eb4e93b77d16faa01e9, type: 3}
@@ -9450,7 +9454,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 0
-  - femaleText: This was not her house and {playerName} knew it perfectly well.
+  - id: 6ec960d6-228b-43c8-b6ed-ba4a184f10d1
+    femaleText: This was not her house and {playerName} knew it perfectly well.
     text: This was not his house and {playerName} knew it perfectly well.
     audio:
       female: {fileID: 0}
@@ -9461,7 +9466,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - femaleText: 
+  - id: 074779eb-003d-49fc-abe3-70fa2b576d92
+    femaleText: 
     text: '{playerName} was too afraid to cross the road. Even chickens are not afraid
       of that'
     audio:
@@ -9473,7 +9479,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - femaleText: '{playerName} was too afraid to get lost. And besides, her husband,
+  - id: 1c3ed767-f7c1-4e87-903f-a9226483215c
+    femaleText: '{playerName} was too afraid to get lost. And besides, her husband,
       {playerPartner} is waiting for her. He has something very important to tell
       her.'
     text: '{playerName} was too afraid to get lost. And besides, his wife {playerPartner}
@@ -9487,7 +9494,8 @@ MonoBehaviour:
     action: 0
     options: []
     includesPlayerName: 1
-  - femaleText: And then she died. But she also had the ability to reverse time,
+  - id: f59bdba4-92ef-4755-bac2-f45f4b768c05
+    femaleText: And then she died. But she also had the ability to reverse time,
       by simply hitting the R button, whatever that means.
     text: And then he died. But he also had the ability to reverse time, by simply
       hitting the R button, whatever that means.
