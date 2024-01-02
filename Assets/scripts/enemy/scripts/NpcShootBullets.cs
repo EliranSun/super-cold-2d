@@ -1,17 +1,21 @@
 using System.Collections;
+using observer.scripts;
 using UnityEngine;
 
-public class NpcShootBullets : ObserverSubject
+public class NpcShootBullets : WeaponActionsObserverSubject
 {
     [SerializeField] private float shootInterval = 4f;
     private bool _isPlayerDead;
 
+    public void OnNotify(WeaponActions message)
+    {
+        if (message == WeaponActions.EnemyCollected)
+            Invoke(nameof(ShootBulletsRoutine), 1f);
+    }
+
     public void OnNotify(string message)
     {
-        if (message == WeaponActions.EnemyCollected.ToString())
-            Invoke(nameof(ShootBulletsRoutine), 1f);
-
-        if (message == PlayerActions.IsDead.ToString())
+        if (message == PlayerActions.Died.ToString())
         {
             StopCoroutine(ShootBullets());
             _isPlayerDead = true;

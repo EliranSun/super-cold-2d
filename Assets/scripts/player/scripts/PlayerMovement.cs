@@ -1,9 +1,10 @@
+using observer.scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace player.scripts
 {
-    public class PlayerMovement : ObserverSubject
+    public class PlayerMovement : PlayerActionsObserverSubject
     {
         private static readonly int IsWalking = Animator.StringToHash("isWalking");
         private static readonly int IsVertical = Animator.StringToHash("isVertical");
@@ -91,7 +92,7 @@ namespace player.scripts
 
             if (_isWalking && !_areObserversNotified)
             {
-                NotifyObservers(DialogueTrigger.PlayerMoved);
+                NotifyObservers(PlayerActions.Moved);
                 _areObserversNotified = true;
             }
         }
@@ -99,13 +100,16 @@ namespace player.scripts
         private void OnDeath()
         {
             isDead = true;
+
+            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.isKinematic = true;
+
             if (disableCollisionOnDeath) _polygonCollider2D.enabled = false;
             if (timeController) timeController.isTimeSlowed = true;
 
             _animator.SetBool(IsDead, true);
 
-            NotifyObservers(PlayerActions.IsDead);
-            NotifyObservers(DialogueTrigger.PlayerDied);
+            NotifyObservers(PlayerActions.Died);
         }
 
         private void ControlTime()

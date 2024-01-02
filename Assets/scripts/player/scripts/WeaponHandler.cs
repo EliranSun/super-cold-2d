@@ -28,13 +28,12 @@ public class WeaponHandler : MonoBehaviour
             ShootBullet();
     }
 
-    public void OnNotify(string message)
+    public void OnNotify(WeaponActions message)
     {
-        print($"WeaponHandler OnNotify {message}");
-        if (message == WeaponActions.PlayerCollected.ToString())
+        if (message == WeaponActions.PlayerCollected)
             isActive = true;
 
-        if (message == WeaponActions.EnemyFiredShot.ToString())
+        if (message == WeaponActions.EnemyFiredShot)
             ShootBullet();
     }
 

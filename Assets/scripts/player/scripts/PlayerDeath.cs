@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
-    private static readonly int IsDead = Animator.StringToHash("IsDead");
+    private static readonly int IsDead = Animator.StringToHash("Died");
     private Animator _animator;
 
     public void Awake()

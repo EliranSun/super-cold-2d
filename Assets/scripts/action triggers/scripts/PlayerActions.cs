@@ -1,4 +1,5 @@
 public enum PlayerActions
 {
-    IsDead
+    Died,
+    Moved,
 }

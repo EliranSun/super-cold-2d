@@ -25,10 +25,9 @@ public class LookAtPlayer : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    public void OnNotify(string message)
+    public void OnNotify(WeaponActions action)
     {
-        print(message);
-        if (message == WeaponActions.EnemyCollected.ToString())
+        if (action == WeaponActions.EnemyCollected)
             _isActive = true;
     }
 }

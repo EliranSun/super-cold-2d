@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using observer.scripts;
 using TMPro;
 using UnityEngine;
 
-public class CollectWeapon : ObserverSubject
+public class CollectWeapon : WeaponActionsObserverSubject
 {
     private const int TimeToCollect = 3;
     public bool isTriggered;
@@ -30,7 +31,8 @@ public class CollectWeapon : ObserverSubject
         if (_timeOnTarget <= TimeToCollect)
         {
             _timeOnTarget += Time.deltaTime;
-            if (weaponPickupText) weaponPickupText.text = $"{TimeToCollect - _timeOnTarget}";
+            if (weaponPickupText)
+                weaponPickupText.text = $"{TimeToCollect - _timeOnTarget}";
         }
         else
         {
@@ -41,9 +43,8 @@ public class CollectWeapon : ObserverSubject
             _weaponTarget.transform.rotation = Quaternion.identity;
             // _weaponTarget.transform.localScale = Vector3.one;
 
-            var collectedBy = gameObject.name;
+            var collectedBy = gameObject.tag;
             NotifyObservers(_actions[collectedBy]);
-
             ResetParams();
         }
     }

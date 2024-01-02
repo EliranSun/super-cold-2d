@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CarMovement : ObserverSubject
 {
-    private static readonly int IsDead = Animator.StringToHash("IsDead");
+    private static readonly int IsDead = Animator.StringToHash("Died");
     [SerializeField] private Transform destination;
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private float speed = 10f;

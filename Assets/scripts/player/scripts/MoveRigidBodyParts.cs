@@ -3,7 +3,7 @@ using UnityEngine;
 public class MoveRigidBodyParts : ObserverSubject
 {
     private static readonly int IsWalkingHorizontal = Animator.StringToHash("IsWalkingHorizontal");
-    private static readonly int IsDead = Animator.StringToHash("IsDead");
+    private static readonly int IsDead = Animator.StringToHash("Died");
     [SerializeField] private float speed = 60f;
     [SerializeField] private SpriteRenderer[] bodyPartsSpriteRenderers;
     [SerializeField] private Animator[] bodyPartsAnimators;

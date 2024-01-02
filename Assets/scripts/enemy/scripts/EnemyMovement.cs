@@ -126,7 +126,7 @@ public class EnemyMovement : ObserverSubject
 
     public void OnNotify(string message)
     {
-        if (message == PlayerActions.IsDead.ToString())
+        if (message == PlayerActions.Died.ToString())
             target = null;
     }
 

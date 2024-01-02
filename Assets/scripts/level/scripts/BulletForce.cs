@@ -33,9 +33,11 @@ public class BulletForce : ObserverSubject
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        var bullet = gameObject;
+
         if (col.gameObject.CompareTag("ManInGreen"))
         {
-            Destroy(gameObject);
+            Destroy(bullet);
             return;
         }
 
@@ -43,20 +45,19 @@ public class BulletForce : ObserverSubject
         {
             if (!isBouncy)
             {
-                Destroy(gameObject);
+                Destroy(bullet);
                 return;
             }
 
             _currentHits++;
-            if (_currentHits >= MaxHits) Destroy(gameObject);
+            if (_currentHits >= MaxHits)
+                Destroy(bullet);
             return;
         }
 
         if (col.gameObject.CompareTag("Player"))
         {
-            // col.gameObject.GetComponent<ExplodeOnDeath>().TriggerDeath();
-            // NotifyObservers(WeaponActions.PlayerHit);
-            Destroy(gameObject);
+            Destroy(bullet);
             return;
         }
 
@@ -65,15 +66,18 @@ public class BulletForce : ObserverSubject
         {
             col.gameObject.transform.parent.GetComponent<ExplodeOnDeath>().TriggerDeath();
             Invoke(nameof(Respawn), 2);
-            Destroy(gameObject);
+            Destroy(bullet); // bullet
         }
 
-        Destroy(gameObject);
+        Destroy(bullet);
         Destroy(col.gameObject);
     }
 
     private void Respawn()
     {
+        // TODO: Unclear what is the purpose of this method.
+        // Respawn a bullet after hit? maybe I've had a mistake here and I meant to respawn the enemy.
+        // Potentially in the boss battle.
         gameObject.GetComponent<RespawnOnDeath>().Respawn();
     }
 

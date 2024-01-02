@@ -123,7 +123,7 @@ public class DialogueController : MonoBehaviour
 
     public void OnNotify(string message)
     {
-        if (!_isNotified && message == PlayerActions.IsDead.ToString())
+        if (!_isNotified && message == PlayerActions.Died.ToString())
         {
             StartCoroutine(IsDeadSequence());
             StartCoroutine(IncreaseEnemySpeed());

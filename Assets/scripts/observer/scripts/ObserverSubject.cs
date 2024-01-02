@@ -15,19 +15,6 @@ public class ObserverSubject : MonoBehaviour
         playerInfoObservers?.Invoke(message);
     }
 
-    protected void NotifyObservers(WeaponActions message)
-    {
-        print("WeaponActions NotifyObservers");
-        observers?.Invoke(message.ToString());
-    }
-
-    protected void NotifyObservers(PlayerActions message)
-    {
-        print("PlayerActions NotifyObservers");
-        observers?.Invoke(message.ToString());
-        dialogueObservers?.Invoke((DialogueTrigger)message);
-    }
-
     protected void NotifyObservers(DialogueTrigger message)
     {
         print("DialogueTrigger NotifyObservers");

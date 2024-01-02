@@ -4,5 +4,6 @@ public enum WeaponActions
     EnemyCollected,
     EnemyFiredShot,
     PlayerHit,
-    EnemyHit
+    EnemyHit,
+    HitByProjectile
 }
