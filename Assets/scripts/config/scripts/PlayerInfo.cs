@@ -1,3 +1,4 @@
+using config.scripts;
 using enums;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class PlayerInfo : MonoBehaviour
     private void Start()
     {
         var playerName = GetPlayerName();
-        if (titleCard && playerName != "") titleCard.text = $"{playerName.ToUpper()} IS COLD";
+        if (titleCard && playerName != "")
+            titleCard.text = $"{playerName.ToUpper()} IS COLD";
     }
 
     public void SetPlayerName(string playerName)
@@ -55,5 +57,17 @@ public class PlayerInfo : MonoBehaviour
     public static string GetPlayerPartner()
     {
         return PlayerPrefs.GetString("PlayerPartner");
+    }
+
+    public void ResetPlayerGender()
+    {
+        PlayerPrefs.DeleteKey("PlayerGender");
+    }
+
+
+    [ContextMenu("Delete All Player Audio Clips")]
+    public void DeleteAllPlayerAudioClips()
+    {
+        AudioClipUtility.DeleteAllAudioClips();
     }
 }

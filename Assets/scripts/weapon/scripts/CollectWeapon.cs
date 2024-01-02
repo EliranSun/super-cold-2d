@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,13 @@ public class CollectWeapon : ObserverSubject
     public bool isTriggered;
     public bool targetAcquired;
     [SerializeField] private TextMeshProUGUI weaponPickupText;
+
+    private readonly Dictionary<string, WeaponActions> _actions = new()
+    {
+        { "Player", WeaponActions.PlayerCollected },
+        { "Enemy", WeaponActions.EnemyCollected }
+    };
+
     private float _timeOnTarget;
     private Transform _weaponTarget;
 
@@ -26,26 +34,23 @@ public class CollectWeapon : ObserverSubject
         }
         else
         {
-            if (gameObject.name == "Enemy") CollectEnemy();
-            else if (gameObject.name == "Player") CollectPlayer();
+            if (!CanCollectWeapon())
+                return;
+
+            _weaponTarget.parent = transform;
+            _weaponTarget.transform.rotation = Quaternion.identity;
+            // _weaponTarget.transform.localScale = Vector3.one;
+
+            var collectedBy = gameObject.name;
+            NotifyObservers(_actions[collectedBy]);
+
+            ResetParams();
         }
     }
 
-    private void CollectPlayer()
+    private bool CanCollectWeapon()
     {
-        if (!_weaponTarget) return;
-        _weaponTarget.parent = transform;
-        NotifyObservers(WeaponActions.PlayerCollected);
-        ResetParams();
-    }
-
-    private void CollectEnemy()
-    {
-        if (!_weaponTarget) return;
-
-        _weaponTarget.parent = transform;
-        NotifyObservers(WeaponActions.EnemyCollected);
-        ResetParams();
+        return _weaponTarget && _weaponTarget.gameObject.activeInHierarchy;
     }
 
     private void ResetParams()

@@ -5768,32 +5768,6 @@ MonoBehaviour:
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
-    actions: []
-    characterSelectionOptions: []
-    includesPlayerName: 0
-  - id: 1756688f-f436-4610-8276-cefba1cca7fa
-    femaleText: 
-    text: 
-    audio:
-      female: {fileID: 0}
-      male: {fileID: 0}
-      none: {fileID: 0}
-    waitInSeconds: 0
-    trigger: 0
-    actions: []
-    characterSelectionOptions: []
-    includesPlayerName: 0
-  - id: a05105b0-1494-4605-ba72-5ef5bfedd022
-    femaleText: "Energy, matter, subatoms, atoms, molecules, particles, chemistry,
-      physics, stars, planets, galaxies\u2026"
-    text: "Energy, matter, subatoms, atoms, molecules, particles, chemistry, physics,
-      stars, planets, galaxies\u2026"
-    audio:
-      female: {fileID: 8300000, guid: 2e00264bf47336b49b0db756db1ae5fb, type: 3}
-      male: {fileID: 8300000, guid: b8d6bc754863c294899631c49980e3e6, type: 3}
-      none: {fileID: 0}
-    waitInSeconds: 0
-    trigger: 0
     actions:
     - action: 2
       gameObjects:
@@ -5819,9 +5793,26 @@ MonoBehaviour:
       - {fileID: 1684845042}
       - {fileID: 694443446}
       - {fileID: 1531282957}
-      - {fileID: 848604681}
       - {fileID: 1898421332}
+      - {fileID: 848604681}
       - {fileID: 516785104}
+    - action: 2
+      gameObjects:
+      - {fileID: 880373301}
+    characterSelectionOptions: []
+    includesPlayerName: 0
+  - id: a05105b0-1494-4605-ba72-5ef5bfedd022
+    femaleText: "Energy, matter, subatoms, atoms, molecules, particles, chemistry,
+      physics, stars, planets, galaxies\u2026"
+    text: "Energy, matter, subatoms, atoms, molecules, particles, chemistry, physics,
+      stars, planets, galaxies\u2026"
+    audio:
+      female: {fileID: 8300000, guid: 2e00264bf47336b49b0db756db1ae5fb, type: 3}
+      male: {fileID: 8300000, guid: b8d6bc754863c294899631c49980e3e6, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 0
+    actions: []
     characterSelectionOptions: []
     includesPlayerName: 0
   - id: 7869b3d7-ca13-400e-a36c-94d39b4c2726
@@ -5845,10 +5836,7 @@ MonoBehaviour:
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
-    actions:
-    - action: 2
-      gameObjects:
-      - {fileID: 880373301}
+    actions: []
     characterSelectionOptions: []
     includesPlayerName: 1
   - id: 5358936c-7075-4bfe-ba4a-acb346d948ac
@@ -6224,10 +6212,10 @@ VideoPlayer:
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_AspectRatio: 0
   m_DataSource: 0
-  m_PlaybackSpeed: 1
+  m_PlaybackSpeed: 2.6
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
@@ -6256,7 +6244,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016088259
 GameObject:
@@ -6471,7 +6459,7 @@ Transform:
   - {fileID: 1898421335}
   - {fileID: 516785107}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180392081
 GameObject:
@@ -6808,7 +6796,7 @@ RectTransform:
   - {fileID: 35709126}
   - {fileID: 1180392082}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7103,7 +7091,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2006489183
 GameObject:
@@ -7187,5 +7175,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

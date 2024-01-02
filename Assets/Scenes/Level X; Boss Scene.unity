@@ -247,6 +247,141 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3882712325881863998, guid: 041de9bca4c914bb68d24f2ff160fb8e, type: 3}
   m_PrefabInstance: {fileID: 11826119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &21307614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21307615}
+  - component: {fileID: 21307617}
+  - component: {fileID: 21307616}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &21307615
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21307614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1288834255}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &21307616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21307614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: CSS
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &21307617
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21307614}
+  m_CullTransparentMesh: 1
 --- !u!1 &47363940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,6 +1731,7 @@ RectTransform:
   m_Children:
   - {fileID: 392655353}
   - {fileID: 168428065}
+  - {fileID: 1288834255}
   - {fileID: 904334180}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -3438,8 +3574,11 @@ MonoBehaviour:
   target: {fileID: 544343530}
   timeController: {fileID: 1603389631}
   isGodMode: 0
-  _isDead: 0
-  _spriteRenderer: {fileID: 484848312}
+  levelManager: {fileID: 0}
+  isDead: 0
+  spriteRenderer: {fileID: 0}
+  speed: 5
+  disableCollisionOnDeath: 0
 --- !u!4 &484848308
 Transform:
   m_ObjectHideFlags: 0
@@ -5302,319 +5441,417 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPlayerInfoDialogueIndex: 0
-  noPlayerInfoDialogueIndex: 0
-  noPlayerGenderDialogueIndex: 0
+  noPlayerInfoDialogueId: 
+  noPlayerGenderDialogueId: 
+  noPlayerPartnerDialogueId: 
+  allPlayerInfoDialogueId: 
   dialogueLineContainer: {fileID: 392655354}
   activeDialogueIndex: 0
   dialogues:
-  - text: You did it. Congragulations. You win.
+  - femaleText: 
+    maleText: You did it. Congragulations. You win.
+    includesPlayerName: 0
+    id: 8d99d714-1285-4e31-a4d2-a8f940c81cae
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Surprised? Expected something else? Well, I am sorry to disappoint,
+      dear, poor Ryan. But I was using you, all along.
     includesPlayerName: 0
+    id: 75b64b0d-7487-4416-b12f-f8042a80d6e5
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Surprised? Expected something else? Well, I am sorry to disappoint, dear,
-      poor Ryan. But I was using you, all along.
     waitInSeconds: 0
     trigger: 2
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Do you really think you can hit me, that simple?
     includesPlayerName: 0
+    id: 0f2a8a0f-915a-4979-a97f-13cf43a0f4dc
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Do you really think you can hit me, that simple?
     waitInSeconds: 0
     trigger: 7
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: No. That would be FAR too easy for the likes of you...
     includesPlayerName: 0
+    id: 73535205-6b8f-4864-a354-dede7816841c
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: No. That would be FAR too easy for the likes of you...
     waitInSeconds: 0
     trigger: 0
-    options: []
-    includesPlayerName: 0
-    audio:
-      male: {fileID: 0}
-      female: {fileID: 0}
-      none: {fileID: 0}
-  - text: You see - I can control time, just like you. In fact - way better than
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: You see - I can control time, just like you. In fact - way better than
       you.
+    includesPlayerName: 0
+    id: 0872500b-51d4-4d68-bce0-1679972f5029
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: But that's about it. I cannot do anything but control time. I can not
+      even move on my own, as you can see...
     includesPlayerName: 0
+    id: 09d3bf7e-8c94-45ef-b0b2-3377df04ce80
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: But that's about it. I cannot do anything but control time. I can not even
-      move on my own, as you can see...
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: How ironic. The man who can control nothing but time, vs. the man who
+      is controlled by time. Is it fate?
     includesPlayerName: 0
+    id: 8e7f43d4-31c4-4294-b13d-7614c1ac5ba6
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: How ironic. The man who can control nothing but time, vs. the man who is
-      controlled by time. Is it fate?
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: You see now how futile your efforts are. I control you, dear Ryan.
     includesPlayerName: 0
+    id: 18f80449-650f-4972-b2ec-20ec0ff0e408
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: You see now how futile your efforts are. I control you, dear Ryan.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Really now, you ASTOUND me, Ryan. How stupid are you? How... how -
     includesPlayerName: 0
+    id: 6179e60d-81f9-4e62-a537-c5239a0701ca
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Really now, you ASTOUND me, Ryan. How stupid are you? How... how -
     waitInSeconds: 0
     trigger: 0
-    options: []
-    includesPlayerName: 0
-    audio:
-      male: {fileID: 0}
-      female: {fileID: 0}
-      none: {fileID: 0}
-  - text: But I get it. I think I get it. You wanted this. You wanted to believe
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: But I get it. I think I get it. You wanted this. You wanted to believe
       that there is some redemption for you.
+    includesPlayerName: 0
+    id: d9f5596b-ae49-496e-bbb6-5408112faec7
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
     waitInSeconds: 1000
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: You wanted to believe someone finally understood you.
     includesPlayerName: 0
+    id: 1467cb15-55ed-4410-813d-d23b2dfcf69a
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: You wanted to believe someone finally understood you.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: This illness of yours. This inablity to control time... to control
+      your life...
     includesPlayerName: 0
+    id: b6fa27b2-11d2-477c-a1a8-b45aff0994a6
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: This illness of yours. This inablity to control time... to control your
-      life...
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: It started when you married her, isn't it so?
     includesPlayerName: 0
+    id: 74ed419f-2cc1-48be-b816-6e18bb9b1ae4
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: It started when you married her, isn't it so?
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: But you ignored it. Like the good little lamb that you are... look
+      where it got you.
     includesPlayerName: 0
+    id: a008f515-af57-4077-a4e3-fb827bacd7fc
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: But you ignored it. Like the good little lamb that you are... look where
-      it got you.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: I'll let you have it, Ryan. I'll let you have control, for the first
+      time in a long while.
     includesPlayerName: 0
+    id: a5847ea5-135f-43d5-98df-7051bf14c87c
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: I'll let you have it, Ryan. I'll let you have control, for the first time
-      in a long while.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: I'll tell you a secret - there's only one way you could defeat me.
+      I guess you figured it out right now that you cannot hit me. Not physically
     includesPlayerName: 0
+    id: 794b8517-2511-4518-8fce-fcf3d6d6f904
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: I'll tell you a secret - there's only one way you could defeat me. I guess
-      you figured it out right now that you cannot hit me. Not physically
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: That's right. I am TIME INCARNATED. I do not really have any spacial
+      properties
     includesPlayerName: 0
+    id: 07123315-5783-4c20-82ce-29a9b0e9dc76
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: That's right. I am TIME INCARNATED. I do not really have any spacial properties
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: So the only way - the only way you could do this... is simply to wear
+      me out. I'll run out of juice eventually.
     includesPlayerName: 0
+    id: d7206980-5839-4015-949f-ee466d1b400b
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: So the only way - the only way you could do this... is simply to wear me
-      out. I'll run out of juice eventually.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: But seeing you... there's just no way you can do this. Look at you.
     includesPlayerName: 0
+    id: 26ca25ab-9ab1-4e36-baaa-3fdff8ed171c
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: But seeing you... there's just no way you can do this. Look at you.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: No matter how many times you'll try again... You will not win.
     includesPlayerName: 0
+    id: f60b40ce-a07e-467c-b542-102ab945002f
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: No matter how many times you'll try again... You will not win.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Even if you will make progress... what make you think I won't decide
+      to cancel out your reverse ability? Yeah, I can do that. Kinda.
     includesPlayerName: 0
+    id: 9e414dc9-b306-4039-89d4-b4f3a11082b3
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Even if you will make progress... what make you think I won't decide to
-      cancel out your reverse ability? Yeah, I can do that. Kinda.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: So this is the gift I give you. Control.
     includesPlayerName: 0
+    id: 20dec1de-c81d-4ecd-b521-d151c5239232
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: So this is the gift I give you. Control.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: The next time I kill you - which will be very soon...
     includesPlayerName: 0
+    id: a6fbd798-93af-483c-9722-921bb5891904
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: The next time I kill you - which will be very soon...
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Just do yourself a favor and just... let it go. Do not reverse time.
+      Take control for once in your sorry life. OK?
     includesPlayerName: 0
+    id: 205767af-091e-43e3-b469-592f7f1f223a
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Just do yourself a favor and just... let it go. Do not reverse time. Take
-      control for once in your sorry life. OK?
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Ha. I knew you wouldn't do it.
     includesPlayerName: 0
+    id: 51b0bd55-ae66-4d55-ad5b-4d0823265294
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Ha. I knew you wouldn't do it.
     waitInSeconds: 0
     trigger: 5
-    options: []
-    includesPlayerName: 0
-    audio:
-      male: {fileID: 0}
-      female: {fileID: 0}
-      none: {fileID: 0}
-  - text: Yes. It is me. And you... well. You released me. Soon. I will get what
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Yes. It is me. And you... well. You released me. Soon. I will get what
       I dreamed on for EONS now.
+    includesPlayerName: 0
+    id: 8f594992-69fa-40a2-97fe-f264684c45b7
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Freedom.
     includesPlayerName: 0
+    id: c0fe38a9-9013-4b26-9e6f-f4717ef5b436
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Freedom.
     waitInSeconds: 0
     trigger: 0
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Listen to me. I know what you are going to do next. The same thing
+      you did over and over again. Do not reverse time. Take control for once in
+      your sorry life. OK?
     includesPlayerName: 0
+    id: 76bb65db-670b-4152-9f3b-7df581d2bddb
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Listen to me. I know what you are going to do next. The same thing you
-      did over and over again. Do not reverse time. Take control for once in your
-      sorry life. OK?
     waitInSeconds: 0
     trigger: 9
-    options: []
-    includesPlayerName: 0
-    audio:
-      male: {fileID: 0}
-      female: {fileID: 0}
-      none: {fileID: 0}
-  - text: Well I mean, what did I expect? You are going to do that again, are you
-      not? Perhaps the next time, I'll just intervene... this lock me in as well,
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Well I mean, what did I expect? You are going to do that again, are
+      you not? Perhaps the next time, I'll just intervene... this lock me in as well,
       after all
+    includesPlayerName: 0
+    id: 9b9785e2-cca8-4dcd-8f4e-174ace2a2f82
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
     waitInSeconds: 0
     trigger: 10
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: ...
     includesPlayerName: 0
+    id: cc83fb90-7886-4da0-8175-36c8f8a3d88f
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: ...
     waitInSeconds: 0
     trigger: 11
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Ok. Enough is enough. No more restarts for you. I mean it. The next
+      time you die - it is game over for you. I will intervene, and you will get
+      stuck. OK?
     includesPlayerName: 0
+    id: 562256a8-e58b-44ec-8490-b08628f3f60e
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Ok. Enough is enough. No more restarts for you. I mean it. The next time
-      you die - it is game over for you. I will intervene, and you will get stuck.
-      OK?
     waitInSeconds: 0
     trigger: 12
-    options: []
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 
+    maleText: Sorry. I've had fun, but this is goodbye. Enjoy eternity.
     includesPlayerName: 0
+    id: ab0b06aa-d925-45f4-930b-a33edd0d2531
     audio:
-      male: {fileID: 0}
       female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
-  - text: Sorry. I've had fun, but this is goodbye. Enjoy eternity.
     waitInSeconds: 0
     trigger: 13
-    options: []
-    includesPlayerName: 0
-    audio:
-      male: {fileID: 0}
-      female: {fileID: 0}
-      none: {fileID: 0}
+    actions: []
+    characterSelectionOptions: []
 --- !u!1001 &724214231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6682,7 +6919,7 @@ RectTransform:
   - {fileID: 2066438755}
   - {fileID: 1473716852}
   m_Father: {fileID: 206648616}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8821,6 +9058,140 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3772617378971807202, guid: 5f1008afbdf454987a77bc67d9a65909, type: 3}
   m_PrefabInstance: {fileID: 1270793295}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1288834254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1288834255}
+  - component: {fileID: 1288834258}
+  - component: {fileID: 1288834257}
+  - component: {fileID: 1288834256}
+  m_Layer: 5
+  m_Name: CSS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1288834255
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288834254}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 21307615}
+  m_Father: {fileID: 206648616}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -557, y: 485}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1288834256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288834254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1288834257}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadSceneNumber
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1288834257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288834254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1288834258
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288834254}
+  m_CullTransparentMesh: 1
 --- !u!1 &1288901123
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,12 @@ using UnityEngine.Networking;
 
 public class ElevenLabsVoiceAPI : MonoBehaviour
 {
+    // TODO: Dictionary of voice IDs
     private const string DorothyVoiceId = "ThT5KcBeYPX3keUQqHPh";
     private const string AdamVoiceId = "pNInz6obpgDQGcFmaJgB";
+    private const string ModelV1 = "eleven_multilingual_v1";
+    private const string ModelV2 = "eleven_multilingual_v2";
+
     private static bool _isVoiceRequestSent;
     public static AudioClip PlayerNameAudioClip { get; private set; }
 
@@ -21,15 +25,15 @@ public class ElevenLabsVoiceAPI : MonoBehaviour
         //     yield break;
         // }
 
-
         var voiceId = gender == PlayerGender.Male ? AdamVoiceId : DorothyVoiceId;
+        var modelId = voiceId == AdamVoiceId ? ModelV2 : ModelV1;
         var uri = $"https://api.elevenlabs.io/v1/text-to-speech/{voiceId}";
         var webRequest = UnityWebRequestMultimedia.GetAudioClip(uri, AudioType.MPEG);
         webRequest.SetRequestHeader("xi-api-key", "3fa9af49ce49fb0e324cce37f59ae4f2");
         var jsonBody = $@"
         {{
-            ""model_id"": ""eleven_multilingual_v1"",
-            ""text"": ""{text}?"",
+            ""model_id"": ""{modelId}"",
+            ""text"": ""{text}"",
             ""voice_settings"": {{
                 ""stability"": 0.71,
                 ""similarity_boost"": 0.52,

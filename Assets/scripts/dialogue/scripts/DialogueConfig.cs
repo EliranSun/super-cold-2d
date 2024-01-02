@@ -19,15 +19,18 @@ internal class AudioGender
 [Serializable]
 internal class Dialogue
 {
-    public string id = Guid.NewGuid().ToString();
     public string femaleText;
-    [FormerlySerializedAs("Text")] public string text;
+
+    [FormerlySerializedAs("text")] [FormerlySerializedAs("Text")]
+    public string maleText;
+
+    public bool includesPlayerName;
+    public string id = Guid.NewGuid().ToString();
     [SerializeField] public AudioGender audio;
     public float waitInSeconds = 0.5f;
     public DialogueTrigger trigger;
     public DialogueActions[] actions;
     [FormerlySerializedAs("options")] public GameObject[] characterSelectionOptions;
-    public bool includesPlayerName;
 }
 
 [Serializable]
@@ -57,8 +60,6 @@ public class DialogueConfig : MonoBehaviour
 
     private void Awake()
     {
-        // PlayerPrefs.DeleteAll();¬
-
         _audioSource = GetComponent<AudioSource>();
         _textToSpeechComponent = GetComponent<TextToSpeech>();
 
@@ -192,9 +193,9 @@ public class DialogueConfig : MonoBehaviour
         var playerGender = PlayerInfo.GetPlayerGender();
         return playerGender switch
         {
-            PlayerGender.Male => line.text,
-            PlayerGender.Female => line.femaleText == "" ? line.text : line.femaleText,
-            PlayerGender.None => line.text,
+            PlayerGender.Male => line.maleText,
+            PlayerGender.Female => line.femaleText == "" ? line.maleText : line.femaleText,
+            PlayerGender.None => line.maleText,
             _ => ""
         };
     }

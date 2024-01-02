@@ -58,7 +58,7 @@ public class DialogueController : MonoBehaviour
     [FormerlySerializedAs("DeathSequence")] [FormerlySerializedAs("isDeadSequence")] [SerializeField]
     private AudioClip[] deathSequence;
 
-    // TODO: Parse from text file
+    // TODO: Parse from maleText file
     private readonly SimpleLine[] _deathSequenceDialogue =
     {
         new("As “time” went on with Ryan doing nothing at all, something very peculiar started to occur."),

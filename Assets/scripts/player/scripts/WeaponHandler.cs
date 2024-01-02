@@ -11,6 +11,12 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private bool isActive;
     [SerializeField] private bool isHandledByPlayer;
+    private AudioSource _pistolShootAudioSource;
+
+    private void Start()
+    {
+        _pistolShootAudioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -85,6 +91,7 @@ public class WeaponHandler : MonoBehaviour
 
 
         Instantiate(bulletPrefab, position, rotation);
+        _pistolShootAudioSource.Play();
         Invoke(nameof(Foo), 0.1f);
     }
 

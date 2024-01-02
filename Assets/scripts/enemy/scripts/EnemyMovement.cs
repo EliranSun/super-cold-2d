@@ -1,7 +1,8 @@
 using System.Collections;
+using action_triggers.scripts;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : ObserverSubject
 {
     [SerializeField] private Transform playerPosition;
     [SerializeField] public Transform target;
@@ -43,8 +44,11 @@ public class EnemyMovement : MonoBehaviour
 
         LookAtPlayer();
 
-        if (isRunningAwayFromPlayer) RunAwayFromPlayer();
-        if (isStatic) return;
+        if (isRunningAwayFromPlayer)
+            RunAwayFromPlayer();
+
+        if (isStatic)
+            return;
 
         MoveToTarget();
     }
@@ -64,7 +68,13 @@ public class EnemyMovement : MonoBehaviour
         var direction = playerPosition.position - transform.position;
         if (IsOutOfBounds(direction)) return;
 
-        _characterController.Move(-direction.normalized * (Time.deltaTime * speed));
+        MoveCharacterController(-direction.normalized * (Time.deltaTime * speed));
+    }
+
+    private void MoveCharacterController(Vector3 motion)
+    {
+        _characterController.Move(motion);
+        NotifyObservers(CharacterData.IsWalking);
     }
 
     private void LookAtPlayer()
@@ -87,28 +97,37 @@ public class EnemyMovement : MonoBehaviour
     {
         if (target && _collectWeapon.targetAcquired) return;
 
-        if (target) _targetPosition = target.position;
+        if (target)
+            _targetPosition = target.position;
 
         var position1 = (Vector2)transform.position;
         _direction = _targetPosition - position1;
         var distance = Vector2.Distance(_targetPosition, position1);
 
-        if (distance <= 6f)
+        if (distance <= 3f)
         {
             if (target) _collectWeapon.Trigger(target);
-            else _targetPosition = GetRandomVectorWithinLevelBounds();
+            else Invoke(nameof(SetNextRandomTarget), 4);
+
+            NotifyObservers(CharacterData.IsIdle);
             return;
         }
 
         if (_timeController.isTimeSlowed)
-            _characterController.Move(_direction.normalized * (Time.deltaTime * slowedSpeed));
+            MoveCharacterController(_direction.normalized * (Time.deltaTime * slowedSpeed));
         else
-            _characterController.Move(_direction.normalized * (Time.deltaTime * speed));
+            MoveCharacterController(_direction.normalized * (Time.deltaTime * speed));
+    }
+
+    private void SetNextRandomTarget()
+    {
+        _targetPosition = GetRandomVectorWithinLevelBounds();
     }
 
     public void OnNotify(string message)
     {
-        if (message == PlayerActions.IsDead.ToString()) target = null;
+        if (message == PlayerActions.IsDead.ToString())
+            target = null;
     }
 
     private Vector2 GetRandomVectorWithinLevelBounds()

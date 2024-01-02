@@ -13,10 +13,10 @@ namespace player.scripts
         [SerializeField] private GameObject target;
         [SerializeField] private TimeController timeController;
         [SerializeField] private bool isGodMode;
-        [SerializeField] private LevelManager levelManager;
         [SerializeField] private bool isDead;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private float speed = 5f;
+        [SerializeField] private bool disableCollisionOnDeath;
         private Animator _animator;
         private bool _areObserversNotified;
         private CollectWeapon _collectWeapon;
@@ -33,7 +33,7 @@ namespace player.scripts
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
 
-            if (isDead) DeclareDeath(null);
+            if (isDead) OnDeath();
         }
 
         private void Update()
@@ -59,13 +59,13 @@ namespace player.scripts
             var hitByDeadlyObject = col.gameObject.CompareTag("Bullet") || col.gameObject.CompareTag("Car");
 
             if (hitByDeadlyObject && !isGodMode)
-                DeclareDeath(col.collider);
+                OnDeath();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Bullet") && !isGodMode)
-                DeclareDeath(col);
+                OnDeath();
         }
 
         private void Move()
@@ -96,20 +96,13 @@ namespace player.scripts
             }
         }
 
-        private void DeclareDeath(Collider2D collision)
+        private void OnDeath()
         {
             isDead = true;
-            _polygonCollider2D.enabled = false;
+            if (disableCollisionOnDeath) _polygonCollider2D.enabled = false;
             if (timeController) timeController.isTimeSlowed = true;
 
             _animator.SetBool(IsDead, true);
-
-            if (collision)
-            {
-                var directionOfHit = transform.position - collision.transform.position;
-                var force = directionOfHit.normalized * 10f;
-                _rigidbody.AddForce(force);
-            }
 
             NotifyObservers(PlayerActions.IsDead);
             NotifyObservers(DialogueTrigger.PlayerDied);
