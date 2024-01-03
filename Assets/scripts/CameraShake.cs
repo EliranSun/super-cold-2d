@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour

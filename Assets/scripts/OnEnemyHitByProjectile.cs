@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using UnityEngine;
 
 public class OnEnemyHitByProjectile : MonoBehaviour
@@ -10,13 +11,12 @@ public class OnEnemyHitByProjectile : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void OnNotify(WeaponActions action)
+    public void OnNotify(WeaponObserverEvents observerEvent)
     {
-        if (action == WeaponActions.HitByProjectile)
+        if (observerEvent == WeaponObserverEvents.EnemyHitByProjectile)
         {
             _animator.SetBool(IsDead, true);
             gameObject.GetComponent<EnemyMovement>().enabled = false;
-            gameObject.GetComponent<NpcShootBullets>().enabled = false;
             StopAllCoroutines();
         }
     }

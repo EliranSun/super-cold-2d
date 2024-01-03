@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using action_triggers.scripts;
 using observer.scripts;
 using TMPro;
 using UnityEngine;
@@ -10,10 +11,10 @@ public class CollectWeapon : WeaponActionsObserverSubject
     public bool targetAcquired;
     [SerializeField] private TextMeshProUGUI weaponPickupText;
 
-    private readonly Dictionary<string, WeaponActions> _actions = new()
+    private readonly Dictionary<string, WeaponObserverEvents> _actions = new()
     {
-        { "Player", WeaponActions.PlayerCollected },
-        { "Enemy", WeaponActions.EnemyCollected }
+        { "Player", WeaponObserverEvents.PlayerCollected },
+        { "Enemy", WeaponObserverEvents.EnemyCollectedWeapon }
     };
 
     private float _timeOnTarget;

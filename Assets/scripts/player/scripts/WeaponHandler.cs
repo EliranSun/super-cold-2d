@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
@@ -28,12 +29,12 @@ public class WeaponHandler : MonoBehaviour
             ShootBullet();
     }
 
-    public void OnNotify(WeaponActions message)
+    public void OnNotify(WeaponObserverEvents message)
     {
-        if (message == WeaponActions.PlayerCollected)
+        if (message == WeaponObserverEvents.PlayerCollected)
             isActive = true;
 
-        if (message == WeaponActions.EnemyFiredShot)
+        if (message == WeaponObserverEvents.EnemyFiredShot)
             ShootBullet();
     }
 

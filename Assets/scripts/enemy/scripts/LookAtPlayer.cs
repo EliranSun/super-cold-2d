@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour
@@ -25,9 +26,9 @@ public class LookAtPlayer : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    public void OnNotify(WeaponActions action)
+    public void OnNotify(WeaponObserverEvents observerEvent)
     {
-        if (action == WeaponActions.EnemyCollected)
+        if (observerEvent == WeaponObserverEvents.EnemyCollectedWeapon)
             _isActive = true;
     }
 }

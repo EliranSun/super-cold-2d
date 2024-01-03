@@ -1,24 +1,34 @@
 using System.Collections;
+using action_triggers.scripts;
 using observer.scripts;
 using UnityEngine;
 
 public class NpcShootBullets : WeaponActionsObserverSubject
 {
     [SerializeField] private float shootInterval = 4f;
+    private bool _isNpcDead;
     private bool _isPlayerDead;
 
-    public void OnNotify(WeaponActions message)
+    public void OnNotify(WeaponObserverEvents message)
     {
-        if (message == WeaponActions.EnemyCollected)
+        if (message == WeaponObserverEvents.EnemyCollectedWeapon)
             Invoke(nameof(ShootBulletsRoutine), 1f);
+
+        if (message == WeaponObserverEvents.EnemyHitByProjectile)
+        {
+            _isNpcDead = true;
+            StopCoroutine(ShootBullets());
+        }
     }
 
-    public void OnNotify(string message)
+    public void OnNotify(PlayerActions message)
     {
-        if (message == PlayerActions.Died.ToString())
+        print($"NpcShootBullets OnNotify {message}");
+
+        if (message == PlayerActions.Died)
         {
-            StopCoroutine(ShootBullets());
             _isPlayerDead = true;
+            StopCoroutine(ShootBullets());
         }
     }
 
@@ -29,9 +39,9 @@ public class NpcShootBullets : WeaponActionsObserverSubject
 
     private IEnumerator ShootBullets()
     {
-        while (!_isPlayerDead)
+        while (!_isPlayerDead && !_isNpcDead)
         {
-            NotifyObservers(WeaponActions.EnemyFiredShot);
+            NotifyObservers(WeaponObserverEvents.EnemyFiredShot);
             yield return new WaitForSeconds(shootInterval);
         }
     }

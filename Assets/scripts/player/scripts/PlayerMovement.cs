@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using observer.scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,42 +9,34 @@ namespace player.scripts
     {
         private static readonly int IsWalking = Animator.StringToHash("isWalking");
         private static readonly int IsVertical = Animator.StringToHash("isVertical");
+
         private static readonly int IsTurningBack = Animator.StringToHash("isTurningBack");
-        private static readonly int IsDead = Animator.StringToHash("IsDead");
+
         [SerializeField] private bool isControllingTime;
         [SerializeField] private GameObject target;
         [SerializeField] private TimeController timeController;
-        [SerializeField] private bool isGodMode;
-        [SerializeField] private bool isDead;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private float speed = 5f;
-        [SerializeField] private bool disableCollisionOnDeath;
+
         private Animator _animator;
         private bool _areObserversNotified;
         private CollectWeapon _collectWeapon;
         private int _deathCount;
         private bool _isWalking;
-        private PolygonCollider2D _polygonCollider2D;
         private Rigidbody2D _rigidbody;
         private bool _triggeredCollectWeapon;
 
         private void Start()
         {
-            _polygonCollider2D = GetComponent<PolygonCollider2D>();
             _collectWeapon = GetComponent<CollectWeapon>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-
-            if (isDead) OnDeath();
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.R))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            if (isDead)
-                return;
 
             ControlTime();
             DetectNearWeapon();
@@ -53,20 +46,6 @@ namespace player.scripts
         private void OnDisable()
         {
             if (isControllingTime) ControlTime();
-        }
-
-        private void OnCollisionEnter2D(Collision2D col)
-        {
-            var hitByDeadlyObject = col.gameObject.CompareTag("Bullet") || col.gameObject.CompareTag("Car");
-
-            if (hitByDeadlyObject && !isGodMode)
-                OnDeath();
-        }
-
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            if (col.gameObject.CompareTag("Bullet") && !isGodMode)
-                OnDeath();
         }
 
         private void Move()
@@ -95,21 +74,6 @@ namespace player.scripts
                 NotifyObservers(PlayerActions.Moved);
                 _areObserversNotified = true;
             }
-        }
-
-        private void OnDeath()
-        {
-            isDead = true;
-
-            _rigidbody.velocity = Vector2.zero;
-            _rigidbody.isKinematic = true;
-
-            if (disableCollisionOnDeath) _polygonCollider2D.enabled = false;
-            if (timeController) timeController.isTimeSlowed = true;
-
-            _animator.SetBool(IsDead, true);
-
-            NotifyObservers(PlayerActions.Died);
         }
 
         private void ControlTime()

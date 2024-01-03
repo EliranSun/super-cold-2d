@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using UnityEngine;
 
 public class ExplodeOnDeath : MonoBehaviour
@@ -11,7 +12,7 @@ public class ExplodeOnDeath : MonoBehaviour
 
     private void OnNotify(string message)
     {
-        if (message == WeaponActions.PlayerHit.ToString())
+        if (message == WeaponObserverEvents.PlayerHit.ToString())
             TriggerDeath();
     }
 

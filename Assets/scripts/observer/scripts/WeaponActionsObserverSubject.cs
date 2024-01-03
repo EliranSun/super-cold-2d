@@ -1,3 +1,4 @@
+using action_triggers.scripts;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,9 +6,9 @@ namespace observer.scripts
 {
     public class WeaponActionsObserverSubject : MonoBehaviour
     {
-        public UnityEvent<WeaponActions> observers;
+        public UnityEvent<WeaponObserverEvents> observers;
 
-        protected void NotifyObservers(WeaponActions message)
+        protected void NotifyObservers(WeaponObserverEvents message)
         {
             print("WeaponActions NotifyObservers");
             observers?.Invoke(message);

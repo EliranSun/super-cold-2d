@@ -1,5 +1,8 @@
-public enum PlayerActions
+namespace action_triggers.scripts
 {
-    Died,
-    Moved,
+    public enum PlayerActions
+    {
+        Died,
+        Moved
+    }
 }

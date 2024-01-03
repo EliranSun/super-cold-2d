@@ -1,14 +1,25 @@
+using action_triggers.scripts;
+using observer.scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDeath : MonoBehaviour
+public class PlayerDeath : PlayerActionsObserverSubject
 {
-    private static readonly int IsDead = Animator.StringToHash("Died");
+    private static readonly int IsDead = Animator.StringToHash("IsDead");
+    [SerializeField] private bool restartSceneOnDeath;
+    [SerializeField] private bool disableCollisionOnDeath;
+    [SerializeField] private TimeController timeController;
     private Animator _animator;
+    private CollectWeapon _collectedWeapon;
+    private Collider2D _collider2D;
+    private Rigidbody2D _rigidbody;
 
     public void Awake()
     {
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _collider2D = GetComponent<Collider2D>();
+        _collectedWeapon = GetComponent<CollectWeapon>();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -30,7 +41,9 @@ public class PlayerDeath : MonoBehaviour
 
     private void Death()
     {
-        if (GetComponent<CollectWeapon>().targetAcquired)
+        NotifyObservers(PlayerActions.Died);
+
+        if (_collectedWeapon && _collectedWeapon.targetAcquired)
         {
             var pistolWrapper = GameObject.Find("Pistol");
             var pistol = GameObject.Find("Pistol/PistolWrapper");
@@ -38,8 +51,18 @@ public class PlayerDeath : MonoBehaviour
             pistol.AddComponent<SpinFast>();
         }
 
+        _rigidbody.velocity = Vector2.zero;
+        _rigidbody.isKinematic = true;
         _animator.SetBool(IsDead, true);
-        Invoke(nameof(RestartScene), 2f);
+
+        if (restartSceneOnDeath)
+            Invoke(nameof(RestartScene), 2f);
+
+        if (disableCollisionOnDeath)
+            _collider2D.enabled = false;
+
+        if (timeController)
+            timeController.isTimeSlowed = true;
     }
 
     private void RestartScene()
