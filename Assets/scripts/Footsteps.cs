@@ -43,9 +43,6 @@ public class Footsteps : MonoBehaviour
             }
 
             var randomIndex = Random.Range(0, footsteps.Length);
-            var clip = footsteps[randomIndex];
-            print($"Playing {clip.name}");
-
             _audioSource.clip = footsteps[randomIndex];
             _audioSource.Play();
 

@@ -7,10 +7,9 @@ namespace player.scripts
 {
     public class PlayerMovement : PlayerActionsObserverSubject
     {
-        private static readonly int IsWalking = Animator.StringToHash("isWalking");
-        private static readonly int IsVertical = Animator.StringToHash("isVertical");
-
-        private static readonly int IsTurningBack = Animator.StringToHash("isTurningBack");
+        private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+        private static readonly int Vertical = Animator.StringToHash("Vertical");
+        private static readonly int Walking = Animator.StringToHash("IsWalking");
 
         [SerializeField] private bool isControllingTime;
         [SerializeField] private GameObject target;
@@ -23,8 +22,11 @@ namespace player.scripts
         private CollectWeapon _collectWeapon;
         private int _deathCount;
         private bool _isWalking;
+        private Vector2 _movement;
         private Rigidbody2D _rigidbody;
         private bool _triggeredCollectWeapon;
+        private float lastHorizontal;
+        private float lastVertical;
 
         private void Start()
         {
@@ -40,7 +42,12 @@ namespace player.scripts
 
             ControlTime();
             DetectNearWeapon();
-            Move();
+            RegisterMovementInput();
+        }
+
+        private void FixedUpdate()
+        {
+            RigidBodyMove();
         }
 
         private void OnDisable()
@@ -48,32 +55,36 @@ namespace player.scripts
             if (isControllingTime) ControlTime();
         }
 
-        private void Move()
+        private void RegisterMovementInput()
         {
-            var moveHorizontal = Input.GetAxis("Horizontal");
-            var moveVertical = Input.GetAxis("Vertical");
-            _isWalking = moveHorizontal != 0 || moveVertical != 0;
+            _movement.x = Input.GetAxis("Horizontal");
+            _movement.y = Input.GetAxis("Vertical");
 
-            var flipX = spriteRenderer.flipX;
-            var isChangingDirectionToRight = moveHorizontal > 0 && flipX;
-            var isChangingDirectionToLeft = moveHorizontal < 0 && !flipX;
-            var isChangingDirectionToUp = moveVertical >= 0;
+            _isWalking = _movement.x != 0 || _movement.y != 0;
 
-            if (isChangingDirectionToRight || isChangingDirectionToLeft)
-                spriteRenderer.flipX = !spriteRenderer.flipX;
+            if (_isWalking)
+            {
+                // Update the last direction moved for the correct idle animation
+                lastHorizontal = _movement.x;
+                lastVertical = _movement.y;
+            }
 
-            _animator.SetBool(IsWalking, _isWalking);
-            _animator.SetBool(IsVertical, moveVertical != 0);
-            _animator.SetBool(IsTurningBack, isChangingDirectionToUp);
 
-            var movement = new Vector2(moveHorizontal, moveVertical);
-            _rigidbody.velocity = movement * speed;
+            _animator.SetFloat(Horizontal, _isWalking ? _movement.x : lastHorizontal);
+            _animator.SetFloat(Vertical, _isWalking ? _movement.y : lastVertical);
+            _animator.SetBool(Walking, _isWalking);
 
             if (_isWalking && !_areObserversNotified)
             {
                 NotifyObservers(PlayerActions.Moved);
                 _areObserversNotified = true;
             }
+        }
+
+        private void RigidBodyMove()
+        {
+            var movement = new Vector2(_movement.x, _movement.y);
+            _rigidbody.velocity = movement * speed;
         }
 
         private void ControlTime()

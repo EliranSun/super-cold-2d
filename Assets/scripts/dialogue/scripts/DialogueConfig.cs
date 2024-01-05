@@ -90,6 +90,12 @@ public class DialogueConfig : MonoBehaviour
         return lineId;
     }
 
+    public void OnNotify(PlayerActions trigger)
+    {
+        if (trigger == PlayerActions.Died)
+            OnNotify(DialogueTrigger.PlayerDied);
+    }
+
     public void OnNotify(DialogueTrigger trigger)
     {
         print($"DialogueConfig OnNotify (DialogueTrigger) {trigger}");

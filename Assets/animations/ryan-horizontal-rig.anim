@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ryan-horizontal-idle
+  m_Name: ryan-horizontal-rig
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -932943666, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
+      value: {fileID: -1148890795, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
     - time: 0.083333336
-      value: {fileID: 2081130896, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
+      value: {fileID: 1225395840, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
     - time: 0.16666667
-      value: {fileID: -1866738599, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
+      value: {fileID: -179780876, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
     - time: 0.25
-      value: {fileID: 361976100, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
+      value: {fileID: -1883489135, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -932943666, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
-    - {fileID: 2081130896, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
-    - {fileID: -1866738599, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
-    - {fileID: 361976100, guid: 4a8bf75b3127b1249812a7bb5290bbb5, type: 3}
+    - {fileID: -1148890795, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
+    - {fileID: 1225395840, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
+    - {fileID: -179780876, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
+    - {fileID: -1883489135, guid: c3a9b09909d68144a87d69d4b250cc3a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
