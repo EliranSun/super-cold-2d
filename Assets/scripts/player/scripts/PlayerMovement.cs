@@ -14,8 +14,8 @@ namespace player.scripts
         [SerializeField] private bool isControllingTime;
         [SerializeField] private GameObject target;
         [SerializeField] private TimeController timeController;
-        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private float speed = 5f;
+        [SerializeField] private bool isMovementEnabled = true;
 
         private Animator _animator;
         private bool _areObserversNotified;
@@ -40,9 +40,12 @@ namespace player.scripts
             if (Input.GetKeyDown(KeyCode.R))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-            ControlTime();
-            DetectNearWeapon();
-            RegisterMovementInput();
+            if (isMovementEnabled)
+            {
+                ControlTime();
+                DetectNearWeapon();
+                RegisterMovementInput();
+            }
         }
 
         private void FixedUpdate()
@@ -53,6 +56,12 @@ namespace player.scripts
         private void OnDisable()
         {
             if (isControllingTime) ControlTime();
+        }
+
+        public void OnNotify(PlayerActions action)
+        {
+            if (action == PlayerActions.Died)
+                isMovementEnabled = false;
         }
 
         private void RegisterMovementInput()

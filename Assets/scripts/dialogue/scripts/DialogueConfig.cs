@@ -38,6 +38,7 @@ internal class DialogueActions
 {
     public DialogueAction action;
     public GameObject[] gameObjects;
+    public ActionableScript[] actionableScripts;
 }
 
 
@@ -259,6 +260,11 @@ public class DialogueConfig : MonoBehaviour
                 case DialogueAction.ReverseAnimation:
                     foreach (var dialogueActionGameObject in dialogueAction.gameObjects)
                         dialogueActionGameObject.GetComponent<Animator>().SetBool(Reverse, true);
+                    break;
+
+                case DialogueAction.EnableActionableScript:
+                    foreach (var actionableScript in dialogueAction.actionableScripts)
+                        actionableScript.Activate();
                     break;
             }
     }

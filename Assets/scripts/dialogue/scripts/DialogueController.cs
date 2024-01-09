@@ -127,7 +127,7 @@ public class DialogueController : MonoBehaviour
         if (!_isNotified && message == PlayerActions.Died.ToString())
         {
             StartCoroutine(IsDeadSequence());
-            StartCoroutine(IncreaseEnemySpeed());
+            // StartCoroutine(IncreaseEnemySpeed());
             _isNotified = true;
         }
     }
@@ -154,17 +154,17 @@ public class DialogueController : MonoBehaviour
     {
         switch (action)
         {
-            case TriggerActions.ValerySpeedUp:
-                valeryEnemy.GetComponent<EnemyMovement>().speed *= 4;
-                break;
-
-            case TriggerActions.ValeryGone:
-            {
-                valeryEnemy.GetComponent<EnemyMovement>().speed = 0;
-                valeryEnemy.GetComponent<EnemyMovement>().enabled = false;
-                valeryEnemy.GetComponent<SpriteRenderer>().enabled = false;
-                break;
-            }
+            // case TriggerActions.ValerySpeedUp:
+            //     valeryEnemy.GetComponent<EnemyMovement>().speed *= 4;
+            //     break;
+            //
+            // case TriggerActions.ValeryGone:
+            // {
+            //     valeryEnemy.GetComponent<EnemyMovement>().speed = 0;
+            //     valeryEnemy.GetComponent<EnemyMovement>().enabled = false;
+            //     valeryEnemy.GetComponent<SpriteRenderer>().enabled = false;
+            //     break;
+            // }
 
             case TriggerActions.ApartmentDecay:
             {
@@ -183,12 +183,12 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    private IEnumerator IncreaseEnemySpeed()
-    {
-        while (true)
-        {
-            valeryEnemy.GetComponent<EnemyMovement>().speed += 1f;
-            yield return new WaitForSeconds(1);
-        }
-    }
+    // private IEnumerator IncreaseEnemySpeed()
+    // {
+    //     while (true)
+    //     {
+    //         valeryEnemy.GetComponent<EnemyMovement>().speed += 1f;
+    //         yield return new WaitForSeconds(1);
+    //     }
+    // }
 }

@@ -5,8 +5,9 @@ using UnityEngine;
 public class Footsteps : MonoBehaviour
 {
     [SerializeField] private float throttle = 0.5f;
-    [SerializeField] private bool isNPC;
+    [SerializeField] private bool isNpc;
     [SerializeField] private AudioClip[] footsteps;
+    [SerializeField] private bool isEnabled = true;
     private AudioSource _audioSource;
     private bool _isWalking;
 
@@ -18,7 +19,7 @@ public class Footsteps : MonoBehaviour
 
     private void Update()
     {
-        if (isNPC)
+        if (isNpc || !isEnabled)
             return;
 
         var moveHorizontal = Input.GetAxis("Horizontal");
@@ -26,15 +27,29 @@ public class Footsteps : MonoBehaviour
         _isWalking = moveHorizontal != 0 || moveVertical != 0;
     }
 
-    public void OnNotify(CharacterData info)
+    public void OnNotify(PlayerActions action)
     {
-        if (info == CharacterData.IsWalking) _isWalking = true;
-        if (info == CharacterData.IsIdle) _isWalking = false;
+        if (action == PlayerActions.Died)
+        {
+            print("Footsteps disabled");
+            isEnabled = false;
+            StopCoroutine(PlayFootsteps());
+        }
+    }
+
+    public void OnNotify(CharacterData data)
+    {
+        _isWalking = data switch
+        {
+            CharacterData.IsWalking => true,
+            CharacterData.IsIdle => false,
+            _ => _isWalking
+        };
     }
 
     private IEnumerator PlayFootsteps()
     {
-        while (true)
+        while (isEnabled)
         {
             if (!_isWalking)
             {

@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &176744080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,20 +504,6 @@ MonoBehaviour:
     trigger: 0
     actions: []
     characterSelectionOptions: []
-  - femaleText: And then she died. But she also had the ability to reverse time,
-      by simply hitting the R button, whatever that means.
-    maleText: And then he died. But he also had the ability to reverse time, by simply
-      hitting the R button, whatever that means.
-    includesPlayerName: 0
-    id: 
-    audio:
-      female: {fileID: 8300000, guid: 6155be9f74b94d245a248610c6321536, type: 3}
-      male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
-      none: {fileID: 0}
-    waitInSeconds: 0
-    trigger: 2
-    actions: []
-    characterSelectionOptions: []
   - femaleText: He killed her, but not murdered - and this was an important distinction.
     maleText: She killed him, but not murdered - and this was an important distinction.
     includesPlayerName: 0
@@ -552,6 +538,20 @@ MonoBehaviour:
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: And then she died. But she also had the ability to reverse time,
+      by simply hitting the R button, whatever that means.
+    maleText: And then he died. But he also had the ability to reverse time, by simply
+      hitting the R button, whatever that means.
+    includesPlayerName: 0
+    id: 
+    audio:
+      female: {fileID: 8300000, guid: 6155be9f74b94d245a248610c6321536, type: 3}
+      male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 2
     actions: []
     characterSelectionOptions: []
 --- !u!4 &176744083
@@ -984,6 +984,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4563257340690170239, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
   m_PrefabInstance: {fileID: 4563257341237110274}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &564766593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4563257340690170236, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+  m_PrefabInstance: {fileID: 4563257341237110274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564766578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e416f6a208904754b36ed0f2f6e8875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &564766601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4563257340690170233, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+  m_PrefabInstance: {fileID: 4563257341237110274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564766578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e61072459a1b4c62a1b2487149027b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &655046268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,10 +1360,10 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 384757466}
   activeDialogueIndex: 0
   dialogues:
-  - femaleText: "{playerName}\u2019s apartment. {playerName}\u2019s husband, {playerPartner},
-      moves in."
-    maleText: "{playerName}\u2019s apartment. {playerName}\u2019s wife, {playerPartner},
-      moves in."
+  - femaleText: 'As time went on with {playerName} doing nothing at all, something
+      very peculiar started to occur. '
+    maleText: 'As time went on with {playerName} doing nothing at all, something
+      very peculiar started to occur. '
     includesPlayerName: 1
     id: aa8a8e24-b1f9-4786-ba11-48121a078b93
     audio:
@@ -1352,20 +1374,22 @@ MonoBehaviour:
     trigger: 0
     actions: []
     characterSelectionOptions: []
-  - femaleText: 'He shot her, but this time in reverse. '
-    maleText: 'She shot him, but this time in reverse. '
-    includesPlayerName: 0
+  - femaleText: "{playerName}\u2019s effect on time started to reverse."
+    maleText: "{playerName}\u2019s effect on time started to reverse."
+    includesPlayerName: 1
     id: 3e412693-3cd7-4021-8161-bd16f45838ef
     audio:
-      female: {fileID: 8300000, guid: 0a955c08e90b12347bb7941e16b9b146, type: 3}
-      male: {fileID: 8300000, guid: 4c6edcffccb791949bea3aecc781e8d4, type: 3}
+      female: {fileID: 0}
+      male: {fileID: 0}
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
-  - femaleText: "The bullet comes out of {playerName}\u2019s bloody body."
-    maleText: "The bullet comes out of {playerName}\u2019s bloody body."
+  - femaleText: "At first - slowly, little by little, things started to move faster
+      and faster. Almost as if {playerName}'s point of reference became\u2026 infinite. "
+    maleText: "At first - slowly, little by little, things started to move faster
+      and faster. Almost as if {playerName}'s point of reference became\u2026 infinite. "
     includesPlayerName: 1
     id: 3ac8ae8a-da70-4667-a93d-20755630b2f6
     audio:
@@ -1374,27 +1398,84 @@ MonoBehaviour:
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
-    actions: []
+    actions:
+    - action: 5
+      gameObjects: []
+      actionableScripts:
+      - {fileID: 1576004860}
     characterSelectionOptions: []
-  - femaleText: Reviving her in the process. The bullet returns to the pistol it
-      came from.
-    maleText: Reviving him in the process. The bullet returns to the pistol it came
-      from.
+  - femaleText: 'Which would make sense, since he is dead and all that. '
+    maleText: 'Which would make sense, since she is dead and all that. '
     includesPlayerName: 0
     id: 4ebb9e0a-3cdb-4f5b-9374-122b0fba5c9a
     audio:
-      female: {fileID: 8300000, guid: 5f9b5d151335c12429f8a88efce0089c, type: 3}
-      male: {fileID: 8300000, guid: aa3c8e9be4580954a816ee72cb9bd06c, type: 3}
+      female: {fileID: 8300000, guid: 30e1af0d7d9d2436c9b3347de0a3c697, type: 3}
+      male: {fileID: 8300000, guid: 05c8f06e3886d334190f1315bd62d31d, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
-  - femaleText: Moments before {playerPartner} shots again - {playerName} can now
-      move.
-    maleText: Moments before {playerPartner} shots again - {playerName} can now move.
-    includesPlayerName: 1
+  - femaleText: 'Nonetheless, the effect was not linear. Time shifted more and more.
+      Accelerating.  '
+    maleText: 'Nonetheless, the effect was not linear. Time shifted more and more.
+      Accelerating.  '
+    includesPlayerName: 0
     id: 776b7d42-5bb9-43f4-ba28-2f57760693db
+    audio:
+      female: {fileID: 8300000, guid: 02786f9f97b864afbba3a4729df673d3, type: 3}
+      male: {fileID: 8300000, guid: 9556ba185cb468446ad690d27cd26e75, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 0
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: Her husband was long gone. Did he move on? Arrested? Got out of jail?
+      Remarried, happily with children? Dead?
+    maleText: His wife was long gone. Did she move on? Arrested? Got out of jail?
+      Remarried, happily with children? Dead?
+    includesPlayerName: 0
+    id: f65e9349-b816-4e9d-bd4f-a926e3468930
+    audio:
+      female: {fileID: 8300000, guid: 8bde514fb3b9f429799d0a174f6beb47, type: 3}
+      male: {fileID: 8300000, guid: 73c22a39162c9414f8dd666de312e298, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 0
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 'The apartment itself got old. The building. The street. The neighborhood.
+      Everything got old. Everything, bounded by the merciless vicious mistress that
+      is lady time. '
+    maleText: 'The apartment itself got old. The building. The street. The neighborhood.
+      Everything got old. Everything, bounded by the merciless vicious mistress that
+      is lady time. '
+    includesPlayerName: 0
+    id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
+    audio:
+      female: {fileID: 8300000, guid: 8338e28a06c234d9281119da334e7a54, type: 3}
+      male: {fileID: 8300000, guid: 63fae455d5f7e514c90e4f446df8b38d, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 0
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: 'It did not stop. Only accelerated. Further and further.  '
+    maleText: 'It did not stop. Only accelerated. Further and further.  '
+    includesPlayerName: 0
+    id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
+    audio:
+      female: {fileID: 8300000, guid: 4a6fc24752cc24664b1afbab16ea6edf, type: 3}
+      male: {fileID: 8300000, guid: 16a911149faee4fc2bfb7be2ce92cfb7, type: 3}
+      none: {fileID: 0}
+    waitInSeconds: 0
+    trigger: 0
+    actions: []
+    characterSelectionOptions: []
+  - femaleText: '{playerName} was preserved perfectly. '
+    maleText: '{playerName} was preserved perfectly. '
+    includesPlayerName: 1
+    id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
       female: {fileID: 0}
       male: {fileID: 0}
@@ -1403,25 +1484,15 @@ MonoBehaviour:
     trigger: 0
     actions: []
     characterSelectionOptions: []
-  - femaleText: 'Completely unaware of the magnificent journey his body just experienced. '
-    maleText: 'Completely unaware of the magnificent journey his body just experienced. '
-    includesPlayerName: 0
-    id: f65e9349-b816-4e9d-bd4f-a926e3468930
-    audio:
-      female: {fileID: 8300000, guid: f38b848b49cdca84d986019d49b21bdd, type: 3}
-      male: {fileID: 8300000, guid: 20677646d48208e4fa4ed4eb69a70be4, type: 3}
-      none: {fileID: 0}
-    waitInSeconds: 0
-    trigger: 0
-    actions: []
-    characterSelectionOptions: []
-  - femaleText: 'A once in a lifetime experience, that is for sure. '
-    maleText: 'A once in a lifetime experience, that is for sure. '
+  - femaleText: Her time dimension, completely still. If only her consciousness could
+      be here to observe.
+    maleText: 'His time dimension, completely still. If only his consciousness could
+      be here to observe. '
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
-      female: {fileID: 8300000, guid: 0aa2dd5f81715ce41826c09787df383b, type: 3}
-      male: {fileID: 8300000, guid: f126bf888c334d241bad84a7aa99d33b, type: 3}
+      female: {fileID: 8300000, guid: 802fe31c7a4464d8b8e6102402bb7219, type: 3}
+      male: {fileID: 8300000, guid: 56175c20f7a8246d7ad5321e60d7085d, type: 3}
       none: {fileID: 0}
     waitInSeconds: 0
     trigger: 0
@@ -1440,7 +1511,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817669071
 GameObject:
@@ -2462,6 +2533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1576004858}
   - component: {fileID: 1576004859}
+  - component: {fileID: 1576004860}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -2497,6 +2569,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSequenceStartDialogue: {fileID: 707307508}
+  deathSequenceEndDialogue: {fileID: 1862960332}
+  currentSceneDialogue: {fileID: 176744079}
+  triggerAfterSeconds: 3
+--- !u!114 &1576004860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576004857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e73f935d362b465ab8ed4438be4927d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valeryGameObject: {fileID: 1876068840}
 --- !u!1 &1586951450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,7 +3492,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876068840 stripped
 GameObject:
@@ -3667,7 +3755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 800562991124641792, guid: 2391c267773a6495f9fb56a47c21ad49, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 800562991124641794, guid: 2391c267773a6495f9fb56a47c21ad49, type: 3}
       propertyPath: m_RootOrder
@@ -3993,6 +4081,10 @@ PrefabInstance:
       propertyPath: characterData.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7718018147343863772, guid: 2391c267773a6495f9fb56a47c21ad49, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8728874537898962650, guid: 2391c267773a6495f9fb56a47c21ad49, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -4082,6 +4174,10 @@ PrefabInstance:
       propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 519420033}
+    - target: {fileID: 4563257340690170237, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4563257340690170238, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
       propertyPath: m_SortingOrder
       value: 4
@@ -4136,10 +4232,22 @@ PrefabInstance:
       objectReference: {fileID: 853733327}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
       propertyPath: observers.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
       propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
@@ -4151,7 +4259,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 176744082}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1576004859}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 564766601}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 564766593}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
       propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
@@ -4159,11 +4291,47 @@ PrefabInstance:
       value: OnNotify
       objectReference: {fileID: 0}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OnNotify
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: OnNotify
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: OnNotify
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
       propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DialogueConfig, Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: DeathSequenceTrigger, Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: player.scripts.PlayerMovement, Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: Footsteps, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
       propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563257340690170243, guid: 89d4a2e2f387cd54b8c752e7a38e8e2d, type: 3}
+      propertyPath: observers.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

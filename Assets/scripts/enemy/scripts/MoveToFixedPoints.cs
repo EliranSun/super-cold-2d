@@ -5,7 +5,8 @@ using UnityEngine;
 public class MoveToFixedPoints : CharacterDataObserverSubject
 {
     [SerializeField] private Transform[] positions;
-    [SerializeField] private float speed = 15;
+    [SerializeField] public float speed = 15;
+    [SerializeField] public float setNewPositionInterval = 4;
     private CharacterController _characterController;
     private Vector3 _lastPosition;
     private Vector3 _newPosition;
@@ -24,7 +25,7 @@ public class MoveToFixedPoints : CharacterDataObserverSubject
         if (distance <= 1.3f && !_setNewPositionInvoked)
         {
             Notify(CharacterData.IsIdle);
-            Invoke(nameof(SetNewPosition), 4);
+            Invoke(nameof(SetNewPosition), setNewPositionInterval);
             _setNewPositionInvoked = true;
         }
         else
