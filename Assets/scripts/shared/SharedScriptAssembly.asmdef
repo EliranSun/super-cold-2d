@@ -1,0 +1,17 @@
+{
+    "name": "SharedScriptAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:49f3921de20534047a1bc0f78ab618e3",
+        "GUID:07f58ee3bec0c4291b312f39b99ff770"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

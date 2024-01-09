@@ -19,17 +19,20 @@ internal class AudioGender
 [Serializable]
 internal class Dialogue
 {
-    public string femaleText;
+    public DialogueActions[] beforeLineActions;
 
-    [FormerlySerializedAs("text")] [FormerlySerializedAs("Text")]
+    public string femaleText;
     public string maleText;
 
     public bool includesPlayerName;
     public string id = Guid.NewGuid().ToString();
     [SerializeField] public AudioGender audio;
-    public float waitInSeconds = 0.5f;
-    public DialogueTrigger trigger;
-    public DialogueActions[] actions;
+
+    [FormerlySerializedAs("waitInSeconds")]
+    public float waitForNextLineInSeconds = 0.5f;
+
+    [FormerlySerializedAs("trigger")] public DialogueTrigger lineTriggeredBy;
+    [FormerlySerializedAs("actions")] public DialogueActions[] afterLineActions;
     [FormerlySerializedAs("options")] public GameObject[] characterSelectionOptions;
 }
 
@@ -37,8 +40,16 @@ internal class Dialogue
 internal class DialogueActions
 {
     public DialogueAction action;
+    public Scenes selectedScene;
     public GameObject[] gameObjects;
     public ActionableScript[] actionableScripts;
+}
+
+internal enum Scenes
+{
+    None,
+    UniverseDeathSequence,
+    LevelOneApartment
 }
 
 
@@ -75,7 +86,7 @@ public class DialogueConfig : MonoBehaviour
             if (index != -1) activeDialogueIndex = index;
         }
 
-        if (dialogues[activeDialogueIndex].trigger == DialogueTrigger.None)
+        if (dialogues[activeDialogueIndex].lineTriggeredBy == DialogueTrigger.None)
             ReadLine(dialogues[activeDialogueIndex]);
     }
 
@@ -116,7 +127,7 @@ public class DialogueConfig : MonoBehaviour
     private void TriggerLine(DialogueTrigger trigger)
     {
         foreach (var dialogue in dialogues)
-            if (dialogue.trigger == trigger)
+            if (dialogue.lineTriggeredBy == trigger)
             {
                 activeDialogueIndex = Array.IndexOf(dialogues, dialogue);
                 ReadLine(dialogue);
@@ -150,7 +161,7 @@ public class DialogueConfig : MonoBehaviour
 
     private IEnumerator ReadLineCoroutine(Dialogue line)
     {
-        InvokeAction(line);
+        InvokeAction(line.beforeLineActions);
 
         var partnerName = PlayerInfo.GetPlayerPartner();
         var playerName = PlayerInfo.GetPlayerName();
@@ -172,7 +183,7 @@ public class DialogueConfig : MonoBehaviour
             _textToSpeechComponent.ConvertText(lineWithPlayerName, playerGender, audioClip =>
             {
                 PlayAudioSourceClip(audioClip);
-                AfterLineActions(line, _audioSource.clip.length);
+                WaitForInputOrTriggerNextLine(line, _audioSource.clip.length);
             });
         }
         else
@@ -191,7 +202,7 @@ public class DialogueConfig : MonoBehaviour
             }
 
             ClearLine();
-            AfterLineActions(line);
+            WaitForInputOrTriggerNextLine(line);
         }
     }
 
@@ -225,18 +236,23 @@ public class DialogueConfig : MonoBehaviour
         _audioSource.Play();
     }
 
-    private void AfterLineActions(Dialogue line, float currentClipLength = 0)
+    private void WaitForInputOrTriggerNextLine(Dialogue line, float currentClipLength = 0)
     {
         if (line.characterSelectionOptions.Length > 0)
+        {
             foreach (var optionGameObject in line.characterSelectionOptions)
                 optionGameObject.SetActive(true);
+        }
         else
-            Invoke(nameof(TriggerNextLine), currentClipLength + line.waitInSeconds);
+        {
+            InvokeAction(line.afterLineActions);
+            Invoke(nameof(TriggerNextLine), currentClipLength + line.waitForNextLineInSeconds);
+        }
     }
 
-    private void InvokeAction(Dialogue line)
+    private void InvokeAction(DialogueActions[] actions)
     {
-        foreach (var dialogueAction in line.actions)
+        foreach (var dialogueAction in actions)
             switch (dialogueAction.action)
             {
                 default:
@@ -266,6 +282,20 @@ public class DialogueConfig : MonoBehaviour
                     foreach (var actionableScript in dialogueAction.actionableScripts)
                         actionableScript.Activate();
                     break;
+
+                case DialogueAction.ChangeScene:
+                    if (dialogueAction.selectedScene == Scenes.None)
+                        break;
+
+                    var sceneName = dialogueAction switch
+                    {
+                        { selectedScene: Scenes.UniverseDeathSequence } => "UniverseDeathSequence",
+                        { selectedScene: Scenes.LevelOneApartment } => "Level 1",
+                        _ => ""
+                    };
+
+                    SceneManager.LoadScene(sceneName);
+                    break;
             }
     }
 
@@ -281,7 +311,7 @@ public class DialogueConfig : MonoBehaviour
             activeDialogueIndex++;
 
             if (dialogues.Length <= activeDialogueIndex ||
-                dialogues[activeDialogueIndex].trigger != DialogueTrigger.None)
+                dialogues[activeDialogueIndex].lineTriggeredBy != DialogueTrigger.None)
             {
                 print("No more dialogues to trigger");
                 return;

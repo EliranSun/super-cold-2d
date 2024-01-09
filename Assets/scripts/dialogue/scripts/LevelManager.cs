@@ -22,6 +22,7 @@ internal class Line
 }
 
 
+// TODO: Remove - this is replaced by DialogueConfig. Same goes to DialogueController
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;

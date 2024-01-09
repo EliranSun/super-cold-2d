@@ -23,15 +23,12 @@ namespace config.scripts
                     .Replace(",", "")
                     .Replace("?", "");
                 _filePath = Application.persistentDataPath + $"/{formattedText.Substring(0, 20)}-{gender}.wav";
-                print($"file path {_filePath}");
-
                 var loadedClip = AudioClipUtility.LoadAudioClip(_filePath);
 
                 if (loadedClip == null)
                     throw new Exception("clip not found");
 
                 loadedClip.name = formattedText;
-                print($"clip already saved to disk, returning; {_filePath}");
                 onConvertComplete(loadedClip);
             }
             catch

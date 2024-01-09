@@ -464,7 +464,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -476,7 +476,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 9c210da490f2b48c3b723b243f31de1c, type: 3}
       male: {fileID: 8300000, guid: 90b913d6c015f4eeb924ace0fba43949, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0.5
+    waitForNextLineInSeconds: 0.5
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -488,7 +488,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0.2
+    waitForNextLineInSeconds: 0.2
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -500,7 +500,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 36b88000f4c5444899649690427b27de, type: 3}
       male: {fileID: 8300000, guid: 868425a263371468eba3b6bafd828f2d, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -512,7 +512,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 60db6a9b7328d473e9806eb13b2f88f1, type: 3}
       male: {fileID: 8300000, guid: b2b3cdb32446746c9a1c6333b944e157, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 3
     actions: []
     characterSelectionOptions: []
@@ -524,7 +524,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -536,7 +536,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 9089d387bd4044d30a6c1ba8a1f5d9d4, type: 3}
       male: {fileID: 8300000, guid: 754c669bdde1942c5befd96100db6bed, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -550,7 +550,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 6155be9f74b94d245a248610c6321536, type: 3}
       male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 2
     actions: []
     characterSelectionOptions: []
@@ -567,7 +567,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188628905
 GameObject:
@@ -599,6 +599,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &260691046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 260691048}
+  - component: {fileID: 260691047}
+  m_Layer: 0
+  m_Name: Living Room Decayed BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &260691047
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260691046}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f6c743dd0daf14dfaba349e2d1087029, type: 3}
+  m_Color: {r: 1, g: 0.6650944, b: 0.6650944, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 29.119999, y: 16.323124}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &260691048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260691046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &315282703
 GameObject:
@@ -1017,7 +1101,7 @@ GameObject:
   - component: {fileID: 655046270}
   - component: {fileID: 655046269}
   m_Layer: 0
-  m_Name: BG
+  m_Name: Living Room BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1370,9 +1454,14 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
-    actions: []
+    actions:
+    - action: 6
+      gameObjects: []
+      actionableScripts:
+      - {fileID: 1576004860}
+      selectedScene: 0
     characterSelectionOptions: []
   - femaleText: "{playerName}\u2019s effect on time started to reverse."
     maleText: "{playerName}\u2019s effect on time started to reverse."
@@ -1382,7 +1471,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -1396,13 +1485,9 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
-    actions:
-    - action: 5
-      gameObjects: []
-      actionableScripts:
-      - {fileID: 1576004860}
+    actions: []
     characterSelectionOptions: []
   - femaleText: 'Which would make sense, since he is dead and all that. '
     maleText: 'Which would make sense, since she is dead and all that. '
@@ -1412,7 +1497,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 30e1af0d7d9d2436c9b3347de0a3c697, type: 3}
       male: {fileID: 8300000, guid: 05c8f06e3886d334190f1315bd62d31d, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -1426,9 +1511,14 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 02786f9f97b864afbba3a4729df673d3, type: 3}
       male: {fileID: 8300000, guid: 9556ba185cb468446ad690d27cd26e75, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
-    actions: []
+    actions:
+    - action: 4
+      gameObjects:
+      - {fileID: 1876068840}
+      actionableScripts: []
+      selectedScene: 0
     characterSelectionOptions: []
   - femaleText: Her husband was long gone. Did he move on? Arrested? Got out of jail?
       Remarried, happily with children? Dead?
@@ -1440,9 +1530,20 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 8bde514fb3b9f429799d0a174f6beb47, type: 3}
       male: {fileID: 8300000, guid: 73c22a39162c9414f8dd666de312e298, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
-    actions: []
+    actions:
+    - action: 6
+      gameObjects: []
+      actionableScripts:
+      - {fileID: 1661645615}
+      selectedScene: 0
+    - action: 4
+      gameObjects:
+      - {fileID: 505696733}
+      actionableScripts:
+      - {fileID: 1661645615}
+      selectedScene: 0
     characterSelectionOptions: []
   - femaleText: 'The apartment itself got old. The building. The street. The neighborhood.
       Everything got old. Everything, bounded by the merciless vicious mistress that
@@ -1456,9 +1557,14 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 8338e28a06c234d9281119da334e7a54, type: 3}
       male: {fileID: 8300000, guid: 63fae455d5f7e514c90e4f446df8b38d, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
-    actions: []
+    actions:
+    - action: 6
+      gameObjects: []
+      actionableScripts:
+      - {fileID: 1377815951}
+      selectedScene: 0
     characterSelectionOptions: []
   - femaleText: 'It did not stop. Only accelerated. Further and further.  '
     maleText: 'It did not stop. Only accelerated. Further and further.  '
@@ -1468,7 +1574,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 4a6fc24752cc24664b1afbab16ea6edf, type: 3}
       male: {fileID: 8300000, guid: 16a911149faee4fc2bfb7be2ce92cfb7, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 2
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -1480,7 +1586,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -1494,9 +1600,13 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 802fe31c7a4464d8b8e6102402bb7219, type: 3}
       male: {fileID: 8300000, guid: 56175c20f7a8246d7ad5321e60d7085d, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
-    actions: []
+    actions:
+    - action: 2
+      gameObjects: []
+      actionableScripts: []
+      selectedScene: 1
     characterSelectionOptions: []
 --- !u!4 &707307512
 Transform:
@@ -1511,7 +1621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817669071
 GameObject:
@@ -1698,7 +1808,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &857547491
 GameObject:
@@ -2126,7 +2236,7 @@ Transform:
   - {fileID: 315282704}
   - {fileID: 1082445250}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214259710 stripped
 GameObject:
@@ -2194,7 +2304,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1297454392
 GameObject:
@@ -2284,6 +2394,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1095413921}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1377815950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377815952}
+  - component: {fileID: 1377815951}
+  m_Layer: 0
+  m_Name: Street Decay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1377815951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377815950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39076dd2a6ed843cea5e7db290203549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTimeInSeconds: 5
+  currentBackgroundSpriteRenderer: {fileID: 260691047}
+  newBackgroundSpriteRenderer: {fileID: 1507005974}
+--- !u!4 &1377815952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377815950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.2878385, y: 3.8886175, z: -0.13161667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1444207350
 GameObject:
@@ -2492,6 +2649,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448073572}
   m_CullTransparentMesh: 1
+--- !u!1 &1507005973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1507005975}
+  - component: {fileID: 1507005974}
+  m_Layer: 0
+  m_Name: Street Decayed BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1507005974
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507005973}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 377d88d4fb3d9b749a641bbd5f3f6239, type: 3}
+  m_Color: {r: 1, g: 0.759434, b: 0.759434, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 29.119999, y: 16.323124}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1507005975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507005973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1573930203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,7 +2795,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1576004859
 MonoBehaviour:
@@ -2624,6 +2865,53 @@ RectTransform:
   m_AnchoredPosition: {x: 849.99994, y: 450.00003}
   m_SizeDelta: {x: 161, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1661645614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661645616}
+  - component: {fileID: 1661645615}
+  m_Layer: 0
+  m_Name: Apartment Decay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1661645615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661645614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39076dd2a6ed843cea5e7db290203549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTimeInSeconds: 5
+  currentBackgroundSpriteRenderer: {fileID: 655046269}
+  newBackgroundSpriteRenderer: {fileID: 260691047}
+--- !u!4 &1661645616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661645614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.2878385, y: 3.8886175, z: -0.13161667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1667556123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
@@ -2783,7 +3071,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1698479301
 MonoBehaviour:
@@ -2998,7 +3286,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764683822
 GameObject:
@@ -3242,7 +3530,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862960332
 GameObject:
@@ -3400,7 +3688,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3412,7 +3700,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 0a955c08e90b12347bb7941e16b9b146, type: 3}
       male: {fileID: 8300000, guid: 4c6edcffccb791949bea3aecc781e8d4, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3424,7 +3712,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3438,7 +3726,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 5f9b5d151335c12429f8a88efce0089c, type: 3}
       male: {fileID: 8300000, guid: aa3c8e9be4580954a816ee72cb9bd06c, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3451,7 +3739,7 @@ MonoBehaviour:
       female: {fileID: 0}
       male: {fileID: 0}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3463,7 +3751,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: f38b848b49cdca84d986019d49b21bdd, type: 3}
       male: {fileID: 8300000, guid: 20677646d48208e4fa4ed4eb69a70be4, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3475,7 +3763,7 @@ MonoBehaviour:
       female: {fileID: 8300000, guid: 0aa2dd5f81715ce41826c09787df383b, type: 3}
       male: {fileID: 8300000, guid: f126bf888c334d241bad84a7aa99d33b, type: 3}
       none: {fileID: 0}
-    waitInSeconds: 0
+    waitForNextLineInSeconds: 0
     trigger: 0
     actions: []
     characterSelectionOptions: []
@@ -3492,7 +3780,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876068840 stripped
 GameObject:

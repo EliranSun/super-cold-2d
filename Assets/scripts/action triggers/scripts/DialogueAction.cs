@@ -4,12 +4,10 @@ namespace action_triggers.scripts
     {
         None,
         NextScene,
+        ChangeScene,
         GameObjectsEnable,
         GameObjectsDisable,
         ReverseAnimation,
-        EnableActionableScript,
-        IncreaseSpeed,
-        ChangeSpriteRenderer,
-        ChangeScene
+        EnableActionableScript
     }
 }

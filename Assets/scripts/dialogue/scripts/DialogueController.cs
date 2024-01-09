@@ -48,6 +48,7 @@ internal class SimpleLine
 }
 
 // TODO: Maybe this should only be responsible for death sequence
+// TODO: Remove - this is replaced by DialogueConfig. Same goes to level manager
 public class DialogueController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI narratorText;

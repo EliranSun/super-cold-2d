@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ValeryBehaviourAtDeathSequence : ActionableScript
@@ -7,13 +8,24 @@ public class ValeryBehaviourAtDeathSequence : ActionableScript
     public override void Activate()
     {
         valeryGameObject.GetComponent<MoveToFixedPoints>().enabled = true;
-        Invoke(nameof(IncreaseSpeed), 5);
-        Invoke(nameof(IncreaseSpeed), 10);
+        StartCoroutine(IncreaseSpeed());
     }
 
-    private void IncreaseSpeed()
+    private IEnumerator IncreaseSpeed()
     {
-        valeryGameObject.GetComponent<MoveToFixedPoints>().speed *= 2;
-        valeryGameObject.GetComponent<MoveToFixedPoints>().setNewPositionInterval /= 2;
+        while (true)
+        {
+            var footsteps = valeryGameObject.GetComponent<Footsteps>();
+            var move = valeryGameObject.GetComponent<MoveToFixedPoints>();
+
+            if (move.setNewPositionInterval < 0.15f)
+                break;
+
+            move.speed *= 2;
+            move.setNewPositionInterval /= 2;
+            footsteps.interval /= 2;
+
+            yield return new WaitForSeconds(3);
+        }
     }
 }
