@@ -3,7 +3,15 @@ using enums;
 using TMPro;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+public enum PlayerPrefsKeys
+{
+    PlayerName,
+    PlayerGender,
+    PlayerPartner,
+    SeenUniverseDeathSequence
+}
+
+public class PlayerInfo : ActionableScript
 {
     [SerializeField] private TextMeshProUGUI titleCard;
 
@@ -19,24 +27,24 @@ public class PlayerInfo : MonoBehaviour
         if (string.IsNullOrEmpty(playerName))
             return;
 
-        PlayerPrefs.SetString("PlayerName", playerName);
+        PlayerPrefs.SetString(PlayerPrefsKeys.PlayerName.ToString(), playerName);
         if (titleCard)
             titleCard.text = $"{playerName.ToUpper().Trim()} IS COLD";
     }
 
     public void SetPlayerGender(string gender)
     {
-        PlayerPrefs.SetString("PlayerGender", gender.ToUpper());
+        PlayerPrefs.SetString(PlayerPrefsKeys.PlayerGender.ToString(), gender.ToUpper());
     }
 
     public static string GetPlayerName()
     {
-        return PlayerPrefs.GetString("PlayerName");
+        return PlayerPrefs.GetString(PlayerPrefsKeys.PlayerName.ToString());
     }
 
     public static PlayerGender GetPlayerGender()
     {
-        switch (PlayerPrefs.GetString("PlayerGender"))
+        switch (PlayerPrefs.GetString(PlayerPrefsKeys.PlayerGender.ToString()))
         {
             case "MALE":
                 return PlayerGender.Male;
@@ -51,17 +59,17 @@ public class PlayerInfo : MonoBehaviour
 
     public static void SetPlayerPartner(string partner)
     {
-        PlayerPrefs.SetString("PlayerPartner", partner.ToUpper().Trim());
+        PlayerPrefs.SetString(PlayerPrefsKeys.PlayerPartner.ToString(), partner.ToUpper().Trim());
     }
 
     public static string GetPlayerPartner()
     {
-        return PlayerPrefs.GetString("PlayerPartner");
+        return PlayerPrefs.GetString(PlayerPrefsKeys.PlayerPartner.ToString());
     }
 
     public void ResetPlayerGender()
     {
-        PlayerPrefs.DeleteKey("PlayerGender");
+        PlayerPrefs.DeleteKey(PlayerPrefsKeys.PlayerGender.ToString());
     }
 
 
@@ -69,5 +77,20 @@ public class PlayerInfo : MonoBehaviour
     public void DeleteAllPlayerAudioClips()
     {
         AudioClipUtility.DeleteAllAudioClips();
+    }
+    
+    public void SetSeenUniverseDeathSequence()
+    {
+        PlayerPrefs.SetString(PlayerPrefsKeys.SeenUniverseDeathSequence.ToString(), "true");
+    }
+
+    public override void Activate()
+    {
+        SetSeenUniverseDeathSequence();
+    }
+    
+    public string GetPlayerPrefValue(PlayerPrefsKeys key)
+    {
+        return PlayerPrefs.GetString(key.ToString());
     }
 }

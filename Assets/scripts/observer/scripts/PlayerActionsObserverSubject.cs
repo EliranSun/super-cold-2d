@@ -8,7 +8,7 @@ namespace observer.scripts
     {
         public UnityEvent<PlayerActions> observers;
 
-        protected void NotifyObservers(PlayerActions message)
+        protected void Notify(PlayerActions message)
         {
             print("PlayerActions NotifyObservers");
             observers?.Invoke(message);

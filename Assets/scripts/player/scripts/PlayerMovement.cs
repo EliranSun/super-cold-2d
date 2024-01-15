@@ -85,7 +85,7 @@ namespace player.scripts
 
             if (_isWalking && !_areObserversNotified)
             {
-                NotifyObservers(PlayerActions.Moved);
+                Notify(PlayerActions.Moved);
                 _areObserversNotified = true;
             }
         }

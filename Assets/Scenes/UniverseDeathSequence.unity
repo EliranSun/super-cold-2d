@@ -5497,6 +5497,7 @@ GameObject:
   - component: {fileID: 519516482}
   - component: {fileID: 519516481}
   - component: {fileID: 519516480}
+  - component: {fileID: 519516484}
   m_Layer: 0
   m_Name: Dialogue
   m_TagString: Untagged
@@ -5889,6 +5890,11 @@ MonoBehaviour:
       selectedScene: 2
       gameObjects: []
       actionableScripts: []
+    - action: 6
+      selectedScene: 2
+      gameObjects: []
+      actionableScripts:
+      - {fileID: 519516484}
     characterSelectionOptions: []
 --- !u!4 &519516483
 Transform:
@@ -5905,6 +5911,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519516484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519516479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aead8abc5d126940b3204030cc259e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleCard: {fileID: 0}
 --- !u!1 &694443446
 GameObject:
   m_ObjectHideFlags: 0

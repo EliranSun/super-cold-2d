@@ -124,10 +124,13 @@ public class EnemyMovement : ObserverSubject
         _targetPosition = GetRandomVectorWithinLevelBounds();
     }
 
-    public void OnNotify(string message)
+    public void OnNotify(PlayerActions message)
     {
-        if (message == PlayerActions.Died.ToString())
+        if (message == PlayerActions.Died)
             target = null;
+        
+        if (message == PlayerActions.SeenUniverseDeathSequence)
+            isStatic = true;
     }
 
     private Vector2 GetRandomVectorWithinLevelBounds()

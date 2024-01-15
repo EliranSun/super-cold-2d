@@ -456,7 +456,8 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 384757466}
   activeDialogueIndex: 0
   dialogues:
-  - femaleText: Her husband, {playerPartner}, hated this.
+  - beforeLineActions: []
+    femaleText: Her husband, {playerPartner}, hated this.
     maleText: His wife, {playerPartner}, hated this.
     includesPlayerName: 1
     id: 
@@ -465,10 +466,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: He tried to kill her, because he was too afraid of divorce.
+  - beforeLineActions: []
+    femaleText: He tried to kill her, because he was too afraid of divorce.
     maleText: She tried to kill him, because she was too afraid of divorce.
     includesPlayerName: 0
     id: 
@@ -477,10 +479,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 90b913d6c015f4eeb924ace0fba43949, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0.5
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: '{playerName} was a pacifist though.'
+  - beforeLineActions: []
+    femaleText: '{playerName} was a pacifist though.'
     maleText: '{playerName} was a pacifist though.'
     includesPlayerName: 1
     id: 
@@ -489,10 +492,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0.2
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: All she could do is run away from him, or act in self defense.
+  - beforeLineActions: []
+    femaleText: All she could do is run away from him, or act in self defense.
     maleText: All he could do is run away from her, or act in self defense.
     includesPlayerName: 0
     id: 
@@ -501,10 +505,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 868425a263371468eba3b6bafd828f2d, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: He killed her, but not murdered - and this was an important distinction.
+  - beforeLineActions: []
+    femaleText: He killed her, but not murdered - and this was an important distinction.
     maleText: She killed him, but not murdered - and this was an important distinction.
     includesPlayerName: 0
     id: 
@@ -513,10 +518,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: b2b3cdb32446746c9a1c6333b944e157, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 3
-    actions: []
+    lineTriggeredBy: 3
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: The problem with {playerName} though,
+  - beforeLineActions: []
+    femaleText: The problem with {playerName} though,
     maleText: The problem with {playerName} though,
     includesPlayerName: 1
     id: 
@@ -525,10 +531,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: is that she never tried to see things from a different perspective.
+  - beforeLineActions: []
+    femaleText: is that she never tried to see things from a different perspective.
     maleText: is that he never tried to see things from a different perspective.
     includesPlayerName: 0
     id: 
@@ -537,10 +544,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 754c669bdde1942c5befd96100db6bed, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: And then she died. But she also had the ability to reverse time,
+  - beforeLineActions: []
+    femaleText: And then she died. But she also had the ability to reverse time,
       by simply hitting the R button, whatever that means.
     maleText: And then he died. But he also had the ability to reverse time, by simply
       hitting the R button, whatever that means.
@@ -551,8 +559,8 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: d803474ea716241fa92aea56732ec8d1, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 2
-    actions: []
+    lineTriggeredBy: 2
+    afterLineActions: []
     characterSelectionOptions: []
 --- !u!4 &176744083
 Transform:
@@ -1444,7 +1452,8 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 384757466}
   activeDialogueIndex: 0
   dialogues:
-  - femaleText: 'As time went on with {playerName} doing nothing at all, something
+  - beforeLineActions: []
+    femaleText: 'As time went on with {playerName} doing nothing at all, something
       very peculiar started to occur. '
     maleText: 'As time went on with {playerName} doing nothing at all, something
       very peculiar started to occur. '
@@ -1455,15 +1464,16 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions:
+    lineTriggeredBy: 0
+    afterLineActions:
     - action: 6
+      selectedScene: 0
       gameObjects: []
       actionableScripts:
       - {fileID: 1576004860}
-      selectedScene: 0
     characterSelectionOptions: []
-  - femaleText: "{playerName}\u2019s effect on time started to reverse."
+  - beforeLineActions: []
+    femaleText: "{playerName}\u2019s effect on time started to reverse."
     maleText: "{playerName}\u2019s effect on time started to reverse."
     includesPlayerName: 1
     id: 3e412693-3cd7-4021-8161-bd16f45838ef
@@ -1472,10 +1482,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: "At first - slowly, little by little, things started to move faster
+  - beforeLineActions: []
+    femaleText: "At first - slowly, little by little, things started to move faster
       and faster. Almost as if {playerName}'s point of reference became\u2026 infinite. "
     maleText: "At first - slowly, little by little, things started to move faster
       and faster. Almost as if {playerName}'s point of reference became\u2026 infinite. "
@@ -1486,10 +1497,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: 'Which would make sense, since he is dead and all that. '
+  - beforeLineActions: []
+    femaleText: 'Which would make sense, since he is dead and all that. '
     maleText: 'Which would make sense, since she is dead and all that. '
     includesPlayerName: 0
     id: 4ebb9e0a-3cdb-4f5b-9374-122b0fba5c9a
@@ -1498,10 +1510,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 05c8f06e3886d334190f1315bd62d31d, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: 'Nonetheless, the effect was not linear. Time shifted more and more.
+  - beforeLineActions: []
+    femaleText: 'Nonetheless, the effect was not linear. Time shifted more and more.
       Accelerating.  '
     maleText: 'Nonetheless, the effect was not linear. Time shifted more and more.
       Accelerating.  '
@@ -1512,15 +1525,16 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 9556ba185cb468446ad690d27cd26e75, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions:
+    lineTriggeredBy: 0
+    afterLineActions:
     - action: 4
+      selectedScene: 0
       gameObjects:
       - {fileID: 1876068840}
       actionableScripts: []
-      selectedScene: 0
     characterSelectionOptions: []
-  - femaleText: Her husband was long gone. Did he move on? Arrested? Got out of jail?
+  - beforeLineActions: []
+    femaleText: Her husband was long gone. Did he move on? Arrested? Got out of jail?
       Remarried, happily with children? Dead?
     maleText: His wife was long gone. Did she move on? Arrested? Got out of jail?
       Remarried, happily with children? Dead?
@@ -1531,21 +1545,22 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 73c22a39162c9414f8dd666de312e298, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions:
+    lineTriggeredBy: 0
+    afterLineActions:
     - action: 6
+      selectedScene: 0
       gameObjects: []
       actionableScripts:
       - {fileID: 1661645615}
-      selectedScene: 0
     - action: 4
+      selectedScene: 0
       gameObjects:
       - {fileID: 505696733}
       actionableScripts:
       - {fileID: 1661645615}
-      selectedScene: 0
     characterSelectionOptions: []
-  - femaleText: 'The apartment itself got old. The building. The street. The neighborhood.
+  - beforeLineActions: []
+    femaleText: 'The apartment itself got old. The building. The street. The neighborhood.
       Everything got old. Everything, bounded by the merciless vicious mistress that
       is lady time. '
     maleText: 'The apartment itself got old. The building. The street. The neighborhood.
@@ -1558,15 +1573,16 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 63fae455d5f7e514c90e4f446df8b38d, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions:
+    lineTriggeredBy: 0
+    afterLineActions:
     - action: 6
+      selectedScene: 0
       gameObjects: []
       actionableScripts:
       - {fileID: 1377815951}
-      selectedScene: 0
     characterSelectionOptions: []
-  - femaleText: 'It did not stop. Only accelerated. Further and further.  '
+  - beforeLineActions: []
+    femaleText: 'It did not stop. Only accelerated. Further and further.  '
     maleText: 'It did not stop. Only accelerated. Further and further.  '
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
@@ -1575,10 +1591,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 16a911149faee4fc2bfb7be2ce92cfb7, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 2
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: '{playerName} was preserved perfectly. '
+  - beforeLineActions: []
+    femaleText: '{playerName} was preserved perfectly. '
     maleText: '{playerName} was preserved perfectly. '
     includesPlayerName: 1
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
@@ -1587,10 +1604,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: Her time dimension, completely still. If only her consciousness could
+  - beforeLineActions: []
+    femaleText: Her time dimension, completely still. If only her consciousness could
       be here to observe.
     maleText: 'His time dimension, completely still. If only his consciousness could
       be here to observe. '
@@ -1601,12 +1619,12 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 56175c20f7a8246d7ad5321e60d7085d, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions:
+    lineTriggeredBy: 0
+    afterLineActions:
     - action: 2
+      selectedScene: 1
       gameObjects: []
       actionableScripts: []
-      selectedScene: 1
     characterSelectionOptions: []
 --- !u!4 &707307512
 Transform:
@@ -2775,6 +2793,7 @@ GameObject:
   - component: {fileID: 1576004858}
   - component: {fileID: 1576004859}
   - component: {fileID: 1576004860}
+  - component: {fileID: 1576004861}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -2809,6 +2828,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a404c9e70c4d04d0dbd4bc4d74689bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 800562991203850411}
+        m_TargetAssemblyTypeName: EnemyMovement, Enemy
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   deathSequenceStartDialogue: {fileID: 707307508}
   deathSequenceEndDialogue: {fileID: 1862960332}
   currentSceneDialogue: {fileID: 176744079}
@@ -2826,6 +2860,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valeryGameObject: {fileID: 1876068840}
+--- !u!114 &1576004861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576004857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aead8abc5d126940b3204030cc259e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleCard: {fileID: 0}
 --- !u!1 &1586951450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,7 +3725,8 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 384757466}
   activeDialogueIndex: 0
   dialogues:
-  - femaleText: "{playerName}\u2019s apartment. {playerName}\u2019s husband, {playerPartner},
+  - beforeLineActions: []
+    femaleText: "{playerName}\u2019s apartment. {playerName}\u2019s husband, {playerPartner},
       moves in."
     maleText: "{playerName}\u2019s apartment. {playerName}\u2019s wife, {playerPartner},
       moves in."
@@ -3689,10 +3737,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: 'He shot her, but this time in reverse. '
+  - beforeLineActions: []
+    femaleText: 'He shot her, but this time in reverse. '
     maleText: 'She shot him, but this time in reverse. '
     includesPlayerName: 0
     id: 3e412693-3cd7-4021-8161-bd16f45838ef
@@ -3701,10 +3750,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 4c6edcffccb791949bea3aecc781e8d4, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: "The bullet comes out of {playerName}\u2019s bloody body."
+  - beforeLineActions: []
+    femaleText: "The bullet comes out of {playerName}\u2019s bloody body."
     maleText: "The bullet comes out of {playerName}\u2019s bloody body."
     includesPlayerName: 1
     id: 3ac8ae8a-da70-4667-a93d-20755630b2f6
@@ -3713,10 +3763,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: Reviving her in the process. The bullet returns to the pistol it
+  - beforeLineActions: []
+    femaleText: Reviving her in the process. The bullet returns to the pistol it
       came from.
     maleText: Reviving him in the process. The bullet returns to the pistol it came
       from.
@@ -3727,10 +3778,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: aa3c8e9be4580954a816ee72cb9bd06c, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: Moments before {playerPartner} shots again - {playerName} can now
+  - beforeLineActions: []
+    femaleText: Moments before {playerPartner} shots again - {playerName} can now
       move.
     maleText: Moments before {playerPartner} shots again - {playerName} can now move.
     includesPlayerName: 1
@@ -3740,10 +3792,11 @@ MonoBehaviour:
       male: {fileID: 0}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: 'Completely unaware of the magnificent journey his body just experienced. '
+  - beforeLineActions: []
+    femaleText: 'Completely unaware of the magnificent journey his body just experienced. '
     maleText: 'Completely unaware of the magnificent journey his body just experienced. '
     includesPlayerName: 0
     id: f65e9349-b816-4e9d-bd4f-a926e3468930
@@ -3752,10 +3805,11 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: 20677646d48208e4fa4ed4eb69a70be4, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions: []
     characterSelectionOptions: []
-  - femaleText: 'A once in a lifetime experience, that is for sure. '
+  - beforeLineActions: []
+    femaleText: 'A once in a lifetime experience, that is for sure. '
     maleText: 'A once in a lifetime experience, that is for sure. '
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
@@ -3764,8 +3818,12 @@ MonoBehaviour:
       male: {fileID: 8300000, guid: f126bf888c334d241bad84a7aa99d33b, type: 3}
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
-    trigger: 0
-    actions: []
+    lineTriggeredBy: 0
+    afterLineActions:
+    - action: 6
+      selectedScene: 0
+      gameObjects: []
+      actionableScripts: []
     characterSelectionOptions: []
 --- !u!4 &1862960336
 Transform:
@@ -4441,6 +4499,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aff59a7a18d74c17b8bd7553172ee6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &800562991203850411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 800562991124641806, guid: 2391c267773a6495f9fb56a47c21ad49, type: 3}
+  m_PrefabInstance: {fileID: 800562991203850373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876068840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6775ad5acbd67469a9a71f5b44c0d97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4563257341237110274

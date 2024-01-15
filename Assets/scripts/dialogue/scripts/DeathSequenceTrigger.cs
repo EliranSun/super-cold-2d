@@ -1,16 +1,28 @@
 using action_triggers.scripts;
+using observer.scripts;
 using UnityEngine;
 
-public class DeathSequenceTrigger : MonoBehaviour
+public class DeathSequenceTrigger : PlayerActionsObserverSubject
 {
     [SerializeField] private GameObject deathSequenceStartDialogue;
     [SerializeField] private GameObject deathSequenceEndDialogue;
     [SerializeField] private GameObject currentSceneDialogue;
     [SerializeField] private int triggerAfterSeconds = 20;
+    private PlayerInfo _playerInfo;
 
     private void Start()
     {
-        // TODO: initiate the death sequence end dialogue object - based on ... something
+        _playerInfo = GetComponent<PlayerInfo>();
+        if (_playerInfo)
+        {
+            var seenDeathSequence = _playerInfo.GetPlayerPrefValue(PlayerPrefsKeys.SeenUniverseDeathSequence);
+            if (seenDeathSequence.ToUpper() == "TRUE")
+            {
+                currentSceneDialogue.SetActive(false);
+                deathSequenceEndDialogue.SetActive(true);
+                Notify(PlayerActions.SeenUniverseDeathSequence);
+            }
+        }
     }
 
     public void OnNotify(PlayerActions trigger)

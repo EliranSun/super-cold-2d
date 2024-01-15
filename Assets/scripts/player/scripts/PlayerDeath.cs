@@ -41,7 +41,7 @@ public class PlayerDeath : PlayerActionsObserverSubject
 
     private void Death()
     {
-        NotifyObservers(PlayerActions.Died);
+        Notify(PlayerActions.Died);
 
         if (_collectedWeapon && _collectedWeapon.targetAcquired)
         {
