@@ -16,7 +16,7 @@ namespace player.scripts
         [SerializeField] private TimeController timeController;
         [SerializeField] private float speed = 5f;
         [SerializeField] private bool isMovementEnabled = true;
-
+        [SerializeField] private bool isGodMode;
         private Animator _animator;
         private bool _areObserversNotified;
         private CollectWeapon _collectWeapon;
@@ -60,6 +60,9 @@ namespace player.scripts
 
         public void OnNotify(PlayerActions action)
         {
+            if (isGodMode)
+                return;
+            
             if (action == PlayerActions.Died)
                 isMovementEnabled = false;
         }

@@ -11,6 +11,7 @@ public class CollectWeapon : WeaponActionsObserverSubject
     public bool targetAcquired;
     [SerializeField] private TextMeshProUGUI weaponPickupText;
 
+    // "Player" | "Enemy" = tag
     private readonly Dictionary<string, WeaponObserverEvents> _actions = new()
     {
         { "Player", WeaponObserverEvents.PlayerCollected },

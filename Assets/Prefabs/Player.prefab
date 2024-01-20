@@ -127,8 +127,9 @@ MonoBehaviour:
   isControllingTime: 1
   target: {fileID: 0}
   timeController: {fileID: 0}
-  spriteRenderer: {fileID: 4563257340690170238}
   speed: 10
+  isMovementEnabled: 1
+  isGodMode: 0
 --- !u!198 &4563257340690170232
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5023,14 +5024,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e416f6a208904754b36ed0f2f6e8875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttle: 0.4
-  isNPC: 0
+  interval: 0.4
+  isNpc: 0
   footsteps:
   - {fileID: 8300000, guid: d4a68f2ecf36a486fbc805623ff83fd3, type: 3}
   - {fileID: 8300000, guid: e7d74b3971c15479e9c0b4d8a4022ab8, type: 3}
   - {fileID: 8300000, guid: 4fb370813606641c698b46c17099001b, type: 3}
   - {fileID: 8300000, guid: bed13b6d49bd54ee78bb5b7fa6d9d6bf, type: 3}
   - {fileID: 8300000, guid: a0296e63c091e4969acd00e5427abfb4, type: 3}
+  isEnabled: 1
 --- !u!82 &4563257340690170237
 AudioSource:
   m_ObjectHideFlags: 0

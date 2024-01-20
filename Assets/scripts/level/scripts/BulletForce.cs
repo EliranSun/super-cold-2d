@@ -61,13 +61,15 @@ public class BulletForce : ObserverSubject
             return;
         }
 
-        var parent = col.gameObject.transform.parent;
-        if (parent && parent.CompareTag("Enemy"))
-        {
-            col.gameObject.transform.parent.GetComponent<ExplodeOnDeath>().TriggerDeath();
-            Invoke(nameof(Respawn), 2);
-            Destroy(bullet); // bullet
-        }
+        // parent = enemy, which itself is CharacterController2D. The child has a normal collider.
+        // TODO: not optimal I see no reason to try and fix it, or don't use the CC2D at all.
+        // var parent = col.gameObject.transform.parent;
+        // if (parent && parent.CompareTag("Enemy"))
+        // {
+        //     col.gameObject.transform.parent.GetComponent<ExplodeOnDeath>().TriggerDeath();
+        //     Invoke(nameof(Respawn), 2);
+        //     Destroy(bullet); // bullet
+        // }
 
         Destroy(bullet);
         Destroy(col.gameObject);
