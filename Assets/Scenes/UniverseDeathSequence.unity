@@ -5625,6 +5625,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1024099921}
+        m_TargetAssemblyTypeName: StarsScrambler, DeathSequenceAssembly
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   noPlayerInfoDialogueId: 
   noPlayerGenderDialogueId: 
   noPlayerPartnerDialogueId: 
@@ -5632,9 +5647,14 @@ MonoBehaviour:
   dialogueLineContainer: {fileID: 35709127}
   activeDialogueIndex: 0
   dialogues:
-  - beforeLineActions: []
+  - beforeLineActions:
+    - action: 9
+      selectedScene: 0
+      gameObjects: []
+      actionableScripts: []
     femaleText: 'Every death of every planet in the solar system. Every violent explosion, '
     maleText: 'Every death of every planet in the solar system. Every violent explosion, '
+    robotText: 
     includesPlayerName: 0
     id: 8ed5670d-e503-43b1-96df-6d97e8776aae
     audio:
@@ -5655,6 +5675,7 @@ MonoBehaviour:
       home... and yet - it was all around her
     maleText: light years, far, far away from the place {playerName} used to call
       home... and yet - it was all around her
+    robotText: 
     includesPlayerName: 1
     id: d9ecce0a-6c31-484b-9e5e-1ae55965639e
     audio:
@@ -5668,6 +5689,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: The decay of the entire galaxy.
     maleText: The decay of the entire galaxy.
+    robotText: 
     includesPlayerName: 0
     id: 6f497672-6f7b-43d7-bb5e-57846bfc4751
     audio:
@@ -5683,6 +5705,7 @@ MonoBehaviour:
       a machine. All the galaxies in the entire universe come to a halt.
     maleText: And it does not stop. Accelerating, more and more. Soulless, like a
       machine. All the galaxies in the entire universe come to a halt.
+    robotText: 
     includesPlayerName: 0
     id: 8f677706-4ce2-43c8-b6b2-cfc76e4e1e53
     audio:
@@ -5699,13 +5722,20 @@ MonoBehaviour:
       - {fileID: 1024099920}
       actionableScripts: []
     characterSelectionOptions: []
-  - beforeLineActions: []
+  - beforeLineActions:
+    - action: 4
+      selectedScene: 0
+      gameObjects:
+      - {fileID: 1024099920}
+      - {fileID: 1939849104}
+      actionableScripts: []
     femaleText: Blackness... even the most black of holes are now gone from existence.
       Blackness... for the longest of time, even though time is progressing at unfathomable
       speed now.
     maleText: Blackness... even the most black of holes are now gone from existence.
       Blackness... for the longest of time, even though time is progressing at unfathomable
       speed now.
+    robotText: 
     includesPlayerName: 0
     id: a294e03d-d45f-49c3-8130-b8b8f0c690f5
     audio:
@@ -5723,6 +5753,7 @@ MonoBehaviour:
     maleText: "Time continues, until every single particle, atom, subatom and matter
       itself stop existing. Until every single unit of energy ceased to exist. The
       great, cold universe itself\u2026 stops. "
+    robotText: 
     includesPlayerName: 0
     id: e740ac1e-0593-4623-94e3-a14d03a28a0a
     audio:
@@ -5738,6 +5769,7 @@ MonoBehaviour:
       is over. The game itself is over.
     maleText: Time itself stops at this point. Nothing matters anymore. Everything
       is over. The game itself is over.
+    robotText: 
     includesPlayerName: 0
     id: 1989600e-2e64-44a4-ac16-65f35b050cb0
     audio:
@@ -5768,6 +5800,7 @@ MonoBehaviour:
       in the opposite direction."
     maleText: "Suddenly, whiteness. Rapid expansion, expanding time itself\u2026
       in the opposite direction."
+    robotText: 
     includesPlayerName: 0
     id: 6cd0ff2f-6ab0-4043-a434-36495985a865
     audio:
@@ -5781,6 +5814,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: ...a loop?
     maleText: ...a loop?
+    robotText: 
     includesPlayerName: 0
     id: ab3beefa-2bdb-438f-ba73-fedc99b7d6c1
     audio:
@@ -5790,52 +5824,38 @@ MonoBehaviour:
     waitForNextLineInSeconds: 0
     lineTriggeredBy: 0
     afterLineActions:
-    - action: 2
+    - action: 3
       selectedScene: 0
       gameObjects:
       - {fileID: 1024099920}
       actionableScripts: []
-    - action: 3
-      selectedScene: 0
-      gameObjects:
-      - {fileID: 1684845042}
-      - {fileID: 694443446}
-      - {fileID: 1531282957}
-      - {fileID: 848604681}
-      - {fileID: 1898421332}
-      - {fileID: 516785104}
-      actionableScripts: []
-    - action: 5
-      selectedScene: 0
-      gameObjects:
-      - {fileID: 1684845042}
-      - {fileID: 694443446}
-      - {fileID: 1531282957}
-      - {fileID: 848604681}
-      - {fileID: 1898421332}
-      - {fileID: 516785104}
-      actionableScripts: []
+    characterSelectionOptions: []
+  - beforeLineActions:
     - action: 4
       selectedScene: 0
       gameObjects:
-      - {fileID: 1684845042}
-      - {fileID: 694443446}
-      - {fileID: 1531282957}
-      - {fileID: 1898421332}
-      - {fileID: 848604681}
-      - {fileID: 516785104}
+      - {fileID: 2006489183}
+      actionableScripts: []
+    - action: 0
+      selectedScene: 0
+      gameObjects:
+      - {fileID: 2006489183}
       actionableScripts: []
     - action: 3
       selectedScene: 0
       gameObjects:
       - {fileID: 880373301}
       actionableScripts: []
-    characterSelectionOptions: []
-  - beforeLineActions: []
+    - action: 4
+      selectedScene: 0
+      gameObjects:
+      - {fileID: 1939849104}
+      actionableScripts: []
     femaleText: "Energy, matter, subatoms, atoms, molecules, particles, chemistry,
       physics, stars, planets, galaxies\u2026"
     maleText: "Energy, matter, subatoms, atoms, molecules, particles, chemistry,
       physics, stars, planets, galaxies\u2026"
+    robotText: 
     includesPlayerName: 0
     id: a05105b0-1494-4605-ba72-5ef5bfedd022
     audio:
@@ -5849,6 +5869,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: 'The rapid reversion of time starts to slow down. '
     maleText: 'The rapid reversion of time starts to slow down. '
+    robotText: 
     includesPlayerName: 0
     id: 7869b3d7-ca13-400e-a36c-94d39b4c2726
     audio:
@@ -5859,9 +5880,15 @@ MonoBehaviour:
     lineTriggeredBy: 0
     afterLineActions: []
     characterSelectionOptions: []
-  - beforeLineActions: []
+  - beforeLineActions:
+    - action: 4
+      selectedScene: 0
+      gameObjects:
+      - {fileID: 1024099920}
+      actionableScripts: []
     femaleText: "{playerName}\u2019s own sun emerges."
     maleText: "{playerName}\u2019s own sun emerges."
+    robotText: 
     includesPlayerName: 1
     id: b292f534-7640-4017-9368-89495eac0ad9
     audio:
@@ -5877,6 +5904,7 @@ MonoBehaviour:
       human beings. Civilizations, cities, neighborhoods, streets, buildings\u2026 "
     maleText: "Birthing the earth. Birthing oceans, land, life, creatures, mammals,
       human beings. Civilizations, cities, neighborhoods, streets, buildings\u2026 "
+    robotText: 
     includesPlayerName: 0
     id: 5358936c-7075-4bfe-ba4a-acb346d948ac
     audio:
@@ -6316,7 +6344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1024099921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6336,6 +6364,7 @@ MonoBehaviour:
   - {fileID: 848604681}
   - {fileID: 1898421332}
   - {fileID: 516785104}
+  playAnimationInReverse: 0
 --- !u!95 &1024099922
 Animator:
   serializedVersion: 5
@@ -6876,6 +6905,211 @@ Transform:
   m_Father: {fileID: 1024099924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1723805747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723805749}
+  - component: {fileID: 1723805748}
+  - component: {fileID: 1723805750}
+  m_Layer: 0
+  m_Name: DialogueTesting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1723805748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723805747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1024099921}
+        m_TargetAssemblyTypeName: StarsScrambler, DeathSequenceAssembly
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  noPlayerInfoDialogueId: 
+  noPlayerGenderDialogueId: 
+  noPlayerPartnerDialogueId: 
+  allPlayerInfoDialogueId: 
+  dialogueLineContainer: {fileID: 35709127}
+  activeDialogueIndex: 0
+  dialogues:
+  - beforeLineActions: []
+    femaleText: hello world 1
+    maleText: hello world 1
+    robotText: 
+    includesPlayerName: 0
+    id: 
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
+    waitForNextLineInSeconds: 0
+    lineTriggeredBy: 0
+    afterLineActions:
+    - action: 3
+      selectedScene: 0
+      gameObjects:
+      - {fileID: 1024099920}
+      actionableScripts: []
+    characterSelectionOptions: []
+  - beforeLineActions:
+    - action: 5
+      selectedScene: 0
+      gameObjects: []
+      actionableScripts: []
+    femaleText: hello world 2
+    maleText: hello world 2
+    robotText: 
+    includesPlayerName: 0
+    id: 
+    audio:
+      female: {fileID: 0}
+      male: {fileID: 0}
+      none: {fileID: 0}
+    waitForNextLineInSeconds: 0
+    lineTriggeredBy: 0
+    afterLineActions:
+    - action: 0
+      selectedScene: 0
+      gameObjects:
+      - {fileID: 1024099920}
+      actionableScripts: []
+    characterSelectionOptions: []
+--- !u!4 &1723805749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723805747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.37184507, y: 2.3409133, z: -0.0066472576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1723805750
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723805747}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1898421332
 GameObject:
   m_ObjectHideFlags: 0

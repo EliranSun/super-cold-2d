@@ -147,14 +147,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65, y: -0.06, z: 0}
-  m_LocalScale: {x: 1.91, y: 1.15, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.75983894, w: 0.6501114}
+  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalScale: {x: 1.55, y: 1.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5580416626828286887}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -98.9}
 --- !u!212 &277830
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,6 +449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
   noPlayerInfoDialogueId: 0
   noPlayerGenderDialogueId: 0
   noPlayerPartnerDialogueId: 0
@@ -459,6 +462,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: Her husband, {playerPartner}, hated this.
     maleText: His wife, {playerPartner}, hated this.
+    robotText: 
     includesPlayerName: 1
     id: 
     audio:
@@ -472,6 +476,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: He tried to kill her, because he was too afraid of divorce.
     maleText: She tried to kill him, because she was too afraid of divorce.
+    robotText: 
     includesPlayerName: 0
     id: 
     audio:
@@ -485,6 +490,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: '{playerName} was a pacifist though.'
     maleText: '{playerName} was a pacifist though.'
+    robotText: 
     includesPlayerName: 1
     id: 
     audio:
@@ -498,6 +504,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: All she could do is run away from him, or act in self defense.
     maleText: All he could do is run away from her, or act in self defense.
+    robotText: 
     includesPlayerName: 0
     id: 
     audio:
@@ -511,6 +518,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: He killed her, but not murdered - and this was an important distinction.
     maleText: She killed him, but not murdered - and this was an important distinction.
+    robotText: 
     includesPlayerName: 0
     id: 
     audio:
@@ -524,6 +532,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: The problem with {playerName} though,
     maleText: The problem with {playerName} though,
+    robotText: 
     includesPlayerName: 1
     id: 
     audio:
@@ -537,6 +546,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: is that she never tried to see things from a different perspective.
     maleText: is that he never tried to see things from a different perspective.
+    robotText: 
     includesPlayerName: 0
     id: 
     audio:
@@ -552,6 +562,7 @@ MonoBehaviour:
       by simply hitting the R button, whatever that means.
     maleText: And then he died. But he also had the ability to reverse time, by simply
       hitting the R button, whatever that means.
+    robotText: 
     includesPlayerName: 0
     id: 
     audio:
@@ -1445,6 +1456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls: []
   noPlayerInfoDialogueId: 
   noPlayerGenderDialogueId: 
   noPlayerPartnerDialogueId: 
@@ -1457,6 +1471,7 @@ MonoBehaviour:
       very peculiar started to occur. '
     maleText: 'As time went on with {playerName} doing nothing at all, something
       very peculiar started to occur. '
+    robotText: 
     includesPlayerName: 1
     id: aa8a8e24-b1f9-4786-ba11-48121a078b93
     audio:
@@ -1475,6 +1490,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: "{playerName}\u2019s effect on time started to reverse."
     maleText: "{playerName}\u2019s effect on time started to reverse."
+    robotText: 
     includesPlayerName: 1
     id: 3e412693-3cd7-4021-8161-bd16f45838ef
     audio:
@@ -1490,6 +1506,7 @@ MonoBehaviour:
       and faster. Almost as if {playerName}'s point of reference became\u2026 infinite. "
     maleText: "At first - slowly, little by little, things started to move faster
       and faster. Almost as if {playerName}'s point of reference became\u2026 infinite. "
+    robotText: 
     includesPlayerName: 1
     id: 3ac8ae8a-da70-4667-a93d-20755630b2f6
     audio:
@@ -1503,6 +1520,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: 'Which would make sense, since he is dead and all that. '
     maleText: 'Which would make sense, since she is dead and all that. '
+    robotText: 
     includesPlayerName: 0
     id: 4ebb9e0a-3cdb-4f5b-9374-122b0fba5c9a
     audio:
@@ -1518,6 +1536,7 @@ MonoBehaviour:
       Accelerating.  '
     maleText: 'Nonetheless, the effect was not linear. Time shifted more and more.
       Accelerating.  '
+    robotText: 
     includesPlayerName: 0
     id: 776b7d42-5bb9-43f4-ba28-2f57760693db
     audio:
@@ -1538,6 +1557,7 @@ MonoBehaviour:
       Remarried, happily with children? Dead?
     maleText: His wife was long gone. Did she move on? Arrested? Got out of jail?
       Remarried, happily with children? Dead?
+    robotText: 
     includesPlayerName: 0
     id: f65e9349-b816-4e9d-bd4f-a926e3468930
     audio:
@@ -1566,6 +1586,7 @@ MonoBehaviour:
     maleText: 'The apartment itself got old. The building. The street. The neighborhood.
       Everything got old. Everything, bounded by the merciless vicious mistress that
       is lady time. '
+    robotText: 
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
@@ -1584,6 +1605,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: 'It did not stop. Only accelerated. Further and further.  '
     maleText: 'It did not stop. Only accelerated. Further and further.  '
+    robotText: 
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
@@ -1597,6 +1619,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: '{playerName} was preserved perfectly. '
     maleText: '{playerName} was preserved perfectly. '
+    robotText: 
     includesPlayerName: 1
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
@@ -1612,6 +1635,7 @@ MonoBehaviour:
       be here to observe.
     maleText: 'His time dimension, completely still. If only his consciousness could
       be here to observe. '
+    robotText: 
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
@@ -1699,6 +1723,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &818584727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5580416627961616119, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+  m_PrefabInstance: {fileID: 5580416626828286886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &828869919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1810,7 +1839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4f1288552f4c78bd317ae6abc4ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleText: {fileID: 0}
+  slowDownScale: 0.1
+  superSlowDownScale: 0.05
+  timeScaleText: {fileID: 1718114241}
   timeScale: 1
   isTimeSlowed: 0
 --- !u!4 &853733328
@@ -2843,6 +2874,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  player: {fileID: 564766578}
+  enemy: {fileID: 1876068840}
+  pistol: {fileID: 818584727}
+  bulletPrefab: {fileID: 1690717388601107180, guid: 19ddcc169e8f147339137e7c1b80fa6e, type: 3}
+  timeController: {fileID: 853733327}
   deathSequenceStartDialogue: {fileID: 707307508}
   deathSequenceEndDialogue: {fileID: 1862960332}
   currentSceneDialogue: {fileID: 176744079}
@@ -3718,6 +3754,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f77991adda6498889d6845d4339f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observers:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1576004859}
+        m_TargetAssemblyTypeName: DeathSequenceTrigger, Dialogue
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 800562991203850411}
+        m_TargetAssemblyTypeName: EnemyMovement, Enemy
+        m_MethodName: OnNotify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   noPlayerInfoDialogueId: 
   noPlayerGenderDialogueId: 
   noPlayerPartnerDialogueId: 
@@ -3730,6 +3793,7 @@ MonoBehaviour:
       moves in."
     maleText: "{playerName}\u2019s apartment. {playerName}\u2019s wife, {playerPartner},
       moves in."
+    robotText: 
     includesPlayerName: 1
     id: aa8a8e24-b1f9-4786-ba11-48121a078b93
     audio:
@@ -3743,6 +3807,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: 'He shot her, but this time in reverse. '
     maleText: 'She shot him, but this time in reverse. '
+    robotText: 
     includesPlayerName: 0
     id: 3e412693-3cd7-4021-8161-bd16f45838ef
     audio:
@@ -3756,6 +3821,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: "The bullet comes out of {playerName}\u2019s bloody body."
     maleText: "The bullet comes out of {playerName}\u2019s bloody body."
+    robotText: 
     includesPlayerName: 1
     id: 3ac8ae8a-da70-4667-a93d-20755630b2f6
     audio:
@@ -3764,13 +3830,22 @@ MonoBehaviour:
       none: {fileID: 0}
     waitForNextLineInSeconds: 0
     lineTriggeredBy: 0
-    afterLineActions: []
+    afterLineActions:
+    - action: 7
+      selectedScene: 0
+      gameObjects: []
+      actionableScripts: []
+    - action: 0
+      selectedScene: 0
+      gameObjects: []
+      actionableScripts: []
     characterSelectionOptions: []
   - beforeLineActions: []
     femaleText: Reviving her in the process. The bullet returns to the pistol it
       came from.
     maleText: Reviving him in the process. The bullet returns to the pistol it came
       from.
+    robotText: 
     includesPlayerName: 0
     id: 4ebb9e0a-3cdb-4f5b-9374-122b0fba5c9a
     audio:
@@ -3781,10 +3856,15 @@ MonoBehaviour:
     lineTriggeredBy: 0
     afterLineActions: []
     characterSelectionOptions: []
-  - beforeLineActions: []
+  - beforeLineActions:
+    - action: 8
+      selectedScene: 0
+      gameObjects: []
+      actionableScripts: []
     femaleText: Moments before {playerPartner} shots again - {playerName} can now
       move.
     maleText: Moments before {playerPartner} shots again - {playerName} can now move.
+    robotText: 
     includesPlayerName: 1
     id: 776b7d42-5bb9-43f4-ba28-2f57760693db
     audio:
@@ -3798,6 +3878,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: 'Completely unaware of the magnificent journey his body just experienced. '
     maleText: 'Completely unaware of the magnificent journey his body just experienced. '
+    robotText: 
     includesPlayerName: 0
     id: f65e9349-b816-4e9d-bd4f-a926e3468930
     audio:
@@ -3811,6 +3892,7 @@ MonoBehaviour:
   - beforeLineActions: []
     femaleText: 'A once in a lifetime experience, that is for sure. '
     maleText: 'A once in a lifetime experience, that is for sure. '
+    robotText: 
     includesPlayerName: 0
     id: 024a9fbe-b459-455b-8b4c-267fe35a4c89
     audio:
@@ -3820,7 +3902,7 @@ MonoBehaviour:
     waitForNextLineInSeconds: 0
     lineTriggeredBy: 0
     afterLineActions:
-    - action: 6
+    - action: 10
       selectedScene: 0
       gameObjects: []
       actionableScripts: []
@@ -4793,8 +4875,60 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4857537413412293253, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857537413412293253, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857537413412293253, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.649208
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0009703905
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.012302534
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7605108
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057008138161751331, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -99.02
       objectReference: {fileID: 0}
     - target: {fileID: 5580416627961616116, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
       propertyPath: m_SortingOrder
@@ -4893,8 +5027,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 564766589}
     - target: {fileID: 8700369630404380889, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700369630404380889, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d0895be6f07249c2bab6f684a111542, type: 3}

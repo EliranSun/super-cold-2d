@@ -3,6 +3,7 @@ using System.Collections;
 using action_triggers.scripts;
 using config.scripts;
 using enums;
+using observer.scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,7 @@ internal class Dialogue
 
     public string femaleText;
     public string maleText;
+    public string robotText;
 
     public bool includesPlayerName;
     public string id = Guid.NewGuid().ToString();
@@ -53,7 +55,7 @@ internal enum Scenes
 }
 
 
-public class DialogueConfig : MonoBehaviour
+public class DialogueConfig : DialogueObserverSubject
 {
     private static readonly int Reverse = Animator.StringToHash("Reverse");
     [SerializeField] private string noPlayerInfoDialogueId;
@@ -75,9 +77,9 @@ public class DialogueConfig : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _textToSpeechComponent = GetComponent<TextToSpeech>();
 
-        var playerGender = PlayerInfo.GetPlayerGender();
-        var playerName = PlayerInfo.GetPlayerName();
-        var playerPartner = PlayerInfo.GetPlayerPartner();
+        var playerGender = PlayerPreferences.GetPlayerGender();
+        var playerName = PlayerPreferences.GetPlayerName();
+        var playerPartner = PlayerPreferences.GetPlayerPartner();
 
         if (activeDialogueIndex == 0)
         {
@@ -163,9 +165,9 @@ public class DialogueConfig : MonoBehaviour
     {
         InvokeAction(line.beforeLineActions);
 
-        var partnerName = PlayerInfo.GetPlayerPartner();
-        var playerName = PlayerInfo.GetPlayerName();
-        var playerGender = PlayerInfo.GetPlayerGender();
+        var partnerName = PlayerPreferences.GetPlayerPartner();
+        var playerName = PlayerPreferences.GetPlayerName();
+        var playerGender = PlayerPreferences.GetPlayerGender();
 
         var lineText = GetGenderLineText(line);
 
@@ -208,19 +210,19 @@ public class DialogueConfig : MonoBehaviour
 
     private string GetGenderLineText(Dialogue line)
     {
-        var playerGender = PlayerInfo.GetPlayerGender();
+        var playerGender = PlayerPreferences.GetPlayerGender();
         return playerGender switch
         {
             PlayerGender.Male => line.maleText,
-            PlayerGender.Female => line.femaleText == "" ? line.maleText : line.femaleText,
-            PlayerGender.None => line.maleText,
+            PlayerGender.Female => line.femaleText,
+            PlayerGender.None => line.robotText,
             _ => ""
         };
     }
 
     private AudioClip GetLineAudio(Dialogue line)
     {
-        var playerGender = PlayerInfo.GetPlayerGender();
+        var playerGender = PlayerPreferences.GetPlayerGender();
         return playerGender switch
         {
             PlayerGender.Male => line.audio.male,
@@ -273,9 +275,16 @@ public class DialogueConfig : MonoBehaviour
                         lineOptionGameObject.SetActive(true);
                     break;
 
+                case DialogueAction.DeathSequenceStart:
+                    PlayerPreferences.SetPlayerPrefValue(PlayerPrefsKeys.DeathSequenceEnded, false);
+                    PlayerPreferences.SetPlayerPrefValue(PlayerPrefsKeys.SeenUniverseDeathSequence, false);
+                    break;
+                
+                case DialogueAction.DeathSequenceEnd:
+                case DialogueAction.PlayerCanMove:
+                case DialogueAction.RevivePlayer:
                 case DialogueAction.ReverseAnimation:
-                    foreach (var dialogueActionGameObject in dialogueAction.gameObjects)
-                        dialogueActionGameObject.GetComponent<Animator>().SetBool(Reverse, true);
+                    Notify(dialogueAction.action);
                     break;
 
                 case DialogueAction.EnableActionableScript:

@@ -132,6 +132,12 @@ public class EnemyMovement : ObserverSubject
         if (message == PlayerActions.SeenUniverseDeathSequence)
             isStatic = true;
     }
+    
+    public void OnNotify(DialogueAction message)
+    {
+        if (message == DialogueAction.DeathSequenceEnd)
+            isStatic = false;
+    }
 
     private Vector2 GetRandomVectorWithinLevelBounds()
     {

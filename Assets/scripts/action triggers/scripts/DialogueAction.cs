@@ -8,6 +8,10 @@ namespace action_triggers.scripts
         GameObjectsEnable,
         GameObjectsDisable,
         ReverseAnimation,
-        EnableActionableScript
+        EnableActionableScript,
+        RevivePlayer,
+        PlayerCanMove,
+        DeathSequenceStart,
+        DeathSequenceEnd,
     }
 }

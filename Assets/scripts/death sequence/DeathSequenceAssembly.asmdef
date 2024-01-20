@@ -1,3 +1,6 @@
 {
-	"name": "DeathSequenceAssembly"
+  "name": "DeathSequenceAssembly",
+  "references": [
+    "GUID:49f3921de20534047a1bc0f78ab618e3"
+  ]
 }

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using action_triggers.scripts;
 using UnityEngine;
 
 public class ValeryBehaviourAtDeathSequence : ActionableScript
@@ -7,6 +9,10 @@ public class ValeryBehaviourAtDeathSequence : ActionableScript
 
     public override void Activate()
     {
+        bool isSeenDeathSequence = PlayerPreferences.GetPlayerPrefValue(PlayerPrefsKeys.SeenUniverseDeathSequence);
+        if (isSeenDeathSequence)
+            return;
+
         valeryGameObject.GetComponent<MoveToFixedPoints>().enabled = true;
         StartCoroutine(IncreaseSpeed());
     }

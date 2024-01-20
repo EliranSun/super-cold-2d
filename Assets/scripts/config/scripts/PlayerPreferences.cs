@@ -8,10 +8,11 @@ public enum PlayerPrefsKeys
     PlayerName,
     PlayerGender,
     PlayerPartner,
-    SeenUniverseDeathSequence
+    SeenUniverseDeathSequence,
+    DeathSequenceEnded
 }
 
-public class PlayerInfo : ActionableScript
+public class PlayerPreferences : ActionableScript
 {
     [SerializeField] private TextMeshProUGUI titleCard;
 
@@ -84,13 +85,19 @@ public class PlayerInfo : ActionableScript
         PlayerPrefs.SetString(PlayerPrefsKeys.SeenUniverseDeathSequence.ToString(), "true");
     }
 
+    // TODO: Would expect to activate with certain parameters
     public override void Activate()
     {
         SetSeenUniverseDeathSequence();
     }
     
-    public string GetPlayerPrefValue(PlayerPrefsKeys key)
+    public static bool GetPlayerPrefValue(PlayerPrefsKeys key)
     {
-        return PlayerPrefs.GetString(key.ToString());
+        return PlayerPrefs.GetString(key.ToString()).ToUpper() == "TRUE";
+    }
+    
+    public static void SetPlayerPrefValue(PlayerPrefsKeys key, bool value)
+    {
+        PlayerPrefs.SetString(key.ToString(), value.ToString());
     }
 }
