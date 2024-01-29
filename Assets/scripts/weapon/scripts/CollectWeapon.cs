@@ -26,7 +26,7 @@ public class CollectWeapon : WeaponActionsObserverSubject
         if (!isTriggered)
         {
             _timeOnTarget = 0;
-            if (weaponPickupText) weaponPickupText.text = "";
+            if (weaponPickupText) weaponPickupText.text = TimeToCollect.ToString();
             return;
         }
 
@@ -34,7 +34,7 @@ public class CollectWeapon : WeaponActionsObserverSubject
         {
             _timeOnTarget += Time.deltaTime;
             if (weaponPickupText)
-                weaponPickupText.text = $"{TimeToCollect - _timeOnTarget}";
+                weaponPickupText.text = $"{(int)(TimeToCollect - _timeOnTarget)}";
         }
         else
         {
