@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class OnEnemyHitByProjectile : MonoBehaviour
 {
-    [SerializeField] private GameObject pistol;
-    CollectWeapon _collectWeapon;
-    EnemyMovement _enemyMovement;
-    NpcShootBullets _npcShootBullets;
     private static readonly int IsDead = Animator.StringToHash("IsDead");
+    [SerializeField] private GameObject pistol;
     private Animator _animator;
+    private CollectWeapon _collectWeapon;
+    private EnemyMovement _enemyMovement;
+    private MoveToFixedPoints _moveToFixedPoints;
+    private NpcShootBullets _npcShootBullets;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class OnEnemyHitByProjectile : MonoBehaviour
         _collectWeapon = GetComponent<CollectWeapon>();
         _enemyMovement = GetComponent<EnemyMovement>();
         _npcShootBullets = GetComponent<NpcShootBullets>();
+        _moveToFixedPoints = GetComponent<MoveToFixedPoints>();
     }
 
     public void OnNotify(WeaponObserverEvents observerEvent)
@@ -25,17 +27,21 @@ public class OnEnemyHitByProjectile : MonoBehaviour
             _animator.SetBool(IsDead, true);
             _enemyMovement.enabled = false;
             _npcShootBullets.enabled = false;
+            _moveToFixedPoints.enabled = false;
+
             WeaponToss();
-            
+
             StopAllCoroutines();
         }
     }
 
-    void WeaponToss()
+    private void WeaponToss()
     {
         if (_collectWeapon && _collectWeapon.targetAcquired)
         {
             pistol.transform.parent = null;
+            pistol.GetComponent<LookAtPlayer>().enabled = false;
+            // pistol.GetComponent<WeaponHandler>().simulated = true;
             pistol.GetComponentInChildren<SpinFast>().enabled = true;
         }
     }

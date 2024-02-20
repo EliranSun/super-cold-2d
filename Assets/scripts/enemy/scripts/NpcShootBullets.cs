@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class NpcShootBullets : WeaponActionsObserverSubject
 {
+    [SerializeField] private bool isDisabled = false; 
     [SerializeField] private float shootInterval = 4f;
     private bool _isNpcDead;
     private bool _isPlayerDead;
 
     public void OnNotify(WeaponObserverEvents message)
     {
+        if (isDisabled)
+        {
+            return;
+        }
+        
         if (message == WeaponObserverEvents.EnemyCollectedWeapon)
             Invoke(nameof(ShootBulletsRoutine), 1f);
 

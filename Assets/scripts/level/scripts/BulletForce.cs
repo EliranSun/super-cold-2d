@@ -33,6 +33,7 @@ public class BulletForce : ObserverSubject
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        print("Bullet Collision Detected with " + col.gameObject.name);
         var bullet = gameObject;
 
         if (col.gameObject.CompareTag("ManInGreen"))

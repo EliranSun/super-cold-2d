@@ -6,5 +6,7 @@ namespace action_triggers.scripts
         Revived,
         Moved,
         SeenUniverseDeathSequence,
+        DodgeRollingStarted,
+        DodgeRollingEnded
     }
 }

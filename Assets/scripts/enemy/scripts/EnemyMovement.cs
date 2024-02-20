@@ -28,9 +28,10 @@ public class EnemyMovement : ObserverSubject
         _collectWeapon = GetComponent<CollectWeapon>();
         _characterController = GetComponent<CharacterController>();
         _targetPosition = GetRandomVectorWithinLevelBounds();
-
         _direction = _targetPosition - (Vector2)transform.position;
-        if (isControllingTime) StartCoroutine(ChangeMoveDirection());
+        
+        if (isControllingTime) 
+            StartCoroutine(ChangeMoveDirection());
     }
 
     private void Update()

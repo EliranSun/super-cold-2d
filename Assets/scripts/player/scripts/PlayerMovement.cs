@@ -25,6 +25,7 @@ namespace player.scripts
         private Vector2 _movement;
         private Rigidbody2D _rigidbody;
         private bool _triggeredCollectWeapon;
+        private bool isDodgeRolling;
         private float lastHorizontal;
         private float lastVertical;
 
@@ -60,11 +61,14 @@ namespace player.scripts
 
         public void OnNotify(PlayerActions action)
         {
-            if (isGodMode)
-                return;
-            
-            if (action == PlayerActions.Died)
+            if (action == PlayerActions.Died && !isGodMode)
                 isMovementEnabled = false;
+
+            if (action == PlayerActions.DodgeRollingStarted)
+                isDodgeRolling = true;
+
+            if (action == PlayerActions.DodgeRollingEnded)
+                isDodgeRolling = false;
         }
 
         private void RegisterMovementInput()
@@ -95,8 +99,9 @@ namespace player.scripts
 
         private void RigidBodyMove()
         {
-            var movement = new Vector2(_movement.x, _movement.y);
-            _rigidbody.velocity = movement * speed;
+            _rigidbody.velocity = isDodgeRolling
+                ? new Vector2(_movement.x, _movement.y) * (speed * 2)
+                : new Vector2(_movement.x, _movement.y) * speed;
         }
 
         private void ControlTime()

@@ -25,4 +25,10 @@ public class ObserverSubject : MonoBehaviour
     {
         enemyInfoObservers?.Invoke(message);
     }
+
+    protected void NotifyObservers(string message)
+    {
+        print("string NotifyObservers");
+        observers?.Invoke(message);
+    }
 }
